@@ -39,7 +39,7 @@ Cada foto histórica tiene `desdeFrase`: en qué frase de la narración aparece 
 
 ## Narración
 
-Voces femeninas pregrabadas: Elena (es-AR), Ava (en-US) y Francisca (pt-BR). Si cambiás un texto en `data/pois.json`, regenerá los audios:
+Voces femeninas pregrabadas: Valentina (es-UY, rioplatense, más lenta y con pausas), Ava (en-US) y Francisca (pt-BR). Si cambiás un texto en `data/pois.json`, regenerá los audios:
 
 ```bash
 pip install edge-tts

@@ -1,5 +1,5 @@
 # Genera los mp3 de narración con voces femeninas:
-#   español  -> es-AR-ElenaNeural    (assets/audio/)
+#   español  -> es-UY-ValentinaNeural (assets/audio/)  acento rioplatense, más lenta y con pausas
 #   inglés   -> en-US-AvaNeural      (assets/audio/en/)
 #   portugués-> pt-BR-FranciscaNeural (assets/audio/pt/)
 # Uso, desde la carpeta del proyecto:
@@ -8,10 +8,18 @@
 #   python tools/generar-audios.py . catedral plaza-san-martin -> solo esos lugares (3 idiomas)
 #   python tools/generar-audios.py . --frases               -> solo las frases de la app
 #   python tools/generar-audios.py . --idioma en            -> solo un idioma
-import asyncio, json, sys, os
+import asyncio, json, sys, os, re
 import edge_tts
 
-VOCES = {'es': 'es-AR-ElenaNeural', 'en': 'en-US-AvaNeural', 'pt': 'pt-BR-FranciscaNeural'}
+VOCES = {'es': 'es-UY-ValentinaNeural', 'en': 'en-US-AvaNeural', 'pt': 'pt-BR-FranciscaNeural'}
+# Ajustes por idioma: velocidad, tono y si se agregan pausas suaves entre frases
+AJUSTES = {'es': ('-10%', '-2Hz', True), 'en': ('-4%', '+0Hz', False), 'pt': ('-4%', '+0Hz', False)}
+
+
+def con_pausas(texto):
+    # Pausas más largas entre frases y después de los dos puntos: suena más natural y tranquila
+    return re.sub(r'([.!?]) ', lambda m: m.group(1) + '.. ', texto).replace(': ', '... ')
+
 FRASES = ['bienvenida', 'bienvenida-paseo', 'lejos', 'vuelo-inicio', 'vuelo-fin']
 
 base = sys.argv[1]
@@ -35,9 +43,10 @@ def texto_frase(lang, clave):
     return valor[1:-1].replace("\\'", "'")
 
 
-async def gen(texto, destino, voz):
+async def gen(texto, destino, voz, lang):
     os.makedirs(os.path.dirname(destino), exist_ok=True)
-    await edge_tts.Communicate(texto, voz, rate='-4%').save(destino)
+    rate, pitch, pausas = AJUSTES[lang]
+    await edge_tts.Communicate(con_pausas(texto) if pausas else texto, voz, rate=rate, pitch=pitch).save(destino)
     print(os.path.relpath(destino, base), os.path.getsize(destino) // 1024, 'KB')
 
 
@@ -51,9 +60,9 @@ async def main():
                 x = p if lang == 'es' else trad[lang]['pois'].get(p['id'])
                 if not x:
                     print('sin traducción:', lang, p['id']); continue
-                await gen(f"{x['nombre']}. {x['texto']}", os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang])
+                await gen(f"{x['nombre']}. {x['texto']}", os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang], lang)
         if not solo or solo_frases:
             for clave in FRASES:
-                await gen(texto_frase(lang, clave), os.path.join(base, carpeta, f'frase-{clave}.mp3'), VOCES[lang])
+                await gen(texto_frase(lang, clave), os.path.join(base, carpeta, f'frase-{clave}.mp3'), VOCES[lang], lang)
 
 asyncio.run(main())
