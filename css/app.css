@@ -260,3 +260,6 @@ body.app #mapa { position: fixed; inset: 0; }
 #mapa[data-zoom="lejos"] .pin-portal { transform: scale(.5); }
 #mapa[data-zoom="lejos"] .pin-portal::after { display: none; }
 .portal.abriendo:not(.adentro) .portal-foto { object-position: 50% 70%; }
+
+/* Mientras el portal está abierto, solo se ve el portal */
+body:has(.portal.visible) .redondo, body:has(.portal.visible) .tarjeta { visibility: hidden; }
