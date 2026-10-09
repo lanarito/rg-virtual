@@ -1,0 +1,349 @@
+{
+  "_ayuda": "Editá este archivo para sumar o corregir lugares. Cada POI necesita id único, nombre, categoria, lat, lon. 'radio' = metros para detectar que llegaste. 'verificado': false significa que el texto o la ubicación todavía hay que confirmarlos con fuentes locales.",
+  "ciudad": {
+    "nombre": "Río Gallegos",
+    "centro": { "lat": -51.6215, "lon": -69.2180, "zoom": 15 },
+    "planoHistorico": {
+      "titulo": "Carta náutica \"Puerto Gallegos – Parte interior\" (ed. 1931)",
+      "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
+      "_nota": "Calce aproximado. Ajustá sur/oeste/norte/este hasta que la plaza del plano coincida con la plaza real.",
+      "limites": { "sur": -51.6650, "oeste": -69.2530, "norte": -51.5420, "este": -68.9850 },
+      "autor": "Servicio de Hidrografía Naval (Argentina)",
+      "licencia": "Dominio público",
+      "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg"
+    }
+  },
+  "categorias": {
+    "historia": { "nombre": "Historia", "color": "#b5651d", "icono": "🏛️" },
+    "museo": { "nombre": "Museos", "color": "#6a4c93", "icono": "🖼️" },
+    "naturaleza": { "nombre": "Naturaleza", "color": "#2a9d8f", "icono": "🌿" },
+    "paseo": { "nombre": "Paseos", "color": "#1d70b8", "icono": "🚶" },
+    "gastronomia": { "nombre": "Para comer", "color": "#d62828", "icono": "🍽️" }
+  },
+  "pois": [
+    {
+      "id": "plaza-san-martin",
+      "nombre": "Plaza San Martín",
+      "categoria": "paseo",
+      "lat": -51.623309,
+      "lon": -69.215959,
+      "radio": 60,
+      "resumen": "El corazón de la ciudad desde sus primeros años.",
+      "texto": "La Plaza San Martín es el punto de encuentro principal de Río Gallegos desde principios del siglo veinte. Frente a ella están la Catedral y la Municipalidad. En el centro se alza el monumento al General San Martín, con un cóndor a sus pies. Mirá los árboles: muchos crecen inclinados, empujados durante décadas por el viento patagónico. Hace más de cien años, en esta zona, los tehuelches y los pobladores celebraban juntos las fiestas patrias.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 300, "pitch": 5 },
+      "camara3d": { "rango": 350, "heading": 20, "pitch": -35 },
+      "portal": true,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/plaza-san-martin.jpg", "titulo": "Cóndor en el monumento a San Martín", "autor": "Maula", "licencia": "CC BY-SA 3.0", "fuente": "https://commons.wikimedia.org/wiki/File:C%C3%B3ndor_en_estatua_de_San_Mart%C3%ADn_(2010_01)_-_panoramio.jpg" }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/historicas/tehuelches-25-mayo-1900.jpg",
+          "titulo": "Tehuelches celebrando el 25 de Mayo en Río Gallegos",
+          "anio": 1900,
+          "autor": "Autor desconocido – Archivo General de la Nación",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches_celebr_25may_riogallegos_1900.jpg",
+          "nota": "El lugar exacto de la foto no está confirmado. Se usa como ejemplo del portal.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        },
+        {
+          "archivo": "assets/fotos/historicas/tehuelches-dia-patrio-1889.jpg",
+          "titulo": "Tehuelches con la bandera argentina en el día patrio",
+          "anio": 1889,
+          "autor": "Autor desconocido",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches_festejando_d%C3%ADa_patrio_1889.JPG",
+          "nota": "Imagen de baja resolución.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "catedral",
+      "nombre": "Catedral Nuestra Señora de Luján",
+      "categoria": "historia",
+      "lat": -51.622751,
+      "lon": -69.217173,
+      "radio": 40,
+      "resumen": "La iglesia de madera y chapa de 1899, Monumento Histórico Nacional.",
+      "texto": "La Catedral Nuestra Señora de Luján se construyó en 1899 en madera y chapa, al estilo de las casas de los inmigrantes ingleses, bajo la dirección del sacerdote salesiano Juan Bernabé. La impulsó el gobernador Matías Mackinlay Zapiola, con fondos donados por el presidente Julio Argentino Roca. La primera misa se celebró en la Navidad de 1899 y fue bendecida en 1900 por monseñor José Fagnano. Se la considera una de las iglesias más antiguas de la Patagonia argentina y es Monumento Histórico Nacional.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 20, "pitch": 10 },
+      "camara3d": { "rango": 200, "heading": 200, "pitch": -25 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/catedral.jpg", "titulo": "Fachada de la Catedral", "autor": "Dieter Jungblut", "licencia": "Dominio público", "fuente": "https://commons.wikimedia.org/wiki/File:Parroqu%C3%ADa_Catedral_de_Nuestra_Se%C3%B1ora_de_Luj%C3%A1n_(R%C3%ADo_Gallegos).JPG" },
+        { "archivo": "assets/fotos/actuales/catedral-2.jpg", "titulo": "La Catedral en 2006", "autor": "Heretiq", "licencia": "CC BY-SA 2.5", "fuente": "https://commons.wikimedia.org/wiki/File:RioGallegos-Catedral.jpg" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "municipalidad",
+      "nombre": "Palacio Municipal",
+      "categoria": "historia",
+      "lat": -51.622974,
+      "lon": -69.217424,
+      "radio": 40,
+      "resumen": "Sede de la Municipalidad, sobre la Avenida San Martín.",
+      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y junto a la Catedral. Es la sede del gobierno de la ciudad. Dato a confirmar: el edificio sería de 1925.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 30, "pitch": 5 },
+      "camara3d": { "rango": 200, "heading": 220, "pitch": -25 },
+      "portal": false,
+      "fotosActuales": [],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "avenida-roca",
+      "nombre": "Avenida Roca y el Club Británico",
+      "categoria": "historia",
+      "lat": -51.6196,
+      "lon": -69.2185,
+      "radio": 60,
+      "resumen": "La avenida comercial histórica, hoy Av. Néstor Kirchner.",
+      "texto": "La Avenida Roca, hoy llamada Avenida Néstor Kirchner, fue durante más de un siglo la calle comercial de la ciudad. Sobre ella sigue funcionando el Club Británico, fundado el 18 de abril de 1911, en la época de oro de la cría de ovejas, cuando muchos pobladores llegaban desde las Islas Malvinas y Gran Bretaña. En los años veinte, la Sociedad Obrera de Río Gallegos fue protagonista de las huelgas que hoy conocemos como la Patagonia Rebelde.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 45, "pitch": 5 },
+      "camara3d": { "rango": 300, "heading": 0, "pitch": -30 },
+      "portal": true,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/avenida-roca.jpg", "titulo": "Avenida Roca en 2006", "autor": "Heretiq", "licencia": "CC BY-SA 2.5", "fuente": "https://commons.wikimedia.org/wiki/File:RioGallegos-AvdaRoca.jpg" }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/historicas/club-britanico-1911.jpg",
+          "titulo": "Fundación del Club Británico",
+          "anio": 1911,
+          "autor": "Autor desconocido",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Fundaci%C3%B3n_del_Club_Brit%C3%A1nico_de_R%C3%ADo_Gallegos.jpg",
+          "nota": "Ubicación del club en el mapa: aproximada, confirmar la dirección.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        },
+        {
+          "archivo": "assets/fotos/historicas/sociedad-obrera-1920.jpg",
+          "titulo": "Frente de la Sociedad Obrera de Río Gallegos",
+          "anio": 1920,
+          "autor": "Autor desconocido (publicada en La Patagonia Rebelde, O. Bayer)",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Soto_socied_obreira600.jpg",
+          "nota": "No se sabe en qué calle estaba exactamente.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "balcon-de-roca",
+      "nombre": "Balcón de Roca",
+      "categoria": "historia",
+      "lat": -51.623176,
+      "lon": -69.211298,
+      "radio": 40,
+      "resumen": "Desde aquí habló el presidente Roca en 1899.",
+      "texto": "Desde este balcón, el presidente Julio Argentino Roca habló a los vecinos durante su visita a Río Gallegos en 1899, el mismo año de su viaje al sur para el Abrazo del Estrecho con el presidente chileno. Es Monumento Histórico Nacional.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 0, "pitch": 10 },
+      "camara3d": { "rango": 200, "heading": 0, "pitch": -25 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/balcon-de-roca.jpg", "titulo": "Balcón de Roca", "autor": "Enpatagoniasur", "licencia": "CC BY 4.0", "fuente": "https://commons.wikimedia.org/wiki/File:Balc%C3%B3n_de_Roca.jpg" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "museo-pioneros",
+      "nombre": "Museo de los Pioneros",
+      "categoria": "museo",
+      "lat": -51.615384,
+      "lon": -69.225972,
+      "radio": 40,
+      "resumen": "Una casa prefabricada de los primeros pobladores.",
+      "texto": "El Museo de los Pioneros funciona en una de las casas más antiguas de la ciudad, una vivienda prefabricada de madera y chapa típica de fines del siglo diecinueve, conocida como Casa Parisi. Adentro se recrea cómo vivían las primeras familias que llegaron a poblar Río Gallegos. Está en la calle Elcano 100.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 90, "pitch": 5 },
+      "camara3d": { "rango": 200, "heading": 0, "pitch": -25 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/museo-pioneros.jpg", "titulo": "Museo de los Pioneros (Casa Parisi)", "autor": "Enpatagoniasur", "licencia": "CC BY 4.0", "fuente": "https://commons.wikimedia.org/wiki/File:Museo_pioneros_Casa_Parisi.jpg" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "museo-padre-molina",
+      "nombre": "Museo Regional Padre Manuel Jesús Molina",
+      "categoria": "museo",
+      "lat": -51.615106,
+      "lon": -69.229255,
+      "radio": 50,
+      "resumen": "Paleontología, arqueología e historia de Santa Cruz.",
+      "texto": "El Museo Regional lleva el nombre del sacerdote salesiano Manuel Jesús Molina, investigador de la historia y la naturaleza de Santa Cruz. Reúne colecciones de paleontología, arqueología, historia y arte de la provincia.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 250, "heading": 0, "pitch": -30 },
+      "portal": false,
+      "fotosActuales": [],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "museo-ferroviario",
+      "nombre": "Museo Ferroviario",
+      "categoria": "museo",
+      "lat": -51.612381,
+      "lon": -69.225152,
+      "radio": 50,
+      "resumen": "Locomotoras del tren del carbón.",
+      "texto": "En el Museo Ferroviario se conservan locomotoras y vagones del ramal ferroindustrial que traía el carbón desde Río Turbio hasta el puerto de Río Gallegos, atravesando la estepa.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 250, "heading": 0, "pitch": -30 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/museo-ferroviario.jpg", "titulo": "Locomotora en el Museo Ferroviario", "autor": "Santiago matamoro", "licencia": "CC BY-SA 3.0", "fuente": "https://commons.wikimedia.org/wiki/File:Locomotora_en_el_Museo_Ferroviario_de_R%C3%ADo_Gallegos.JPG" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "costanera",
+      "nombre": "Costanera y mirador de la ría",
+      "categoria": "paseo",
+      "lat": -51.613199,
+      "lon": -69.216306,
+      "radio": 80,
+      "resumen": "La ría del Gallegos y sus mareas gigantes.",
+      "texto": "Desde la costanera se ve la ría del río Gallegos. Acá las mareas son de las más grandes del país: en la carta náutica de 1931 ya figuraban pleamares de más de diez metros en Punta Loyola. Con la marea baja aparecen enormes bancos de barro donde se alimentan las aves.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": { "heading": 20, "pitch": 0 },
+      "camara3d": { "rango": 600, "heading": 10, "pitch": -25 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/costanera-cartel.jpg", "titulo": "Cartel de la costanera", "autor": "Preyes", "licencia": "CC BY-SA 4.0", "fuente": "https://commons.wikimedia.org/wiki/File:Cartel_de_la_costanera_de_R%C3%ADo_Gallego.jpg" },
+        { "archivo": "assets/fotos/actuales/ria-marea-baja.jpg", "titulo": "Marea baja en la ría", "autor": "rodoluca", "licencia": "CC BY-SA 3.0", "fuente": "https://commons.wikimedia.org/wiki/File:Marea_baja,_R%C3%ADa_del_Gallegos,_Santa_Cruz,_Argentina_-_panoramio.jpg" }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
+          "titulo": "Carta náutica de la ría (Puerto Gallegos)",
+          "anio": 1931,
+          "autor": "Servicio de Hidrografía Naval",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg",
+          "nota": "Se ve el damero del pueblo de Gallegos y la plaza.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "reserva-costera",
+      "nombre": "Reserva Costera Urbana",
+      "categoria": "naturaleza",
+      "lat": -51.634936,
+      "lon": -69.157318,
+      "radio": 150,
+      "resumen": "Aves playeras migratorias en plena ciudad.",
+      "texto": "La Reserva Costera Urbana protege las costas de la ría, donde cada temporada llegan aves playeras migratorias que viajan miles de kilómetros desde el hemisferio norte para alimentarse en el barro que deja la marea.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 1200, "heading": 0, "pitch": -35 },
+      "portal": false,
+      "fotosActuales": [],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "malvinas",
+      "nombre": "Monumento y Museo Malvinas",
+      "categoria": "historia",
+      "lat": -51.632012,
+      "lon": -69.225228,
+      "radio": 60,
+      "resumen": "Memoria de la guerra de 1982.",
+      "texto": "Río Gallegos fue una de las bases desde donde operó la Fuerza Aérea durante la guerra de Malvinas en 1982. La ciudad recuerda a los caídos con el Monumento a Malvinas Argentinas y con el Museo de Guerra Malvinas Argentinas.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 300, "heading": 0, "pitch": -30 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/monumento-malvinas-fuerza-aerea.jpg", "titulo": "Monumento a la Fuerza Aérea por Malvinas", "autor": "Maula", "licencia": "CC BY-SA 3.0", "fuente": "https://commons.wikimedia.org/wiki/File:Monumento_a_Fuerza_Aerea_por_Malvinas_(2011_03)_-_panoramio.jpg" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    },
+    {
+      "id": "laguna-azul",
+      "nombre": "Reserva Geológica Laguna Azul",
+      "categoria": "naturaleza",
+      "lat": -52.076922,
+      "lon": -69.580622,
+      "radio": 600,
+      "resumen": "Una laguna dentro de un volcán, a 62 km.",
+      "texto": "A unos 62 kilómetros al sur de Río Gallegos, la Laguna Azul ocupa el cráter de un volcán inactivo del campo volcánico Pali Aike. El cráter mide unos 560 metros de diámetro. Es reserva provincial desde 2005, por la Ley 2828.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 1800, "heading": 0, "pitch": -40 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/laguna-azul.jpg", "titulo": "Laguna Azul", "autor": "Mikelzubi", "licencia": "CC BY-SA 3.0", "fuente": "https://commons.wikimedia.org/wiki/File:Laguna_Azul_(Santa_Cruz).jpg" }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/historicas/tehuelches-tres-lagunas-1917.jpg",
+          "titulo": "Dos hombres tehuelches en Tres Lagunas, entre los ríos Gallegos y Santa Cruz",
+          "anio": 1917,
+          "autor": "Charles Wellington Furlong",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches-R%C3%ADo_Gallegos.jpg",
+          "nota": "No es la Laguna Azul: muestra la estepa de la región en esa época.",
+          "tomada": { "lat": null, "lon": null, "rumbo": null }
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "cabo-virgenes",
+      "nombre": "Cabo Vírgenes: faro y pingüinera",
+      "categoria": "naturaleza",
+      "lat": -52.3333,
+      "lon": -68.3542,
+      "radio": 1000,
+      "resumen": "Pingüinos de Magallanes y el km 0 de la Ruta 40.",
+      "texto": "A unos 134 kilómetros al sureste, Cabo Vírgenes marca la entrada al Estrecho de Magallanes. Hernando de Magallanes llegó aquí el 21 de octubre de 1520. Cerca, en 1584, Pedro Sarmiento de Gamboa fundó la Ciudad del Nombre de Jesús. El faro funciona desde 1904, y acá empieza la Ruta Nacional 40, en su kilómetro cero. En temporada se puede caminar entre miles de pingüinos de Magallanes.",
+      "audio": null,
+      "panorama360": null,
+      "streetView": null,
+      "camara3d": { "rango": 1500, "heading": 300, "pitch": -30 },
+      "portal": false,
+      "fotosActuales": [
+        { "archivo": "assets/fotos/actuales/faro-cabo-virgenes.jpg", "titulo": "Faro Cabo Vírgenes", "autor": "Julio Viard", "licencia": "CC BY-SA 4.0", "fuente": "https://commons.wikimedia.org/wiki/File:Faro_en_Cabo_V%C3%ADrgenes_2719.jpg" },
+        { "archivo": "assets/fotos/actuales/pinguino-cabo-virgenes.jpg", "titulo": "Pingüino de Magallanes", "autor": "CamiPetenatti", "licencia": "CC BY-SA 4.0", "fuente": "https://commons.wikimedia.org/wiki/File:Ping%C3%BCino_al_sol._Ping%C3%BCinera_de_Cabo_V%C3%ADrgenes._Patagonia_Argentina.jpg" }
+      ],
+      "fotosHistoricas": [],
+      "verificado": false
+    }
+  ],
+  "gastronomia": [
+    { "id": "ejemplo-1", "nombre": "Ejemplo: Parrilla del centro", "lat": -51.6205, "lon": -69.2170, "horario": "12 a 15 y 20 a 24", "menu": ["Cordero patagónico", "Centolla (temporada)"], "telefono": "", "nota": "DATO DE EJEMPLO, reemplazar" }
+  ]
+}

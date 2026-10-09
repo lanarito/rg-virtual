@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Configuración</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%80%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="back" href="index.html" aria-label="Volver">‹</a>
+    <h1>Configuración</h1>
+  </header>
+  <main class="wrap">
+    <section class="box">
+      <h2>Clave de Google</h2>
+      <p class="hint">Se guarda solo en este dispositivo. No queda en el código ni en GitHub.</p>
+      <div class="field">
+        <label for="key">API key</label>
+        <input id="key" type="password" autocomplete="off" placeholder="AIza…">
+      </div>
+      <div class="row">
+        <button class="btn" id="guardar">Guardar</button>
+        <button class="btn sec" id="ver">👁 Mostrar</button>
+        <button class="btn sec" id="borrar">Borrar</button>
+      </div>
+      <p class="hint" id="estadoKey"></p>
+      <details>
+        <summary><b>Cómo crear la clave (una sola vez)</b></summary>
+        <ol class="pasos">
+          <li>Entrá a <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> con tu cuenta de Google y creá un proyecto (por ejemplo "rg-virtual").</li>
+          <li>Activá la facturación. Google la pide aunque no cobre: hay un uso mensual gratis que alcanza de sobra para un prototipo.</li>
+          <li>En <i>APIs y servicios → Biblioteca</i> habilitá <b>Maps JavaScript API</b> (Street View) y <b>Map Tiles API</b> (ciudad 3D).</li>
+          <li>En <i>APIs y servicios → Credenciales</i> tocá <i>Crear credenciales → Clave de API</i> y copiala.</li>
+          <li>Restringila: en <i>Restricciones de aplicación</i> elegí <b>Sitios web</b> y agregá <code>https://lanarito.github.io/*</code>, <code>https://localhost:*/*</code> y la IP de tu compu (por ejemplo <code>https://192.168.0.10:*/*</code>). En <i>Restricciones de API</i> dejá solo las dos de arriba.</li>
+          <li>Opcional: en <i>Cuotas</i> poné un límite diario bajo, para estar tranquilo.</li>
+        </ol>
+      </details>
+    </section>
+
+    <section class="box">
+      <h2>Narración</h2>
+      <div class="field">
+        <label for="voz">Voz</label>
+        <select id="voz"><option value="">Automática (español)</option></select>
+      </div>
+      <div class="field">
+        <label for="vel">Velocidad: <span id="velTxt">1.0</span>×</label>
+        <input id="vel" type="range" min="0.7" max="1.4" step="0.05" value="1">
+      </div>
+      <button class="btn sec" id="probar">🔊 Probar voz</button>
+      <p class="hint">Si preferís tu propia voz, grabá un mp3 por lugar, guardalo en <code>assets/audio/</code> y poné la ruta en el campo <code>audio</code> de <code>data/pois.json</code>.</p>
+    </section>
+
+    <section class="box">
+      <h2>Paseo</h2>
+      <button class="btn sec" id="reset">Olvidar lugares visitados</button>
+      <p class="hint">Para probar el modo paseo sin salir de casa, abrí <a href="mapa.html?simular=1">mapa.html?simular=1</a> y tocá el mapa para "caminar".</p>
+    </section>
+
+    <section class="box">
+      <h2>Créditos de las imágenes</h2>
+      <div id="creditos" class="credito"></div>
+    </section>
+  </main>
+  <script type="module">
+    import { leerAjuste, guardarAjuste, vocesEspanol, hablar, cargarDatos, creditoHTML, esc, toast } from './modules/core.js';
+    const $ = id => document.getElementById(id);
+
+    const key = $('key');
+    key.value = leerAjuste('googleKey', '');
+    const estado = () => { $('estadoKey').textContent = leerAjuste('googleKey', '') ? '✅ Hay una clave guardada.' : 'Sin clave: el mapa y el portal funcionan igual; el 3D usa satélite y Street View queda deshabilitado.'; };
+    estado();
+    $('guardar').onclick = () => { guardarAjuste('googleKey', key.value.trim()); estado(); toast('Clave guardada'); };
+    $('borrar').onclick = () => { key.value = ''; guardarAjuste('googleKey', null); estado(); };
+    $('ver').onclick = () => { key.type = key.type === 'password' ? 'text' : 'password'; };
+
+    const sel = $('voz');
+    const llenarVoces = () => {
+      const actual = leerAjuste('voz', '');
+      sel.innerHTML = '<option value="">Automática (español)</option>' +
+        vocesEspanol().map(v => `<option value="${esc(v.name)}" ${v.name === actual ? 'selected' : ''}>${esc(v.name)} (${esc(v.lang)})</option>`).join('');
+    };
+    llenarVoces();
+    if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = llenarVoces;
+    sel.onchange = () => guardarAjuste('voz', sel.value);
+
+    const vel = $('vel');
+    vel.value = leerAjuste('velocidad', 1);
+    $('velTxt').textContent = (+vel.value).toFixed(2);
+    vel.oninput = () => { guardarAjuste('velocidad', +vel.value); $('velTxt').textContent = (+vel.value).toFixed(2); };
+    $('probar').onclick = () => hablar('Bienvenidos a Río Gallegos, la puerta de la Patagonia austral.');
+    $('reset').onclick = () => { guardarAjuste('visitados', null); toast('Listo'); };
+
+    const datos = await cargarDatos();
+    const fotos = [datos.ciudad.planoHistorico, ...datos.pois.flatMap(p => [...p.fotosHistoricas, ...p.fotosActuales])];
+    const vistas = new Set();
+    $('creditos').innerHTML = fotos.filter(f => !vistas.has(f.archivo) && vistas.add(f.archivo))
+      .map(f => `<p>${esc(f.titulo)}: ${creditoHTML(f)}</p>`).join('');
+  </script>
+</body>
+</html>

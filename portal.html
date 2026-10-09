@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Portal al pasado</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%80%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .lista { display: grid; gap: 10px; }
+    .item { display: flex; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; text-decoration: none; color: var(--text); }
+    .item img { width: 76px; height: 76px; object-fit: cover; border-radius: 10px; filter: sepia(.5); flex: 0 0 auto; }
+    .item small { color: var(--muted); }
+
+    .llegada img.prev { width: 100%; max-height: 260px; object-fit: cover; border-radius: var(--radius); filter: sepia(.4); }
+    .dist { font-size: 2.2rem; font-weight: 700; margin: 8px 0 0; }
+    .dist.cerca { color: var(--ok); }
+    .anillo { width: 120px; height: 120px; margin: 10px auto; border-radius: 50%; border: 6px solid var(--sepia); box-shadow: 0 0 30px var(--sepia), inset 0 0 30px var(--sepia); animation: girar 4s linear infinite; }
+    @keyframes girar { to { transform: rotate(360deg) scale(1.02); } }
+
+    /* Modo ventana */
+    #ventana { position: fixed; inset: 0; z-index: 2000; background: #000; display: none; overflow: hidden; }
+    #ventana.on { display: block; }
+    #ventana video, #ventana .fondo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #ventana .pasado { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: sepia(.25) contrast(1.05); transition: opacity .1s; }
+    #ventana .pasado.cortina { opacity: 1 !important; }
+    #ventana .pasado.llenar { object-fit: cover; }
+    .barra { position: absolute; left: 0; right: 0; padding: 12px 16px; color: #fff; background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,0)); display: flex; gap: 8px; align-items: center; }
+    .barra.arriba { top: 0; }
+    .barra.abajo { bottom: 0; flex-direction: column; align-items: stretch; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.75)); padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+    .barra .titulo { flex: 1; font-weight: 600; font-size: .95rem; }
+    .barra .credito { color: #ddd; }
+    .slider-fila { display: flex; align-items: center; gap: 10px; font-size: .85rem; }
+    .slider-fila input { flex: 1; }
+    .brujula { position: absolute; top: 64px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.55); color: #fff; border-radius: 99px; padding: 6px 14px; font-size: .9rem; white-space: nowrap; }
+    .linea-cortina { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; box-shadow: 0 0 8px #000; display: none; pointer-events: none; }
+    .btn.vidrio { background: rgba(255,255,255,.18); color: #fff; border: 1px solid rgba(255,255,255,.35); }
+
+    /* Modo AR */
+    #arContenedor { position: fixed; inset: 0; z-index: 1; visibility: hidden; }
+    #arContenedor.on { visibility: visible; }
+    #arOverlay { position: fixed; inset: 0; pointer-events: none; color: #fff; font: 16px system-ui, sans-serif; }
+    #arOverlay .aviso { position: absolute; top: 20px; left: 16px; right: 16px; text-align: center; background: rgba(0,0,0,.55); padding: 10px 14px; border-radius: 14px; }
+    #arOverlay .botones { position: absolute; bottom: 24px; left: 16px; right: 16px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; pointer-events: auto; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back" href="index.html" aria-label="Volver">‹</a>
+    <h1>Portal al pasado</h1>
+  </header>
+
+  <main class="wrap">
+    <section id="secLista" hidden>
+      <p class="hint">Elegí un lugar. Cuando estés ahí (o lo simules), se abre el portal.</p>
+      <div class="lista" id="lista"></div>
+    </section>
+
+    <section id="secLlegada" class="llegada" hidden>
+      <img class="prev" id="prevFoto" alt="">
+      <h2 id="nombreLugar" style="margin-top: 12px"></h2>
+      <p class="hint" id="instruccion">Buscando tu ubicación…</p>
+      <p class="dist" id="distancia">—</p>
+      <div id="listo" hidden>
+        <div class="anillo" aria-hidden="true"></div>
+        <p style="text-align:center">¡Estás en el lugar! Elegí cómo abrir el portal:</p>
+        <div class="row" style="justify-content:center">
+          <button class="btn sepia" id="btnAR" hidden>🌀 Portal en realidad aumentada</button>
+          <button class="btn" id="btnVentana">🪟 Modo ventana (antes / después)</button>
+        </div>
+        <p class="hint" id="notaAR" style="text-align:center"></p>
+      </div>
+      <div class="row" style="margin-top: 14px">
+        <button class="btn sec small" id="btnSimular">🧪 Simular que estoy acá</button>
+        <a class="btn sec small" href="portal.html">Otro lugar</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modo ventana: cámara + foto vieja encima -->
+  <section id="ventana" aria-label="Modo ventana">
+    <video id="video" playsinline muted autoplay></video>
+    <img class="fondo" id="fondoActual" alt="" hidden>
+    <img class="pasado" id="fotoPasado" alt="">
+    <div class="linea-cortina" id="lineaCortina"></div>
+    <div class="barra arriba">
+      <button class="btn small vidrio" id="btnSalirVentana">✕</button>
+      <span class="titulo" id="tituloFoto"></span>
+      <button class="btn small vidrio" id="btnAjuste" title="Llenar pantalla / foto completa">⤢</button>
+      <button class="btn small vidrio" id="btnOtraFoto" hidden>⟳</button>
+      <button class="btn small vidrio" id="btnNarrarVentana">🔊</button>
+    </div>
+    <div class="brujula" id="brujula" hidden></div>
+    <div class="barra abajo">
+      <div class="slider-fila">
+        <span>Hoy</span>
+        <input type="range" id="sliderTiempo" min="0" max="100" value="65" aria-label="Antes o después">
+        <span id="anioSlider">1900</span>
+      </div>
+      <div class="row">
+        <button class="btn small vidrio" id="btnModo">↔ Cortina</button>
+        <span class="credito" id="creditoFoto" style="flex:1"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modo AR (A-Frame se carga solo si el celu lo soporta) -->
+  <div id="arContenedor"></div>
+  <div id="arOverlay" hidden>
+    <div class="aviso" id="arAviso">Apuntá al piso y tocá la pantalla para colocar el portal.</div>
+    <div class="botones">
+      <button class="btn small vidrio" id="arColocarAdelante">Colocar adelante</button>
+      <button class="btn small vidrio" id="arNarrar">🔊</button>
+      <button class="btn small vidrio" id="arSalir">Salir</button>
+    </div>
+  </div>
+
+  <script type="module" src="modules/portal.js"></script>
+</body>
+</html>
