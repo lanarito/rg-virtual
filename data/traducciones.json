@@ -1,0 +1,389 @@
+{
+  "_ayuda": "Traducciones al inglés (en) y portugués (pt). 'pois' usa el id de cada lugar. 'fotos' usa el título en español como clave. Si falta una traducción, la app muestra el texto en español.",
+  "en": {
+    "pois": {
+      "fundacion": {
+        "nombre": "Centennial Clock: the founding",
+        "resumen": "Where it all began: the 1885 naval outpost.",
+        "texto": "Río Gallegos was born on December 19, 1885, when a maritime sub-prefecture was set up on the banks of the estuary. It was just a few wood and tin huts, surrounded by steppe and wind. In 1888 the settlement became the capital of the Territory of Santa Cruz. The Centennial Clock commemorates the city's first hundred years, celebrated in 1985."
+      },
+      "plaza-san-martin": {
+        "nombre": "San Martín Square",
+        "resumen": "The heart of the city since its early days.",
+        "texto": "San Martín Square has been the meeting point of Río Gallegos since the early twentieth century. The Cathedral and the City Hall face it. In the middle stands the monument to General San Martín, with a condor at his feet. Look at the trees: many grow bent, pushed for decades by the Patagonian wind. More than a hundred years ago, the Tehuelche people and the settlers celebrated national holidays together in town. A few decades ago, the square had a pond with ducks and little boats, and in winter it was covered in snow."
+      },
+      "catedral": {
+        "nombre": "Our Lady of Luján Cathedral",
+        "resumen": "The wood and tin church of 1899.",
+        "texto": "Our Lady of Luján Cathedral was built in 1899 of wood and corrugated tin, in the style of the British settlers' houses, under the direction of the Salesian priest Juan Bernabé. It was promoted by governor Matías Mackinlay Zapiola, with funds donated by president Julio Argentino Roca. The first mass was held on Christmas 1899, and in 1900 it was blessed by Monsignor José Fagnano. It is considered one of the oldest churches in Argentine Patagonia and is a National Historic Monument."
+      },
+      "municipalidad": {
+        "nombre": "City Hall",
+        "resumen": "Seat of the city government, facing the square.",
+        "texto": "City Hall stands on San Martín Avenue, facing the square and next to the Cathedral. It is the seat of the city government. Still to be confirmed: the building would date from 1925. During the strikes of Rebel Patagonia, in 1920 and 1921, Edelmiro Correa Falcón was acting governor of the Territory of Santa Cruz."
+      },
+      "escuela-1": {
+        "nombre": "School No. 1 Hernando de Magallanes",
+        "resumen": "The city's first school, founded in 1888.",
+        "texto": "Provincial School Number 1, Hernando de Magallanes, is the first school in Río Gallegos: it was founded in 1888. It worked in several buildings, including one on Zapiola Street, until in November 1930 it moved to its current building at 53 Maipú Street. Generations of residents studied in its classrooms, and Congress declared it of national historic interest."
+      },
+      "avenida-roca": {
+        "nombre": "Roca Avenue and the British Club",
+        "resumen": "The historic shopping street, now Néstor Kirchner Avenue.",
+        "texto": "Roca Avenue, now called Néstor Kirchner Avenue, was the city's main shopping street for more than a century. The British Club still operates here; it was founded on April 18, 1911, in the golden age of wool, when many settlers arrived from the Falkland Islands and Great Britain. In 1920 and 1921, the Workers' Society of Río Gallegos led the strikes of the rural laborers, the story known today as Rebel Patagonia. On the other side was the Rural Society, chaired by Edelmiro Correa Falcón. Roca Street also had a large column clock, one of the meeting points downtown. The monument to General Julio Argentino Roca stands on the same street."
+      },
+      "hotel-argentino": {
+        "nombre": "Hotel Argentino",
+        "resumen": "A historic hotel at Chacabuco and Roca.",
+        "texto": "On the corner of Chacabuco and Roca stood the Hotel Argentino, one of the historic hotels of downtown Río Gallegos. It already appears in photos from the early 1920s, and Foto Roil photographed it several times, with the cars of the time parked at the door. Ranchers, traveling salesmen and newcomers to Patagonia stayed in its rooms."
+      },
+      "balcon-de-roca": {
+        "nombre": "Roca's Balcony",
+        "resumen": "All that remains of the first Government House.",
+        "texto": "From this balcony, president Julio Argentino Roca addressed the people of Río Gallegos in 1899, the same summer as the Embrace of the Strait with the president of Chile. The balcony is all that remains of the first seat of the Territory's government: a two-story building of wood and zinc. In the late 1930s, governor Juan Manuel Gregores had it dismantled, and the Police Headquarters was built on its foundations. Today it is a National Historic Monument."
+      },
+      "casa-de-gobierno": {
+        "nombre": "Government House",
+        "resumen": "Seat of the Santa Cruz government, on Alcorta Street.",
+        "texto": "The Government House of Santa Cruz stands at 231 Alcorta Street. It was built in the time of governor Juan Manuel Gregores, on the lot next to the first wooden Government House, when the old building had become too small for a territory that was growing thanks to wool. Today it is the seat of the provincial government. A few steps away are the Governor's Residence, the Legislature, and the Gregores House and Naval museums."
+      },
+      "maria-auxiliadora": {
+        "nombre": "Mary Help of Christians and the Salesian mission",
+        "resumen": "The Salesians and education in southern Patagonia.",
+        "texto": "Salesian missionaries reached southern Patagonia at the end of the nineteenth century, led by Monsignor José Fagnano. In Río Gallegos they built the first church, the Salesian School and, together with the sisters of Mary Help of Christians, schools where generations of the city's boys and girls studied."
+      },
+      "museo-pioneros": {
+        "nombre": "Pioneers Museum",
+        "resumen": "A prefabricated house of the first settlers.",
+        "texto": "The Pioneers Museum is housed in one of the oldest houses in the city, a prefabricated wood and tin home typical of the late nineteenth century, known as Casa Parisi. Inside, it recreates how the first families lived: many came from the Falklands, Great Britain and Europe, and worked on the sheep ranches of the area."
+      },
+      "museo-padre-molina": {
+        "nombre": "Father Manuel Jesús Molina Regional Museum",
+        "resumen": "Paleontology, archaeology and history of Santa Cruz.",
+        "texto": "The Regional Museum is named after the Salesian priest Manuel Jesús Molina, a researcher of the history and nature of Santa Cruz. It holds collections of paleontology, archaeology, history and art from the province, and tells the story of the native peoples, such as the Aonikenk or Tehuelche."
+      },
+      "museo-ferroviario": {
+        "nombre": "Railway Museum",
+        "resumen": "The locomotives of the coal train.",
+        "texto": "The Railway Museum keeps locomotives and cars of the Río Turbio Industrial Railway, the train that carried coal from the mines near the Andes to the pier of Río Gallegos, crossing more than two hundred kilometers of steppe. The Argentine engineer Livio Dante Porta modified its small steam locomotives until they became some of the most efficient in the world."
+      },
+      "puerto-viejo": {
+        "nombre": "The port and the YCF pier",
+        "resumen": "Everything came and went through the estuary.",
+        "texto": "Before there were roads, everything came and went through the estuary: wool, hides, goods and passengers. The ranches had their own piers and launches to cross the river and bring their production to town. At low tide, the ships rested on the mud. Later, the pier of Yacimientos Carboníferos Fiscales received the coal from the Río Turbio train to ship it north."
+      },
+      "frigorifico-swift": {
+        "nombre": "Swift barge: the age of wool",
+        "resumen": "Sheep, wool and meat-packing plants.",
+        "texto": "In the early twentieth century, southern Patagonia lived off sheep. The ranches produced wool and meat that were shipped through the estuary to Europe. The Swift company ran a meat-packing plant in Río Gallegos, and this barge recalls that era. Shearing crews traveled from ranch to ranch across the whole region. Long trains of carts brought the wool bales from the countryside to the shore, where they waited for the ship."
+      },
+      "costanera": {
+        "nombre": "Waterfront and estuary viewpoint",
+        "resumen": "The Gallegos estuary and its giant tides.",
+        "texto": "From the waterfront you can see the estuary of the Gallegos River. The tides here are among the largest in the country: the 1931 nautical chart already recorded high tides of more than ten meters at Punta Loyola. At low tide, huge mud flats appear where the birds feed. Off this coast, in 1911, the Scottish sailing ship Marjory Glen caught fire; its remains can still be seen at Punta Loyola."
+      },
+      "reserva-costera": {
+        "nombre": "Urban Coastal Reserve",
+        "resumen": "Migratory shorebirds right in the city.",
+        "texto": "The Urban Coastal Reserve protects the shores of the estuary, where every season migratory shorebirds arrive after flying thousands of kilometers from the Northern Hemisphere to feed on the mud left by the tide. Whales have also been stranded on these shores, as an old photograph shows."
+      },
+      "malvinas": {
+        "nombre": "Malvinas Monument and Museum",
+        "resumen": "Remembering the 1982 war.",
+        "texto": "During the Malvinas (Falklands) War, in 1982, Río Gallegos was one of the bases from which the Argentine Air Force operated. The city remembers the fallen with the Argentine Malvinas Monument and the Malvinas War Museum."
+      },
+      "laguna-azul": {
+        "nombre": "Laguna Azul Geological Reserve",
+        "resumen": "A lake inside a volcano, 62 km away.",
+        "texto": "About 62 kilometers south of Río Gallegos, Laguna Azul fills the crater of an inactive volcano in the Pali Aike volcanic field. The crater is about 560 meters wide. It has been a provincial reserve since 2005, under Law 2828. These lands were traveled by the Aonikenk, the southern Tehuelche."
+      },
+      "cabo-virgenes": {
+        "nombre": "Cape Vírgenes: lighthouse and penguin colony",
+        "resumen": "Magellanic penguins and kilometer 0 of Route 40.",
+        "texto": "About 134 kilometers to the southeast, Cape Vírgenes marks the entrance to the Strait of Magellan. Ferdinand Magellan arrived here on October 21, 1520. Nearby, in 1584, Pedro Sarmiento de Gamboa founded the City of the Name of Jesus. The lighthouse has been working since 1904, and National Route 40 begins here, at kilometer zero. In season you can walk among thousands of Magellanic penguins."
+      }
+    },
+    "fotos": {
+      "El pueblo de Gallegos, con la primera iglesia": "The town of Gallegos, with its first church",
+      "Vista parcial de Río Gallegos": "Partial view of Río Gallegos",
+      "El centro desde lo alto": "Downtown from above",
+      "Tehuelches con la bandera argentina, cuatro años después de la fundación": "Tehuelche people with the Argentine flag, four years after the founding",
+      "Monumento al Centenario": "Centennial Monument",
+      "Monumento al General San Martín": "Monument to General San Martín",
+      "El estanque de la plaza": "The pond in the square",
+      "Barquitos en el estanque de la plaza": "Little boats on the pond in the square",
+      "Invierno en la plaza": "Winter in the square",
+      "El monumento a San Martín, en una versión anterior": "An earlier version of the San Martín monument",
+      "Tehuelches celebrando el 25 de Mayo en Río Gallegos": "Tehuelche people celebrating May 25 in Río Gallegos",
+      "Cóndor en el monumento a San Martín": "Condor on the San Martín monument",
+      "25 de Mayo de 1920 frente a la iglesia": "May 25, 1920, in front of the church",
+      "La calle y el campanario de la iglesia": "The street and the church bell tower",
+      "La plaza nevada y el campanario": "The snowy square and the bell tower",
+      "Tehuelches de visita en Gallegos": "Tehuelche visitors in Gallegos",
+      "Monseñor José Fagnano, que bendijo la iglesia en 1900": "Monsignor José Fagnano, who blessed the church in 1900",
+      "La Catedral hoy": "The Cathedral today",
+      "Fachada de la Catedral": "Cathedral facade",
+      "La Catedral en 2006": "The Cathedral in 2006",
+      "Avenida San Martín": "San Martín Avenue",
+      "Desfile del Día del Reservista": "Reservists' Day parade",
+      "Edelmiro Correa Falcón, gobernador interino del Territorio y presidente de la Sociedad Rural": "Edelmiro Correa Falcón, acting governor of the Territory and president of the Rural Society",
+      "Alumnas de guardapolvo blanco frente a la escuela": "Schoolgirls in white smocks in front of the school",
+      "Chicas frente a una escuela": "Girls in front of a school",
+      "La Escuela N°1 hoy": "School No. 1 today",
+      "Calle Roca": "Roca Street",
+      "El reloj de columna de la calle Roca": "The column clock on Roca Street",
+      "La Relojería Inglesa Gooderham & Co., en una calle nevada": "The English Watchmaker Gooderham & Co., on a snowy street",
+      "Un carro frente a la relojería": "A cart in front of the watchmaker's shop",
+      "Fundación del Club Británico": "Founding of the British Club",
+      "Frente de la Sociedad Obrera de Río Gallegos": "Front of the Workers' Society of Río Gallegos",
+      "Avenida Roca en 2006": "Roca Avenue in 2006",
+      "El Hotel Argentino y los autos de la época": "The Hotel Argentino and the cars of the time",
+      "Hotel Argentino": "Hotel Argentino",
+      "La esquina del Hotel Argentino": "The Hotel Argentino corner",
+      "La Jefatura de Policía, levantada sobre los cimientos de la primera Gobernación": "The Police Headquarters, built on the foundations of the first Government House",
+      "Monumento al General Roca": "Monument to General Roca",
+      "El Abrazo del Estrecho, en Punta Arenas": "The Embrace of the Strait, in Punta Arenas",
+      "Balcón de Roca": "Roca's Balcony",
+      "Edificio de la Gobernación": "Government building",
+      "La calle Roca nevada y el monumento a Roca": "Snowy Roca Street and the Roca monument",
+      "Casa de Gobierno, Alcorta 231": "Government House, 231 Alcorta Street",
+      "Casona con galería vidriada": "Large house with a glass gallery",
+      "Casa de madera con galería después de una nevada": "Wooden house with a porch after a snowfall",
+      "Casas de chapa en la nieve": "Tin houses in the snow",
+      "Casa del gerente de la estancia Killik Aike Norte": "Manager's house at the Killik Aike Norte ranch",
+      "Museo de los Pioneros (Casa Parisi)": "Pioneers Museum (Casa Parisi)",
+      "Dos hombres tehuelches en Tres Lagunas": "Two Tehuelche men at Tres Lagunas",
+      "Livio Dante Porta y su equipo con la locomotora \"Santa Cruz\"": "Livio Dante Porta and his team with the \"Santa Cruz\" locomotive",
+      "Autovía del ramal Río Turbio – Río Gallegos": "Railcar of the Río Turbio – Río Gallegos line",
+      "Locomotoras del ramal de Río Turbio": "Locomotives of the Río Turbio line",
+      "Locomotora en el Museo Ferroviario": "Locomotive at the Railway Museum",
+      "Puerto Río Gallegos": "Port of Río Gallegos",
+      "Una grúa carga un fardo de lana en el muelle": "A crane loads a wool bale on the pier",
+      "Fardos de lana bajando de un barco": "Wool bales being unloaded from a ship",
+      "El muelle y la ría desde lo alto": "The pier and the estuary from above",
+      "Lanchones cargados de lana": "Barges loaded with wool",
+      "Muelle El Turbio de YCF, descarga de una locomotora": "YCF's El Turbio pier, unloading a locomotive",
+      "Puerto de la estancia Killik Aike Norte, sobre el río Gallegos": "Killik Aike Norte ranch port, on the Gallegos River",
+      "El remolcador Enrique en el muelle de YCF": "The tugboat Enrique at the YCF pier",
+      "El frigorífico": "The meat-packing plant",
+      "Fardos de lana en la playa esperando el barco": "Wool bales on the beach waiting for the ship",
+      "Tropa de carros cargados de lana": "A train of carts loaded with wool",
+      "Un carrero con su tropa de mulas": "A carter with his team of mules",
+      "Esquila de corderos en la estancia Felton": "Lamb shearing at the Felton ranch",
+      "Veleros varados con la bajamar": "Sailing ships stranded at low tide",
+      "Un velero en llamas frente a la costa": "A sailing ship on fire off the coast",
+      "El vapor Beacon Grange encallado": "The steamer Beacon Grange run aground",
+      "Una balsa con pasajeros cruzando el río": "A raft with passengers crossing the river",
+      "El damero del pueblo en la carta náutica": "The town grid on the nautical chart",
+      "El viejo muelle de la costanera": "The old waterfront pier",
+      "Cartel de la costanera": "Waterfront sign",
+      "Marea baja en la ría": "Low tide in the estuary",
+      "Una ballena varada en la costa": "A whale stranded on the shore",
+      "La ría con la bajamar": "The estuary at low tide",
+      "La ría con marea baja": "The estuary at low tide",
+      "Un A-4C Skyhawk de la Fuerza Aérea Argentina durante la guerra": "An Argentine Air Force A-4C Skyhawk during the war",
+      "Monumento a la Fuerza Aérea por Malvinas": "Air Force Malvinas Monument",
+      "Dos hombres tehuelches en la estepa": "Two Tehuelche men on the steppe",
+      "Laguna Azul desde el borde del cráter": "Laguna Azul from the crater rim",
+      "Laguna Azul": "Laguna Azul",
+      "El Estrecho de Magallanes en un mapa holandés": "The Strait of Magellan on a Dutch map",
+      "Pingüinos de Magallanes en Cabo Vírgenes": "Magellanic penguins at Cape Vírgenes",
+      "Faro Cabo Vírgenes": "Cape Vírgenes lighthouse",
+      "Pingüino de Magallanes": "Magellanic penguin",
+      "Baño de ovejas en la estancia Felton": "Sheep dipping at the Felton ranch"
+    }
+  },
+  "pt": {
+    "pois": {
+      "fundacion": {
+        "nombre": "Relógio do Centenário: a fundação",
+        "resumen": "Onde tudo começou: a subprefeitura de 1885.",
+        "texto": "Río Gallegos nasceu em 19 de dezembro de 1885, quando uma subprefeitura marítima foi instalada às margens do estuário. Eram poucas casinhas de madeira e zinco, cercadas de estepe e vento. Em 1888 o povoado se tornou a capital do Território de Santa Cruz. O Relógio do Centenário lembra os cem anos da cidade, completados em 1985."
+      },
+      "plaza-san-martin": {
+        "nombre": "Praça San Martín",
+        "resumen": "O coração da cidade desde os primeiros anos.",
+        "texto": "A Praça San Martín é o ponto de encontro de Río Gallegos desde o começo do século vinte. Em frente a ela ficam a Catedral e a Prefeitura. No centro está o monumento ao General San Martín, com um condor aos seus pés. Repare nas árvores: muitas crescem inclinadas, empurradas durante décadas pelo vento patagônico. Há mais de cem anos, os tehuelches e os moradores celebravam juntos as festas pátrias no povoado. Algumas décadas atrás, a praça tinha um laguinho com patos e barquinhos, e no inverno ficava coberta de neve."
+      },
+      "catedral": {
+        "nombre": "Catedral Nossa Senhora de Luján",
+        "resumen": "A igreja de madeira e zinco de 1899.",
+        "texto": "A Catedral Nossa Senhora de Luján foi construída em 1899 em madeira e chapa de zinco, no estilo das casas dos imigrantes ingleses, sob a direção do padre salesiano Juan Bernabé. Foi impulsionada pelo governador Matías Mackinlay Zapiola, com recursos doados pelo presidente Julio Argentino Roca. A primeira missa foi celebrada no Natal de 1899, e em 1900 foi abençoada por dom José Fagnano. É considerada uma das igrejas mais antigas da Patagônia argentina e é Monumento Histórico Nacional."
+      },
+      "municipalidad": {
+        "nombre": "Prefeitura",
+        "resumen": "Sede do governo da cidade, em frente à praça.",
+        "texto": "A Prefeitura fica na Avenida San Martín, em frente à praça e ao lado da Catedral. É a sede do governo da cidade. Dado a confirmar: o prédio seria de 1925. Nos anos das greves da Patagônia Rebelde, em 1920 e 1921, Edelmiro Correa Falcón foi governador interino do Território de Santa Cruz."
+      },
+      "escuela-1": {
+        "nombre": "Escola Nº 1 Hernando de Magallanes",
+        "resumen": "A primeira escola da cidade, de 1888.",
+        "texto": "A Escola Provincial Número 1, Hernando de Magallanes, é a primeira escola de Río Gallegos: foi fundada em 1888. Funcionou em vários prédios, entre eles um na rua Zapiola, até que em novembro de 1930 mudou para o prédio atual, na rua Maipú, 53. Por suas salas passaram gerações de moradores, e o Congresso a declarou de interesse histórico nacional."
+      },
+      "avenida-roca": {
+        "nombre": "Avenida Roca e o Clube Britânico",
+        "resumen": "A rua comercial histórica, hoje Av. Néstor Kirchner.",
+        "texto": "A Avenida Roca, hoje chamada Avenida Néstor Kirchner, foi durante mais de um século a rua comercial da cidade. Nela continua funcionando o Clube Britânico, fundado em 18 de abril de 1911, na época de ouro da lã, quando muitos moradores chegavam das Ilhas Malvinas e da Grã-Bretanha. Em 1920 e 1921, a Sociedade Operária de Río Gallegos liderou as greves dos peões rurais, a história conhecida hoje como a Patagônia Rebelde. Do outro lado estava a Sociedade Rural, presidida por Edelmiro Correa Falcón. Na rua Roca havia também um grande relógio de coluna, um dos pontos de encontro do centro. Na mesma rua fica o monumento ao general Julio Argentino Roca."
+      },
+      "hotel-argentino": {
+        "nombre": "Hotel Argentino",
+        "resumen": "Um hotel histórico na esquina de Chacabuco e Roca.",
+        "texto": "Na esquina das ruas Chacabuco e Roca funcionou o Hotel Argentino, um dos hotéis históricos do centro de Río Gallegos. Ele já aparece em fotos do começo da década de 1920, e a Foto Roil o fotografou várias vezes, com os carros da época estacionados na porta. Por seus quartos passaram fazendeiros, caixeiros-viajantes e recém-chegados à Patagônia."
+      },
+      "balcon-de-roca": {
+        "nombre": "Sacada de Roca",
+        "resumen": "O que restou da primeira sede do governo.",
+        "texto": "Desta sacada, o presidente Julio Argentino Roca falou aos moradores de Río Gallegos em 1899, no mesmo verão do Abraço do Estreito com o presidente do Chile. A sacada é a única coisa que restou da primeira sede do governo do Território: um prédio de dois andares, de madeira e zinco. No fim dos anos trinta, o governador Juan Manuel Gregores mandou desmontá-lo, e sobre seus alicerces foi construída a Chefatura de Polícia. Hoje é Monumento Histórico Nacional."
+      },
+      "casa-de-gobierno": {
+        "nombre": "Casa de Governo",
+        "resumen": "Sede do governo de Santa Cruz, na rua Alcorta.",
+        "texto": "A Casa de Governo de Santa Cruz fica na rua Alcorta, 231. Foi construída na época do governador Juan Manuel Gregores, no terreno vizinho à primeira sede de madeira, quando o prédio antigo já era pequeno para um território que crescia graças à lã. Hoje é a sede do governo da província. A poucos metros ficam a Residência do Governador, a Assembleia Legislativa e os museus Casa de Gregores e Naval."
+      },
+      "maria-auxiliadora": {
+        "nombre": "Maria Auxiliadora e a obra salesiana",
+        "resumen": "Os salesianos e a educação na Patagônia austral.",
+        "texto": "Os missionários salesianos chegaram à Patagônia austral no fim do século dezenove, guiados por dom José Fagnano. Em Río Gallegos ergueram a primeira igreja, o Colégio Salesiano e, junto com as irmãs de Maria Auxiliadora, escolas onde estudaram gerações de meninos e meninas da cidade."
+      },
+      "museo-pioneros": {
+        "nombre": "Museu dos Pioneiros",
+        "resumen": "Uma casa pré-fabricada dos primeiros moradores.",
+        "texto": "O Museu dos Pioneiros funciona em uma das casas mais antigas da cidade, uma moradia pré-fabricada de madeira e zinco típica do fim do século dezenove, conhecida como Casa Parisi. Lá dentro se recria como viviam as primeiras famílias: muitas vinham das Malvinas, da Grã-Bretanha e da Europa, e trabalhavam nas fazendas de ovelhas da região."
+      },
+      "museo-padre-molina": {
+        "nombre": "Museu Regional Padre Manuel Jesús Molina",
+        "resumen": "Paleontologia, arqueologia e história de Santa Cruz.",
+        "texto": "O Museu Regional leva o nome do padre salesiano Manuel Jesús Molina, pesquisador da história e da natureza de Santa Cruz. Reúne coleções de paleontologia, arqueologia, história e arte da província, e conta a história dos povos originários, como os aonikenk ou tehuelches."
+      },
+      "museo-ferroviario": {
+        "nombre": "Museu Ferroviário",
+        "resumen": "As locomotivas do trem do carvão.",
+        "texto": "No Museu Ferroviário são conservadas locomotivas e vagões do Ramal Ferro Industrial de Río Turbio, o trem que levava o carvão das minas, perto da cordilheira, até o cais de Río Gallegos, atravessando mais de duzentos quilômetros de estepe. O engenheiro argentino Livio Dante Porta modificou suas pequenas locomotivas a vapor até torná-las algumas das mais eficientes do mundo."
+      },
+      "puerto-viejo": {
+        "nombre": "O porto e o cais da YCF",
+        "resumen": "Tudo chegava e saía pelo estuário.",
+        "texto": "Antes de existirem estradas, tudo chegava e saía pelo estuário: a lã, os couros, as mercadorias e os passageiros. As fazendas tinham seus próprios cais e lanchas para atravessar o rio e levar a produção ao povoado. Com a maré baixa, os barcos ficavam apoiados no barro. Mais tarde, o cais da Yacimientos Carboníferos Fiscales recebia o carvão do trem de Río Turbio para embarcá-lo rumo ao norte."
+      },
+      "frigorifico-swift": {
+        "nombre": "Barcaça Swift: a época da lã",
+        "resumen": "Ovelhas, lã e frigoríficos.",
+        "texto": "No começo do século vinte, a Patagônia austral vivia da ovelha. As fazendas produziam lã e carne que saíam pelo estuário rumo à Europa. Em Río Gallegos funcionou o frigorífico da empresa Swift, e esta barcaça lembra aquela época. Na tosquia trabalhavam turmas de peões que percorriam as fazendas de toda a região. Longos comboios de carroças traziam os fardos do campo até a costa, onde esperavam o navio."
+      },
+      "costanera": {
+        "nombre": "Orla e mirante do estuário",
+        "resumen": "O estuário do Gallegos e suas marés gigantes.",
+        "texto": "Da orla se vê o estuário do rio Gallegos. Aqui as marés estão entre as maiores do país: a carta náutica de 1931 já registrava preamares de mais de dez metros em Punta Loyola. Com a maré baixa aparecem enormes bancos de lama onde as aves se alimentam. Diante desta costa, em 1911, pegou fogo o veleiro escocês Marjory Glen; seus restos ainda podem ser vistos em Punta Loyola."
+      },
+      "reserva-costera": {
+        "nombre": "Reserva Costeira Urbana",
+        "resumen": "Aves limícolas migratórias em plena cidade.",
+        "texto": "A Reserva Costeira Urbana protege as margens do estuário, onde a cada temporada chegam aves limícolas migratórias que voam milhares de quilômetros desde o hemisfério norte para se alimentar na lama deixada pela maré. Nestas costas também já encalharam baleias, como mostra uma foto antiga."
+      },
+      "malvinas": {
+        "nombre": "Monumento e Museu Malvinas",
+        "resumen": "Memória da guerra de 1982.",
+        "texto": "Durante a Guerra das Malvinas, em 1982, Río Gallegos foi uma das bases de onde operou a Força Aérea Argentina. A cidade lembra os caídos com o Monumento às Malvinas Argentinas e com o Museu da Guerra das Malvinas."
+      },
+      "laguna-azul": {
+        "nombre": "Reserva Geológica Laguna Azul",
+        "resumen": "Uma lagoa dentro de um vulcão, a 62 km.",
+        "texto": "A cerca de 62 quilômetros ao sul de Río Gallegos, a Laguna Azul ocupa a cratera de um vulcão inativo do campo vulcânico Pali Aike. A cratera mede cerca de 560 metros de diâmetro. É reserva provincial desde 2005, pela Lei 2828. Estas terras eram percorridas pelos aonikenk, os tehuelches do sul."
+      },
+      "cabo-virgenes": {
+        "nombre": "Cabo Vírgenes: farol e pinguineira",
+        "resumen": "Pinguins-de-magalhães e o km 0 da Rota 40.",
+        "texto": "A cerca de 134 quilômetros a sudeste, o Cabo Vírgenes marca a entrada do Estreito de Magalhães. Fernão de Magalhães chegou aqui em 21 de outubro de 1520. Perto dali, em 1584, Pedro Sarmiento de Gamboa fundou a Cidade do Nome de Jesus. O farol funciona desde 1904, e aqui começa a Rota Nacional 40, no seu quilômetro zero. Na temporada é possível caminhar entre milhares de pinguins-de-magalhães."
+      }
+    },
+    "fotos": {
+      "El pueblo de Gallegos, con la primera iglesia": "O povoado de Gallegos, com a primeira igreja",
+      "Vista parcial de Río Gallegos": "Vista parcial de Río Gallegos",
+      "El centro desde lo alto": "O centro visto do alto",
+      "Tehuelches con la bandera argentina, cuatro años después de la fundación": "Tehuelches com a bandeira argentina, quatro anos depois da fundação",
+      "Monumento al Centenario": "Monumento ao Centenário",
+      "Monumento al General San Martín": "Monumento ao General San Martín",
+      "El estanque de la plaza": "O laguinho da praça",
+      "Barquitos en el estanque de la plaza": "Barquinhos no laguinho da praça",
+      "Invierno en la plaza": "Inverno na praça",
+      "El monumento a San Martín, en una versión anterior": "Uma versão anterior do monumento a San Martín",
+      "Tehuelches celebrando el 25 de Mayo en Río Gallegos": "Tehuelches celebrando o 25 de Maio em Río Gallegos",
+      "Cóndor en el monumento a San Martín": "Condor no monumento a San Martín",
+      "25 de Mayo de 1920 frente a la iglesia": "25 de maio de 1920, em frente à igreja",
+      "La calle y el campanario de la iglesia": "A rua e o campanário da igreja",
+      "La plaza nevada y el campanario": "A praça com neve e o campanário",
+      "Tehuelches de visita en Gallegos": "Tehuelches de visita em Gallegos",
+      "Monseñor José Fagnano, que bendijo la iglesia en 1900": "Dom José Fagnano, que abençoou a igreja em 1900",
+      "La Catedral hoy": "A Catedral hoje",
+      "Fachada de la Catedral": "Fachada da Catedral",
+      "La Catedral en 2006": "A Catedral em 2006",
+      "Avenida San Martín": "Avenida San Martín",
+      "Desfile del Día del Reservista": "Desfile do Dia do Reservista",
+      "Edelmiro Correa Falcón, gobernador interino del Territorio y presidente de la Sociedad Rural": "Edelmiro Correa Falcón, governador interino do Território e presidente da Sociedade Rural",
+      "Alumnas de guardapolvo blanco frente a la escuela": "Alunas de avental branco em frente à escola",
+      "Chicas frente a una escuela": "Meninas em frente a uma escola",
+      "La Escuela N°1 hoy": "A Escola Nº 1 hoje",
+      "Calle Roca": "Rua Roca",
+      "El reloj de columna de la calle Roca": "O relógio de coluna da rua Roca",
+      "La Relojería Inglesa Gooderham & Co., en una calle nevada": "A Relojoaria Inglesa Gooderham & Co., numa rua com neve",
+      "Un carro frente a la relojería": "Uma carroça em frente à relojoaria",
+      "Fundación del Club Británico": "Fundação do Clube Britânico",
+      "Frente de la Sociedad Obrera de Río Gallegos": "Fachada da Sociedade Operária de Río Gallegos",
+      "Avenida Roca en 2006": "Avenida Roca em 2006",
+      "El Hotel Argentino y los autos de la época": "O Hotel Argentino e os carros da época",
+      "Hotel Argentino": "Hotel Argentino",
+      "La esquina del Hotel Argentino": "A esquina do Hotel Argentino",
+      "La Jefatura de Policía, levantada sobre los cimientos de la primera Gobernación": "A Chefatura de Polícia, construída sobre os alicerces da primeira sede do governo",
+      "Monumento al General Roca": "Monumento ao General Roca",
+      "El Abrazo del Estrecho, en Punta Arenas": "O Abraço do Estreito, em Punta Arenas",
+      "Balcón de Roca": "Sacada de Roca",
+      "Edificio de la Gobernación": "Prédio do governo",
+      "La calle Roca nevada y el monumento a Roca": "A rua Roca com neve e o monumento a Roca",
+      "Casa de Gobierno, Alcorta 231": "Casa de Governo, rua Alcorta 231",
+      "Casona con galería vidriada": "Casarão com varanda envidraçada",
+      "Casa de madera con galería después de una nevada": "Casa de madeira com varanda depois de uma nevasca",
+      "Casas de chapa en la nieve": "Casas de zinco na neve",
+      "Casa del gerente de la estancia Killik Aike Norte": "Casa do gerente da fazenda Killik Aike Norte",
+      "Museo de los Pioneros (Casa Parisi)": "Museu dos Pioneiros (Casa Parisi)",
+      "Dos hombres tehuelches en Tres Lagunas": "Dois homens tehuelches em Tres Lagunas",
+      "Livio Dante Porta y su equipo con la locomotora \"Santa Cruz\"": "Livio Dante Porta e sua equipe com a locomotiva \"Santa Cruz\"",
+      "Autovía del ramal Río Turbio – Río Gallegos": "Automotriz do ramal Río Turbio – Río Gallegos",
+      "Locomotoras del ramal de Río Turbio": "Locomotivas do ramal de Río Turbio",
+      "Locomotora en el Museo Ferroviario": "Locomotiva no Museu Ferroviário",
+      "Puerto Río Gallegos": "Porto de Río Gallegos",
+      "Una grúa carga un fardo de lana en el muelle": "Um guindaste carrega um fardo de lã no cais",
+      "Fardos de lana bajando de un barco": "Fardos de lã sendo descarregados de um navio",
+      "El muelle y la ría desde lo alto": "O cais e o estuário vistos do alto",
+      "Lanchones cargados de lana": "Barcaças carregadas de lã",
+      "Muelle El Turbio de YCF, descarga de una locomotora": "Cais El Turbio da YCF, descarga de uma locomotiva",
+      "Puerto de la estancia Killik Aike Norte, sobre el río Gallegos": "Porto da fazenda Killik Aike Norte, no rio Gallegos",
+      "El remolcador Enrique en el muelle de YCF": "O rebocador Enrique no cais da YCF",
+      "El frigorífico": "O frigorífico",
+      "Fardos de lana en la playa esperando el barco": "Fardos de lã na praia esperando o navio",
+      "Tropa de carros cargados de lana": "Comboio de carroças carregadas de lã",
+      "Un carrero con su tropa de mulas": "Um carroceiro com sua tropa de mulas",
+      "Esquila de corderos en la estancia Felton": "Tosquia de cordeiros na fazenda Felton",
+      "Veleros varados con la bajamar": "Veleiros encalhados na maré baixa",
+      "Un velero en llamas frente a la costa": "Um veleiro em chamas diante da costa",
+      "El vapor Beacon Grange encallado": "O vapor Beacon Grange encalhado",
+      "Una balsa con pasajeros cruzando el río": "Uma balsa com passageiros atravessando o rio",
+      "El damero del pueblo en la carta náutica": "O traçado do povoado na carta náutica",
+      "El viejo muelle de la costanera": "O velho cais da orla",
+      "Cartel de la costanera": "Placa da orla",
+      "Marea baja en la ría": "Maré baixa no estuário",
+      "Una ballena varada en la costa": "Uma baleia encalhada na costa",
+      "La ría con la bajamar": "O estuário na maré baixa",
+      "La ría con marea baja": "O estuário na maré baixa",
+      "Un A-4C Skyhawk de la Fuerza Aérea Argentina durante la guerra": "Um A-4C Skyhawk da Força Aérea Argentina durante a guerra",
+      "Monumento a la Fuerza Aérea por Malvinas": "Monumento à Força Aérea pelas Malvinas",
+      "Dos hombres tehuelches en la estepa": "Dois homens tehuelches na estepe",
+      "Laguna Azul desde el borde del cráter": "A Laguna Azul vista da borda da cratera",
+      "Laguna Azul": "Laguna Azul",
+      "El Estrecho de Magallanes en un mapa holandés": "O Estreito de Magalhães num mapa holandês",
+      "Pingüinos de Magallanes en Cabo Vírgenes": "Pinguins-de-magalhães no Cabo Vírgenes",
+      "Faro Cabo Vírgenes": "Farol do Cabo Vírgenes",
+      "Pingüino de Magallanes": "Pinguim-de-magalhães",
+      "Baño de ovejas en la estancia Felton": "Banho de ovelhas na fazenda Felton"
+    }
+  }
+}

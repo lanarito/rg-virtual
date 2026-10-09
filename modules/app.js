@@ -1,5 +1,8 @@
 // Pantalla principal: mapa con los portales, GPS, y apertura automática del portal al llegar.
 import { cargarDatos, seguirPosicion, distancia, rumbo, textoDistancia, frase, leerAjuste, guardarAjuste, esc, parametro } from './core.js';
+import { t, idioma, IDIOMAS, cambiarIdioma, traducirPagina } from './i18n.js';
+
+traducirPagina();
 import { iniciarSonido, alternarMusica, musicaEncendida, campanita } from './sonido.js';
 import { abrirPortal, portalAbierto, precargar } from './portal.js';
 
@@ -33,7 +36,7 @@ function iconoPortal(poi) {
 }
 
 for (const poi of datos.pois) {
-  const m = L.marker([poi.lat, poi.lon], { icon: iconoPortal(poi), title: `Portal: ${poi.nombre}`, alt: poi.nombre, keyboard: true })
+  const m = L.marker([poi.lat, poi.lon], { icon: iconoPortal(poi), title: `${t('portal.titulo')}: ${poi.nombre}`, alt: poi.nombre, keyboard: true })
     .addTo(mapa)
     .on('click', () => { detenerRecorrido(); entrarAlPortal(poi); });
   marcas.set(poi.id, m);
@@ -63,17 +66,16 @@ let modo = 'esperando'; // 'ciudad' | 'lejos'
 let ultimaPos = null;
 let objetivo = null;
 
-const PUNTOS = ['norte', 'noreste', 'este', 'sureste', 'sur', 'suroeste', 'oeste', 'noroeste'];
-const cardinal = g => PUNTOS[Math.round(g / 45) % 8];
+const cardinal = g => t('cardinal')[Math.round(g / 45) % 8];
 
 function actualizarTarjeta() {
   tarjeta.hidden = false;
   if (modo === 'lejos' || !ultimaPos) {
     objetivo = null;
     $('tarjetaFoto').style.backgroundImage = `url('${datos.pois[0].fotosHistoricas[0].archivo}')`;
-    $('tarjetaArriba').textContent = modo === 'lejos' ? 'Estás lejos de Río Gallegos' : 'Buscando tu ubicación…';
-    $('tarjetaNombre').textContent = 'Ver todos los portales';
-    $('tarjetaAbajo').textContent = `Recorré los ${datos.pois.length} lugares desde donde estés`;
+    $('tarjetaArriba').textContent = t(modo === 'lejos' ? 'tarjeta.lejos' : 'tarjeta.buscando');
+    $('tarjetaNombre').textContent = t('tarjeta.todos');
+    $('tarjetaAbajo').textContent = t('tarjeta.todosSub', { n: datos.pois.length });
     return;
   }
   // El más cercano que todavía no visitaste (si ya viste todos, el más cercano)
@@ -81,11 +83,11 @@ function actualizarTarjeta() {
   objetivo = ordenados.find(p => !visitados.has(p.id)) || ordenados[0];
   const d = dist(objetivo);
   $('tarjetaFoto').style.backgroundImage = `url('${objetivo.fotosHistoricas[0].archivo}')`;
-  $('tarjetaArriba').textContent = visitados.has(objetivo.id) ? 'Portal más cercano' : 'Próximo portal';
+  $('tarjetaArriba').textContent = t(visitados.has(objetivo.id) ? 'tarjeta.cercano' : 'tarjeta.proximo');
   $('tarjetaNombre').textContent = objetivo.nombre;
   $('tarjetaAbajo').textContent = d < (objetivo.radio || 50)
-    ? '¡Estás acá! Tocá para entrar'
-    : `A ${textoDistancia(d)}, hacia el ${cardinal(rumbo(ultimaPos.lat, ultimaPos.lon, objetivo.lat, objetivo.lon))} · tocá para entrar`;
+    ? t('tarjeta.estasAca')
+    : t('tarjeta.distancia', { d: textoDistancia(d), dir: cardinal(rumbo(ultimaPos.lat, ultimaPos.lon, objetivo.lat, objetivo.lon)) });
 }
 const dist = p => distancia(ultimaPos.lat, ultimaPos.lon, p.lat, p.lon);
 
@@ -151,17 +153,28 @@ let saludo = Promise.resolve();
 function pasarAModoLejos() {
   modo = 'lejos';
   actualizarTarjeta();
-  saludo.then(() => !portalAbierto() && !recorriendo && frase('lejos', 'Parece que no estás en Río Gallegos. No pasa nada: tocá cualquier portal del mapa, o la tarjeta de abajo para ver el recorrido completo.'));
+  saludo.then(() => !portalAbierto() && !recorriendo && frase('lejos'));
 }
 
 // ---------- Música ----------
 const btnMusica = $('btnMusica');
 function pintarMusica() {
   btnMusica.textContent = musicaEncendida() ? '🎵' : '🔇';
-  btnMusica.setAttribute('aria-label', musicaEncendida() ? 'Apagar música' : 'Prender música');
+  btnMusica.setAttribute('aria-label', t(musicaEncendida() ? 'musica.apagar' : 'musica.prender'));
 }
 btnMusica.onclick = () => { alternarMusica(); pintarMusica(); };
 pintarMusica();
+
+// ---------- Idioma ----------
+const selector = $('idiomas');
+selector.innerHTML = Object.entries(IDIOMAS).map(([k, n]) =>
+  `<button class="idioma ${k === idioma() ? 'on' : ''}" data-idioma="${k}" lang="${k}" aria-pressed="${k === idioma()}">${n}</button>`).join('');
+selector.onclick = e => {
+  const b = e.target.closest('[data-idioma]');
+  if (!b || b.dataset.idioma === idioma()) return;
+  cambiarIdioma(b.dataset.idioma);
+  location.reload();
+};
 
 // ---------- Empezar ----------
 // Un solo toque: habilita el sonido, pide el GPS y da la bienvenida.
@@ -169,7 +182,7 @@ $('btnEmpezar').onclick = () => {
   iniciarSonido();
   document.getElementById('inicio').classList.add('oculto');
   setTimeout(() => document.getElementById('inicio').remove(), 900);
-  saludo = frase('bienvenida-paseo', 'Bienvenidos a Río Gallegos. Caminá por la ciudad: cada vez que llegues a un lugar histórico, se va a abrir un portal al pasado.');
+  saludo = frase('bienvenida-paseo');
   actualizarTarjeta();
   datos.pois.slice(0, 4).forEach(precargar);
 

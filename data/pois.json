@@ -94,37 +94,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/vista-parcial.jpg",
-          "titulo": "Vista parcial de Río Gallegos",
-          "anio": "c. 1940",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO29.JPG)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/centro-desde-lo-alto.jpg",
-          "titulo": "El centro desde lo alto",
-          "anio": "c. 1960",
-          "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 046.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/historicas/tehuelches-dia-patrio-1889.jpg",
@@ -139,7 +110,56 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
+          "titulo": "El damero del pueblo en la carta náutica",
+          "autor": "Servicio de Hidrografía Naval",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg",
+          "anio": 1931,
+          "relacion": "lugar",
+          "nota": "Se ve la cuadrícula de manzanas y la plaza.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2
+        },
+        {
+          "archivo": "assets/fotos/roil/vista-parcial.jpg",
+          "titulo": "Vista parcial de Río Gallegos",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO29.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2.5
+        },
+        {
+          "archivo": "assets/fotos/roil/centro-desde-lo-alto.jpg",
+          "titulo": "El centro desde lo alto",
+          "anio": "c. 1960",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 046.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3
         }
       ],
       "verificado": false
@@ -176,66 +196,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/monumento-san-martin.jpg",
-          "titulo": "Monumento al General San Martín",
-          "anio": "c. 1950",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 074.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/plaza-estanque.jpg",
-          "titulo": "El estanque de la plaza",
-          "anio": "c. 1945",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (foto103.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/plaza-barquitos.jpg",
-          "titulo": "Barquitos en el estanque de la plaza",
-          "anio": "c. 1945",
-          "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (foto100.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/plaza-invierno.jpg",
-          "titulo": "Invierno en la plaza",
-          "anio": "c. 1945",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (foto111.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/roil/monumento-san-martin-antiguo.jpg",
           "titulo": "El monumento a San Martín, en una versión anterior",
           "anio": "c. 1935",
@@ -248,7 +208,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/roil/monumento-san-martin.jpg",
+          "titulo": "Monumento al General San Martín",
+          "anio": "c. 1950",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 074.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2
         },
         {
           "archivo": "assets/fotos/historicas/tehuelches-25-mayo-1900.jpg",
@@ -263,7 +240,56 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 4
+        },
+        {
+          "archivo": "assets/fotos/roil/plaza-estanque.jpg",
+          "titulo": "El estanque de la plaza",
+          "anio": "c. 1945",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto103.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 5
+        },
+        {
+          "archivo": "assets/fotos/roil/plaza-barquitos.jpg",
+          "titulo": "Barquitos en el estanque de la plaza",
+          "anio": "c. 1945",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto100.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 5.35
+        },
+        {
+          "archivo": "assets/fotos/roil/plaza-invierno.jpg",
+          "titulo": "Invierno en la plaza",
+          "anio": "c. 1945",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto111.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 5.7
         }
       ],
       "verificado": false
@@ -314,21 +340,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/iglesia-25-mayo-1920.jpg",
-          "titulo": "25 de Mayo de 1920 frente a la iglesia",
-          "anio": 1920,
-          "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO991.JPG)",
-          "nota": "Fecha escrita en la foto.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/roil/iglesia-y-calle.jpg",
           "titulo": "La calle y el campanario de la iglesia",
           "anio": "c. 1940",
@@ -341,37 +352,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
-          "archivo": "assets/fotos/roil/plaza-nevada-campanario.jpg",
-          "titulo": "La plaza nevada y el campanario",
-          "anio": "c. 1945",
+          "archivo": "assets/fotos/roil/iglesia-25-mayo-1920.jpg",
+          "titulo": "25 de Mayo de 1920 frente a la iglesia",
+          "anio": 1920,
           "relacion": "lugar",
           "autor": "Autor desconocido (colección particular)",
           "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO30.JPG)",
-          "nota": "Año aproximado.",
+          "fuente": "Colección particular (FOTO991.JPG)",
+          "nota": "Fecha escrita en la foto.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/historicas/tehuelches-visitan-gallegos-1902.jpg",
-          "titulo": "Tehuelches de visita en Gallegos",
-          "autor": "H. Hesketh Prichard, Through the Heart of Patagonia (1902)",
-          "licencia": "Dominio público",
-          "fuente": "https://www.gutenberg.org/files/43366/43366-h/43366-h.htm",
-          "anio": 1902,
-          "relacion": "epoca",
-          "nota": "Lugar exacto desconocido.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 1
         },
         {
           "archivo": "assets/fotos/historicas/fagnano-1924.jpg",
@@ -386,7 +384,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 2
+        },
+        {
+          "archivo": "assets/fotos/roil/plaza-nevada-campanario.jpg",
+          "titulo": "La plaza nevada y el campanario",
+          "anio": "c. 1945",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO30.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3
         }
       ],
       "verificado": false
@@ -427,22 +442,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/dia-del-reservista-1941.jpg",
-          "titulo": "Desfile del Día del Reservista",
-          "anio": 1941,
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 049.jpg)",
-          "nota": "Fecha escrita en la foto; calle a identificar.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/historicas/correa-falcon-1928.jpg",
@@ -457,7 +458,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 3
         }
       ],
       "verificado": false
@@ -506,22 +508,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/alumnas-escuela.jpg",
-          "titulo": "Chicas frente a una escuela",
-          "anio": "c. 1940",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (foto106.jpg)",
-          "nota": "Escuela a identificar. Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -534,7 +522,7 @@
       "lon": -69.2155,
       "radio": 50,
       "resumen": "La calle comercial histórica, hoy Av. Néstor Kirchner.",
-      "texto": "La Avenida Roca, hoy llamada Avenida Néstor Kirchner, fue durante más de un siglo la calle comercial de la ciudad. Sobre ella sigue funcionando el Club Británico, fundado el 18 de abril de 1911, en la época de oro de la lana, cuando muchos pobladores llegaban desde las Islas Malvinas y Gran Bretaña. En 1920 y 1921, la Sociedad Obrera de Río Gallegos encabezó las huelgas de los peones rurales, la historia que hoy conocemos como la Patagonia Rebelde. Del otro lado estaba la Sociedad Rural, presidida por Edelmiro Correa Falcón. Sobre la calle Roca había también un gran reloj de columna, uno de los puntos de encuentro del centro.",
+      "texto": "La Avenida Roca, hoy llamada Avenida Néstor Kirchner, fue durante más de un siglo la calle comercial de la ciudad. Sobre ella sigue funcionando el Club Británico, fundado el 18 de abril de 1911, en la época de oro de la lana, cuando muchos pobladores llegaban desde las Islas Malvinas y Gran Bretaña. En 1920 y 1921, la Sociedad Obrera de Río Gallegos encabezó las huelgas de los peones rurales, la historia que hoy conocemos como la Patagonia Rebelde. Del otro lado estaba la Sociedad Rural, presidida por Edelmiro Correa Falcón. Sobre la calle Roca había también un gran reloj de columna, uno de los puntos de encuentro del centro. Sobre la misma calle se levanta el monumento al general Julio Argentino Roca.",
       "audio": "assets/audio/avenida-roca.mp3",
       "panorama360": null,
       "streetView": {
@@ -570,22 +558,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/reloj-calle-roca.jpg",
-          "titulo": "El reloj de columna de la calle Roca",
-          "anio": "c. 1940",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO7.JPG)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/roil/calle-roca-la-platense.jpg",
@@ -600,37 +574,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/relojeria-inglesa.jpg",
-          "titulo": "La Relojería Inglesa Gooderham & Co., en una calle nevada",
-          "anio": "c. 1925",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO2.JPG)",
-          "nota": "Año y calle aproximados.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/carro-relojeria.jpg",
-          "titulo": "Un carro frente a la relojería",
-          "anio": "c. 1930",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO65.JPG)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0.5
         },
         {
           "archivo": "assets/fotos/historicas/club-britanico-1911.jpg",
@@ -645,7 +590,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
         },
         {
           "archivo": "assets/fotos/historicas/sociedad-obrera-1920.jpg",
@@ -660,7 +606,72 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 2
+        },
+        {
+          "archivo": "assets/fotos/historicas/correa-falcon-1928.jpg",
+          "titulo": "Edelmiro Correa Falcón, gobernador interino del Territorio y presidente de la Sociedad Rural",
+          "autor": "Publicada en \"La Patagonia Trágica\", J. M. Borrero (1928)",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Edelmiro_Correa_Falc%C3%B3n.png",
+          "anio": 1928,
+          "relacion": "epoca",
+          "nota": "Retrato.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3
+        },
+        {
+          "archivo": "assets/fotos/roil/reloj-calle-roca.jpg",
+          "titulo": "El reloj de columna de la calle Roca",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO7.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 4
+        },
+        {
+          "archivo": "assets/fotos/roil/monumento-roca.jpg",
+          "titulo": "Monumento al General Roca",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 003.jpg)",
+          "nota": "El monumento, no el balcón. Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 5
+        },
+        {
+          "archivo": "assets/fotos/roil/monumento-roca-nieve.jpg",
+          "titulo": "La calle Roca nevada y el monumento a Roca",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 071.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 5.5
         }
       ],
       "verificado": false
@@ -701,7 +712,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/roil/hotel-argentino-antiguo.jpg",
@@ -716,7 +728,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
         },
         {
           "archivo": "assets/fotos/roil/hotel-argentino-esquina.jpg",
@@ -731,7 +744,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 2
         }
       ],
       "verificado": false
@@ -768,36 +782,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/jefatura-policia.jpg",
-          "titulo": "La Jefatura de Policía, levantada sobre los cimientos de la primera Gobernación",
-          "anio": "c. 1940",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 018.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/monumento-roca.jpg",
-          "titulo": "Monumento al General Roca",
-          "anio": "c. 1940",
-          "relacion": "epoca",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 003.jpg)",
-          "nota": "El monumento, no el balcón. Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/historicas/abrazo-del-estrecho-1899.jpg",
           "titulo": "El Abrazo del Estrecho, en Punta Arenas",
           "autor": "Autor desconocido",
@@ -810,7 +794,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/roil/jefatura-policia.jpg",
+          "titulo": "La Jefatura de Policía, levantada sobre los cimientos de la primera Gobernación",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 018.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2
         }
       ],
       "verificado": false
@@ -859,22 +860,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/monumento-roca-nieve.jpg",
-          "titulo": "La calle Roca nevada y el monumento a Roca",
-          "anio": "c. 1940",
-          "relacion": "epoca",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 071.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -915,7 +902,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -952,21 +940,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/casona-galeria.jpg",
-          "titulo": "Casona con galería vidriada",
-          "anio": "c. 1940",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO24.JPG)",
-          "nota": "Casa a identificar. Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/roil/casa-madera-nieve.jpg",
           "titulo": "Casa de madera con galería después de una nevada",
           "anio": "c. 1940",
@@ -979,7 +952,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/roil/casas-chapa-nieve.jpg",
@@ -994,7 +968,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0.5
+        },
+        {
+          "archivo": "assets/fotos/roil/casona-galeria.jpg",
+          "titulo": "Casona con galería vidriada",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO24.JPG)",
+          "nota": "Casa a identificar. Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
         },
         {
           "archivo": "assets/fotos/historicas/killik-aike-decauville-1900.jpg",
@@ -1009,7 +1000,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1.5
         }
       ],
       "verificado": false
@@ -1039,18 +1031,19 @@
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/tehuelches-tres-lagunas-1917.jpg",
-          "titulo": "Dos hombres tehuelches en Tres Lagunas",
+          "titulo": "Dos hombres tehuelches en la estepa",
           "autor": "Furlong, Charles Wellington",
           "licencia": "Dominio público",
           "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches-R%C3%ADo_Gallegos.jpg",
           "anio": 1917,
           "relacion": "epoca",
-          "nota": "Entre los ríos Gallegos y Santa Cruz.",
+          "nota": "Tres Lagunas, entre los ríos Gallegos y Santa Cruz.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -1091,21 +1084,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/historicas/porta-locomotora-1959.jpg",
-          "titulo": "Livio Dante Porta y su equipo con la locomotora \"Santa Cruz\"",
-          "autor": "Autor desconocido",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Porta_and_crew_with_RFIRT%27s_Santa_Cruz_loco-1959.jpg",
-          "anio": 1959,
-          "relacion": "epoca",
-          "nota": "Lugar exacto desconocido.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/historicas/autovia-billard-1955.jpg",
           "titulo": "Autovía del ramal Río Turbio – Río Gallegos",
           "autor": "Fotógrafo desconocido",
@@ -1118,7 +1096,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/historicas/porta-locomotora-1959.jpg",
+          "titulo": "Livio Dante Porta y su equipo con la locomotora \"Santa Cruz\"",
+          "autor": "Autor desconocido",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Porta_and_crew_with_RFIRT%27s_Santa_Cruz_loco-1959.jpg",
+          "anio": 1959,
+          "relacion": "epoca",
+          "nota": "Lugar exacto desconocido.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
         }
       ],
       "verificado": false
@@ -1152,19 +1147,20 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/puerto-rio-gallegos.jpg",
-          "titulo": "Puerto Río Gallegos",
-          "anio": "c. 1940",
+          "archivo": "assets/fotos/roil/lanchones-lana.jpg",
+          "titulo": "Lanchones cargados de lana",
+          "anio": "c. 1935",
           "relacion": "lugar",
           "autor": "Foto Roil",
           "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 059.jpg)",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 005.jpg)",
           "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/roil/grua-fardo-lana.jpg",
@@ -1179,7 +1175,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0.4
         },
         {
           "archivo": "assets/fotos/roil/desembarco-fardos.jpg",
@@ -1194,52 +1191,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/muelle-desde-lo-alto.jpg",
-          "titulo": "El muelle y la ría desde lo alto",
-          "anio": "c. 1950",
-          "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO32.JPG)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/lanchones-lana.jpg",
-          "titulo": "Lanchones cargados de lana",
-          "anio": "c. 1935",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 005.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/historicas/muelle-ycf-1957.jpg",
-          "titulo": "Muelle El Turbio de YCF, descarga de una locomotora",
-          "autor": "Autor desconocido (restauración digital: J. A. Weisser)",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Gallegos_-_Muelle_El_Turbio_de_YCF._Descarga_de_locomotora_Henschel_2-8-2_y_material_rodante_del_Ramal_Ferro_Industrial_Eva_Per%C3%B3n,_c_1957.jpg",
-          "anio": 1957,
-          "relacion": "lugar",
-          "nota": "Río Gallegos.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0.7
         },
         {
           "archivo": "assets/fotos/historicas/killik-aike-puerto-1900.jpg",
@@ -1254,7 +1207,56 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/roil/puerto-rio-gallegos.jpg",
+          "titulo": "Puerto Río Gallegos",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 059.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2
+        },
+        {
+          "archivo": "assets/fotos/roil/muelle-desde-lo-alto.jpg",
+          "titulo": "El muelle y la ría desde lo alto",
+          "anio": "c. 1950",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO32.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3
+        },
+        {
+          "archivo": "assets/fotos/historicas/muelle-ycf-1957.jpg",
+          "titulo": "Muelle El Turbio de YCF, descarga de una locomotora",
+          "autor": "Autor desconocido (restauración digital: J. A. Weisser)",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Gallegos_-_Muelle_El_Turbio_de_YCF._Descarga_de_locomotora_Henschel_2-8-2_y_material_rodante_del_Ramal_Ferro_Industrial_Eva_Per%C3%B3n,_c_1957.jpg",
+          "anio": 1957,
+          "relacion": "lugar",
+          "nota": "Río Gallegos.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3.5
         }
       ],
       "verificado": false
@@ -1267,7 +1269,7 @@
       "lon": -69.216272,
       "radio": 35,
       "resumen": "Ovejas, lana y frigoríficos.",
-      "texto": "A principios del siglo veinte, la Patagonia austral vivió de la oveja. Las estancias producían lana y carne que salían por la ría hacia Europa. En Río Gallegos funcionó el frigorífico de la empresa Swift, y esta barcaza recuerda esa época. En la esquila trabajaban cuadrillas de peones que recorrían las estancias de toda la región.",
+      "texto": "A principios del siglo veinte, la Patagonia austral vivió de la oveja. Las estancias producían lana y carne que salían por la ría hacia Europa. En Río Gallegos funcionó el frigorífico de la empresa Swift, y esta barcaza recuerda esa época. En la esquila trabajaban cuadrillas de peones que recorrían las estancias de toda la región. Largas tropas de carros traían los fardos desde el campo hasta la costa, donde esperaban el barco.",
       "audio": "assets/audio/frigorifico-swift.mp3",
       "panorama360": null,
       "streetView": {
@@ -1283,19 +1285,20 @@
       "fotosActuales": [],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/frigorifico.jpg",
-          "titulo": "El frigorífico",
-          "anio": "c. 1945",
+          "archivo": "assets/fotos/historicas/bano-ovejas-felton-1923.jpg",
+          "titulo": "Baño de ovejas en la estancia Felton",
+          "anio": 1923,
           "relacion": "epoca",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO8.JPG)",
-          "nota": "Año aproximado.",
+          "autor": "Expedición Marshall Field – The Field Museum Library",
+          "licencia": "Sin restricciones conocidas",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Dipping_lambs._Felton%27s_sheep_farm._1923._(3526465774).jpg",
+          "nota": "Estancia de la zona.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/roil/fardos-en-la-playa.jpg",
@@ -1310,37 +1313,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
         },
         {
-          "archivo": "assets/fotos/roil/tropa-carros-lana.jpg",
-          "titulo": "Tropa de carros cargados de lana",
-          "anio": "c. 1930",
+          "archivo": "assets/fotos/roil/frigorifico.jpg",
+          "titulo": "El frigorífico",
+          "anio": "c. 1945",
           "relacion": "epoca",
           "autor": "Foto Roil",
           "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO13.JPG)",
+          "fuente": "Colección particular (FOTO8.JPG)",
           "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/carrero-mulas.jpg",
-          "titulo": "Un carrero con su tropa de mulas",
-          "anio": "c. 1930",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 064.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 2
         },
         {
           "archivo": "assets/fotos/historicas/esquila-felton-1923.jpg",
@@ -1355,7 +1345,40 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 3
+        },
+        {
+          "archivo": "assets/fotos/roil/tropa-carros-lana.jpg",
+          "titulo": "Tropa de carros cargados de lana",
+          "anio": "c. 1930",
+          "relacion": "epoca",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO13.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 4
+        },
+        {
+          "archivo": "assets/fotos/roil/carrero-mulas.jpg",
+          "titulo": "Un carrero con su tropa de mulas",
+          "anio": "c. 1930",
+          "relacion": "epoca",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 064.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 4.5
         }
       ],
       "verificado": false
@@ -1418,52 +1441,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/velero-en-llamas.jpg",
-          "titulo": "Un velero en llamas frente a la costa",
-          "anio": "¿1911?",
-          "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO14.JPG)",
-          "nota": "Podría ser el Marjory Glen, que se incendió frente a Río Gallegos en 1911.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/beacon-grange.jpg",
-          "titulo": "El vapor Beacon Grange encallado",
-          "anio": "s/f",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 007.jpg)",
-          "nota": "Fecha y lugar exacto desconocidos.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/roil/balsa-pasajeros.jpg",
-          "titulo": "Una balsa con pasajeros cruzando el río",
-          "anio": "c. 1925",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 004.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
           "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
@@ -1478,7 +1457,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/roil/velero-en-llamas.jpg",
+          "titulo": "Un velero en llamas frente a la costa",
+          "anio": "¿1911?",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO14.JPG)",
+          "nota": "Podría ser el Marjory Glen, que se incendió frente a Río Gallegos en 1911.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3
         }
       ],
       "verificado": false
@@ -1491,7 +1487,7 @@
       "lon": -69.157318,
       "radio": 150,
       "resumen": "Aves playeras migratorias en plena ciudad.",
-      "texto": "La Reserva Costera Urbana protege las costas de la ría, donde cada temporada llegan aves playeras migratorias que viajan miles de kilómetros desde el hemisferio norte para alimentarse en el barro que deja la marea.",
+      "texto": "La Reserva Costera Urbana protege las costas de la ría, donde cada temporada llegan aves playeras migratorias que viajan miles de kilómetros desde el hemisferio norte para alimentarse en el barro que deja la marea. En estas costas también han quedado varadas ballenas, como muestra una foto antigua.",
       "audio": "assets/audio/reserva-costera.mp3",
       "panorama360": null,
       "streetView": null,
@@ -1512,21 +1508,6 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/ballena-varada.jpg",
-          "titulo": "Una ballena varada en la costa",
-          "anio": "c. 1935",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO37.JPG)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/roil/bajamar-ria.jpg",
           "titulo": "La ría con la bajamar",
           "anio": "c. 1935",
@@ -1539,22 +1520,24 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         },
         {
-          "archivo": "assets/fotos/historicas/killik-aike-puerto-1900.jpg",
-          "titulo": "Puerto de la estancia Killik Aike Norte, sobre el río Gallegos",
-          "autor": "Autor desconocido (publicada en \"Una historia de la Patagonia\", J. L. Blake)",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Puerto_de_la_Estancia_Killik_Aike_Norte_de_Herbert_Stanley_Felton._Fundada_en_1890_luego_administrada_por_su_hijo_Carlos_Felton.jpg",
-          "anio": 1900,
+          "archivo": "assets/fotos/roil/ballena-varada.jpg",
+          "titulo": "Una ballena varada en la costa",
+          "anio": "c. 1935",
           "relacion": "epoca",
-          "nota": "Las lanchas Malvina y Priscilla.",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO37.JPG)",
+          "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 1
         }
       ],
       "verificado": false
@@ -1600,7 +1583,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -1653,7 +1637,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false
@@ -1713,7 +1698,8 @@
             "lat": null,
             "lon": null,
             "rumbo": null
-          }
+          },
+          "desdeFrase": 0
         }
       ],
       "verificado": false

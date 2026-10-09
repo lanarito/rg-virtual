@@ -18,15 +18,15 @@
 </head>
 <body class="app">
   <div id="cesium" aria-label="Vista 3D de Río Gallegos"></div>
-  <a class="redondo arriba-izq" href="index.html" aria-label="Volver al paseo">✕</a>
-  <button class="redondo arriba-der" id="btnMusica" aria-label="Apagar música">🎵</button>
+  <a class="redondo arriba-izq" href="index.html" data-t-aria="vuelo.volver">✕</a>
+  <button class="redondo arriba-der" id="btnMusica" data-t-aria="musica.apagar">🎵</button>
 
   <button class="tarjeta" id="tarjeta" hidden>
     <span class="tarjeta-portal" id="tarjetaFoto" aria-hidden="true"></span>
     <span class="tarjeta-texto">
-      <small id="tarjetaArriba">Volando hacia</small>
+      <small id="tarjetaArriba" data-t="vuelo.hacia">Volando hacia</small>
       <b id="tarjetaNombre"></b>
-      <span id="tarjetaAbajo">Tocá para pausar</span>
+      <span id="tarjetaAbajo" data-t="vuelo.pausar">Tocá para pausar</span>
     </span>
     <span class="tarjeta-ir" aria-hidden="true" id="tarjetaIcono">⏸</span>
   </button>
@@ -38,10 +38,10 @@
     </div>
     <div class="inicio-contenido">
       <div class="inicio-anillo" aria-hidden="true"></div>
-      <h1>Río Gallegos desde el cielo</h1>
-      <p>Un vuelo por la ciudad, la ría, Laguna Azul y Cabo Vírgenes. En cada lugar se abre un portal al pasado.</p>
-      <button class="btn grande" id="btnVolar">Volar</button>
-      <a class="inicio-link" href="index.html">o volvé al paseo a pie</a>
+      <h1 data-t="vuelo.h1">Río Gallegos desde el cielo</h1>
+      <p data-t="vuelo.texto">Un vuelo por la ciudad, la ría, Laguna Azul y Cabo Vírgenes. En cada lugar se abre un portal al pasado.</p>
+      <button class="btn grande" id="btnVolar" data-t="vuelo.volar">Volar</button>
+      <a class="inicio-link" href="index.html" data-t="vuelo.aPie">o volvé al paseo a pie</a>
     </div>
   </section>
 

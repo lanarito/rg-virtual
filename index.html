@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body class="app">
-  <div id="mapa" aria-label="Mapa de Río Gallegos con los portales"></div>
+  <div id="mapa" data-t-aria="mapa.aria"></div>
 
-  <button class="redondo arriba-der" id="btnMusica" aria-label="Apagar música">🎵</button>
+  <button class="redondo arriba-der" id="btnMusica" data-t-aria="musica.apagar">🎵</button>
 
   <button class="tarjeta" id="tarjeta" hidden>
     <span class="tarjeta-portal" id="tarjetaFoto" aria-hidden="true"></span>
@@ -33,11 +33,12 @@
     <div class="inicio-contenido">
       <div class="inicio-anillo" aria-hidden="true"></div>
       <h1>Río Gallegos</h1>
-      <p class="inicio-sub">Un paseo con portales al pasado</p>
-      <p>Caminá por la ciudad. Cuando llegues a un lugar histórico se abre un portal, y vas a ver cómo era hace más de cien años.</p>
-      <button class="btn grande" id="btnEmpezar">Empezar</button>
-      <a class="inicio-link" href="ciudad3d.html">o volá sobre la ciudad en 3D</a>
-      <a class="inicio-ajustes" href="config.html">Ajustes</a>
+      <p class="inicio-sub" data-t="inicio.sub">Un paseo con portales al pasado</p>
+      <p data-t="inicio.texto">Caminá por la ciudad. Cuando llegues a un lugar histórico se abre un portal, y vas a ver cómo era hace más de cien años.</p>
+      <div class="idiomas" id="idiomas" role="group" aria-label="Idioma / Language / Idioma"></div>
+      <button class="btn grande" id="btnEmpezar" data-t="inicio.empezar">Empezar</button>
+      <a class="inicio-link" href="ciudad3d.html" data-t="inicio.3d">o volá sobre la ciudad en 3D</a>
+      <a class="inicio-ajustes" href="config.html" data-t="inicio.ajustes">Ajustes</a>
     </div>
   </section>
 

@@ -101,7 +101,7 @@
     vel.value = leerAjuste('velocidad', 1);
     $('velTxt').textContent = (+vel.value).toFixed(2);
     vel.oninput = () => { guardarAjuste('velocidad', +vel.value); $('velTxt').textContent = (+vel.value).toFixed(2); };
-    $('probar').onclick = () => frase('bienvenida', 'Bienvenidos a Río Gallegos, la puerta de la Patagonia austral.');
+    $('probar').onclick = () => frase('bienvenida');
     const chk = $('vozGrabada');
     chk.checked = leerAjuste('vozGrabada', true);
     chk.onchange = () => guardarAjuste('vozGrabada', chk.checked);

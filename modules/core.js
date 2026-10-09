@@ -1,4 +1,5 @@
 // Funciones compartidas por todos los módulos: datos, ajustes, narración, GPS y fichas.
+import { idioma, t, VOZ_LANG } from './i18n.js';
 
 let datosCache = null;
 
@@ -7,8 +8,25 @@ export async function cargarDatos() {
     const r = await fetch('data/pois.json', { cache: 'no-cache' });
     if (!r.ok) throw new Error('No se pudo leer data/pois.json');
     datosCache = await r.json();
+    const lang = idioma();
+    if (lang !== 'es') await aplicarTraduccion(datosCache, lang);
   }
   return datosCache;
+}
+
+// Reemplaza nombres, textos, títulos de fotos y audios por los del idioma elegido.
+async function aplicarTraduccion(datos, lang) {
+  let tr = null;
+  try { tr = (await (await fetch('data/traducciones.json', { cache: 'no-cache' })).json())[lang]; } catch { /* queda en español */ }
+  if (!tr) return;
+  for (const poi of datos.pois) {
+    const x = tr.pois?.[poi.id];
+    if (x) {
+      Object.assign(poi, { nombre: x.nombre || poi.nombre, resumen: x.resumen || poi.resumen, texto: x.texto || poi.texto });
+      if (poi.audio) poi.audio = poi.audio.replace('assets/audio/', `assets/audio/${lang}/`);
+    } else poi.audio = null; // sin traducción: que lea la voz del navegador el texto en español
+    for (const f of [...poi.fotosHistoricas, ...poi.fotosActuales]) f.titulo = tr.fotos?.[f.titulo] || f.titulo;
+  }
 }
 
 export function buscarPoi(datos, id) {
@@ -95,7 +113,9 @@ reproductor.setAttribute('playsinline', '');
 // Voz del navegador (solo de respaldo): primero argentina, después latinoamericana; la de España, última.
 const ORDEN_ACENTOS = ['es-AR', 'es-UY', 'es-419', 'es-US', 'es-MX', 'es-CL', 'es-CO'];
 function elegirVoz() {
-  const voces = speechSynthesis.getVoices().filter(v => v.lang?.replace('_', '-').startsWith('es'));
+  const lang0 = idioma();
+  const voces = speechSynthesis.getVoices().filter(v => v.lang?.replace('_', '-').startsWith(lang0));
+  if (lang0 !== 'es') return voces.find(v => v.lang.replace('_', '-') === VOZ_LANG[lang0]) || voces[0];
   const preferida = leerAjuste('voz', '');
   const lang = v => v.lang.replace('_', '-');
   return voces.find(v => v.name === preferida)
@@ -128,9 +148,10 @@ function reproducir(src, texto, onProgreso) {
   });
 }
 
-// Frases cortas de la app, grabadas en assets/audio/frase-<clave>.mp3
-export function frase(clave, texto) {
-  return reproducir(`assets/audio/frase-${clave}.mp3`, texto);
+// Frases cortas de la app, grabadas en assets/audio/[idioma/]frase-<clave>.mp3
+export function frase(clave) {
+  const carpeta = idioma() === 'es' ? '' : `${idioma()}/`;
+  return reproducir(`assets/audio/${carpeta}frase-${clave}.mp3`, t(`frase.${clave}`));
 }
 
 // Usa el mp3 del POI si existe; si no, lee el texto con la voz del navegador.
@@ -154,7 +175,7 @@ function hablarInterno(texto, onProgreso) {
   return new Promise(resolve => {
     if (!('speechSynthesis' in window)) return resolve();
     const u = new SpeechSynthesisUtterance(texto);
-    u.lang = 'es-AR';
+    u.lang = VOZ_LANG[idioma()];
     const voz = elegirVoz();
     if (voz) { u.voice = voz; u.lang = voz.lang; }
     u.rate = leerAjuste('velocidad', 1);
@@ -176,7 +197,7 @@ export function frases(texto) {
 // ---------- Fichas ----------
 // "lugar" = la foto es de este sitio; "epoca" = misma historia, otro lugar.
 export function etiquetaRelacion(f) {
-  return f.relacion === 'epoca' ? 'foto de época' : 'foto de este lugar';
+  return t(f.relacion === 'epoca' ? 'relacion.epoca' : 'relacion.lugar');
 }
 
 export function creditoHTML(f) {
@@ -221,6 +242,8 @@ export function crearHoja() {
   function cerrar() { hoja.classList.remove('open'); callar(); poiActual = null; }
   return { abrir, cerrar, elemento: hoja, contenido };
 }
+
+export { idioma, t };
 
 export function parametro(nombre) {
   return new URLSearchParams(location.search).get(nombre);

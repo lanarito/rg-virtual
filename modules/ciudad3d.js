@@ -1,6 +1,9 @@
 // Vuelo 3D automático: la cámara va de lugar en lugar y en cada uno se abre el portal al pasado.
 import { cargarDatos, googleKey, frase, callar, esc, distancia, rumbo } from './core.js';
 import { iniciarSonido, alternarMusica, musicaEncendida } from './sonido.js';
+import { t, traducirPagina } from './i18n.js';
+
+traducirPagina();
 import { abrirPortal, cerrarPortal, precargar } from './portal.js';
 
 const C = window.Cesium;
@@ -144,11 +147,11 @@ async function volar() {
   while (volando && indice < recorrido.length) {
     const poi = recorrido[indice];
     precargar(poi);
-    mostrarTarjeta(poi, indice === 0 ? 'Volando hacia' : `Desde ${recorrido[indice - 1].nombre}`, 'Tocá para pausar');
+    mostrarTarjeta(poi, indice === 0 ? t('vuelo.hacia') : t('vuelo.desde', { lugar: recorrido[indice - 1].nombre }), t('vuelo.pausar'));
     const llego = await volarDron(posicion, poi);
     if (!llego) break;
     posicion = { lat: poi.lat, lon: poi.lon, rumbo: rumbo(posicion.lat, posicion.lon, poi.lat, poi.lon) };
-    mostrarTarjeta(poi, 'Llegaste a', 'Se abre el portal…');
+    mostrarTarjeta(poi, t('vuelo.llegaste'), t('vuelo.seAbre'));
     await new Promise(r => setTimeout(r, 1200));
     if (!volando) break;
     await abrirPortal(poi, { camara: false });
@@ -157,8 +160,8 @@ async function volar() {
   if (indice >= recorrido.length) {
     indice = 0;
     volando = false;
-    frase('vuelo-fin', 'Este fue el recorrido. ¡Gracias por visitar Río Gallegos!');
-    mostrarTarjeta(recorrido[0], 'Recorrido terminado', 'Tocá para volar de nuevo');
+    frase('vuelo-fin');
+    mostrarTarjeta(recorrido[0], t('vuelo.terminado'), t('vuelo.otraVez'));
     $('tarjetaIcono').textContent = '▶';
   }
 }
@@ -170,7 +173,7 @@ function pausar() {
   callar();
   if (animacion) cancelAnimationFrame(animacion);
   const poi = recorrido[indice];
-  mostrarTarjeta(poi, 'En pausa', 'Tocá para seguir volando');
+  mostrarTarjeta(poi, t('vuelo.pausa'), t('vuelo.seguir'));
   $('tarjetaIcono').textContent = '▶';
 }
 
@@ -184,7 +187,7 @@ function vistaGeneral() {
 const btnMusica = $('btnMusica');
 const pintarMusica = () => {
   btnMusica.textContent = musicaEncendida() ? '🎵' : '🔇';
-  btnMusica.setAttribute('aria-label', musicaEncendida() ? 'Apagar música' : 'Prender música');
+  btnMusica.setAttribute('aria-label', t(musicaEncendida() ? 'musica.apagar' : 'musica.prender'));
 };
 btnMusica.onclick = () => { alternarMusica(); pintarMusica(); };
 pintarMusica();
@@ -196,6 +199,6 @@ $('btnVolar').onclick = async () => {
   iniciarSonido();
   $('inicio').classList.add('oculto');
   setTimeout(() => $('inicio').remove(), 900);
-  await frase('vuelo-inicio', 'Vamos a volar sobre Río Gallegos. Acomodate y disfrutá del paseo.');
+  await frase('vuelo-inicio');
   volar();
 };

@@ -26,9 +26,20 @@ Para que el portal quede **alineado** con la foto vieja, completá en cada foto 
 
 Las fotos van en `assets/fotos/historicas/` y `assets/fotos/actuales/`. Guardá siempre autor, licencia y fuente.
 
+## Idiomas
+
+Español (por defecto), inglés y portugués. Se eligen en la pantalla de inicio; si el celular está en inglés o portugués, la app arranca sola en ese idioma.
+- Textos de pantallas: `modules/i18n.js`.
+- Nombres, historias y títulos de fotos: `data/traducciones.json` (si falta una traducción, se muestra en español).
+- Audios: `assets/audio/` (es), `assets/audio/en/`, `assets/audio/pt/`.
+
+## Fotos sincronizadas con la voz
+
+Cada foto histórica tiene `desdeFrase`: en qué frase de la narración aparece (0 = la primera; 2.5 = a mitad de la tercera). Regla: en cada portal solo van fotos de ese lugar o de algo que la narración nombra.
+
 ## Narración
 
-Voz femenina argentina (Elena, es-AR) pregrabada en `assets/audio/<id>.mp3`. Si cambiás un texto en `data/pois.json`, regenerá los audios:
+Voces femeninas pregrabadas: Elena (es-AR), Ava (en-US) y Francisca (pt-BR). Si cambiás un texto en `data/pois.json`, regenerá los audios:
 
 ```bash
 pip install edge-tts
