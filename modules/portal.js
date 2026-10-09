@@ -12,6 +12,7 @@ const MIN_SEGUNDOS_POR_FOTO = 7;
 
 let capa = null;
 let abierto = null; // { cerrar }
+let generacion = 0; // cada apertura tiene su número; un cierre viejo no toca un portal nuevo
 
 function crearCapa() {
   capa = document.createElement('section');
@@ -62,6 +63,7 @@ function imagenDeHoy(poi) {
 export function abrirPortal(poi, { camara = true } = {}) {
   if (abierto) abierto.cerrar(true);
   if (!capa) crearCapa();
+  const gen = ++generacion;
   const fotos = poi.fotosHistoricas;
   if (!fotos.length) return Promise.resolve();
 
@@ -198,16 +200,20 @@ export function abrirPortal(poi, { camara = true } = {}) {
       callar();
       if (adentro && !rapido) whoosh(false);
       capa.classList.remove('adentro');
-      setTimeout(() => {
-        capa.classList.remove('abriendo');
-        setTimeout(() => {
+      const terminar = () => {
+        stream?.getTracks().forEach(t => t.stop());
+        if (gen === generacion) {
           capa.className = 'portal';
-          stream?.getTracks().forEach(t => t.stop());
           video.srcObject = null;
           document.body.style.overflow = '';
-          resolve();
-        }, rapido ? 0 : 500);
-      }, rapido ? 0 : 1100);
+        }
+        resolve();
+      };
+      if (rapido) return terminar();
+      setTimeout(() => {
+        if (gen === generacion) capa.classList.remove('abriendo');
+        setTimeout(terminar, 500);
+      }, 1100);
     }
     abierto = { cerrar };
   });

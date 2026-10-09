@@ -180,7 +180,8 @@ export function etiquetaRelacion(f) {
 }
 
 export function creditoHTML(f) {
-  return `<span class="credito">${esc(f.autor)} · ${esc(f.licencia)} · <a href="${esc(f.fuente)}" target="_blank" rel="noopener">fuente</a></span>`;
+  const fuente = /^https?:/.test(f.fuente || '') ? ` · <a href="${esc(f.fuente)}" target="_blank" rel="noopener">fuente</a>` : (f.fuente ? ` · ${esc(f.fuente)}` : '');
+  return `<span class="credito">${esc(f.autor)} · ${esc(f.licencia)}${fuente}</span>`;
 }
 
 export function fichaHTML(poi, datos, { acciones = '' } = {}) {
