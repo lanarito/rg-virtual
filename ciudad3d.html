@@ -3,34 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Ciudad 3D</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.145.0/Build/Cesium/Widgets/widgets.css">
+  <title>Río Gallegos en 3D</title>
+  <meta name="theme-color" content="#14110d">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%80%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.145.0/Build/Cesium/Widgets/widgets.css">
   <link rel="stylesheet" href="css/app.css">
   <style>
-    body { display: flex; flex-direction: column; height: 100dvh; }
-    #cesium { flex: 1; min-height: 0; position: relative; }
-    .controles { position: fixed; left: 12px; right: 12px; bottom: 20px; z-index: 1200; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; pointer-events: none; }
-    .controles > * { pointer-events: auto; }
-    .aviso3d { position: fixed; top: 112px; left: 50%; transform: translateX(-50%); z-index: 1100; background: var(--surface); color: var(--text); padding: 8px 14px; border-radius: 12px; box-shadow: var(--shadow); font-size: .88rem; max-width: calc(100vw - 32px); text-align: center; }
-    .cesium-viewer-bottom { bottom: 70px; }
+    #cesium { position: fixed; inset: 0; }
+    .cesium-viewer-bottom { bottom: 96px; }
+    .arriba-izq { top: max(14px, env(safe-area-inset-top)); left: 14px; text-decoration: none; display: grid; place-items: center; }
   </style>
   <script>window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.145.0/Build/Cesium/';</script>
   <script src="https://cdn.jsdelivr.net/npm/cesium@1.145.0/Build/Cesium/Cesium.js"></script>
 </head>
-<body>
-  <header class="topbar">
-    <a class="back" href="index.html" aria-label="Volver">‹</a>
-    <h1>Ciudad 3D</h1>
-    <button class="btn small sec" id="btnCapa" hidden>Cambiar vista</button>
-  </header>
-  <nav class="chips" id="chips"></nav>
-  <div id="cesium"></div>
-  <div class="aviso3d" id="aviso" hidden></div>
-  <div class="controles">
-    <button class="btn" id="btnTour">▶ Recorrido guiado</button>
-    <button class="btn sec" id="btnInicio" style="background: var(--surface)">🏠</button>
-  </div>
+<body class="app">
+  <div id="cesium" aria-label="Vista 3D de Río Gallegos"></div>
+  <a class="redondo arriba-izq" href="index.html" aria-label="Volver al paseo">✕</a>
+  <button class="redondo arriba-der" id="btnMusica" aria-label="Apagar música">🎵</button>
+
+  <button class="tarjeta" id="tarjeta" hidden>
+    <span class="tarjeta-portal" id="tarjetaFoto" aria-hidden="true"></span>
+    <span class="tarjeta-texto">
+      <small id="tarjetaArriba">Volando hacia</small>
+      <b id="tarjetaNombre"></b>
+      <span id="tarjetaAbajo">Tocá para pausar</span>
+    </span>
+    <span class="tarjeta-ir" aria-hidden="true" id="tarjetaIcono">⏸</span>
+  </button>
+
+  <section class="inicio" id="inicio">
+    <div class="inicio-fondo">
+      <img src="assets/fotos/actuales/ria-marea-baja.jpg" alt="">
+      <img class="antes" src="assets/fotos/historicas/muelle-ycf-1957.jpg" alt="">
+    </div>
+    <div class="inicio-contenido">
+      <div class="inicio-anillo" aria-hidden="true"></div>
+      <h1>Río Gallegos desde el cielo</h1>
+      <p>Un vuelo por la ciudad, la ría, Laguna Azul y Cabo Vírgenes. En cada lugar se abre un portal al pasado.</p>
+      <button class="btn grande" id="btnVolar">Volar</button>
+      <a class="inicio-link" href="index.html">o volvé al paseo a pie</a>
+    </div>
+  </section>
+
   <script type="module" src="modules/ciudad3d.js"></script>
 </body>
 </html>

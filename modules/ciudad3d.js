@@ -1,19 +1,19 @@
-import { cargarDatos, crearHoja, fichaHTML, narrar, callar, googleKey, parametro, esc, toast, leerAjuste, guardarAjuste } from './core.js';
+// Vuelo 3D automático: la cámara va de lugar en lugar y en cada uno se abre el portal al pasado.
+import { cargarDatos, googleKey, frase, callar, esc } from './core.js';
+import { iniciarSonido, alternarMusica, musicaEncendida } from './sonido.js';
+import { abrirPortal, cerrarPortal, precargar } from './portal.js';
 
 const C = window.Cesium;
-const datos = await cargarDatos();
-const hoja = crearHoja();
 const $ = id => document.getElementById(id);
-const aviso = msg => { $('aviso').hidden = !msg; $('aviso').innerHTML = msg || ''; };
-
+const datos = await cargarDatos();
 const key = googleKey();
-let modo = key && leerAjuste('vista3d', 'google') === 'google' ? 'google' : 'satelite';
+let modo = key ? 'google' : 'satelite';
 let viewer = null;
 
 const opcionesBase = {
   animation: false, timeline: false, baseLayerPicker: false, geocoder: false, homeButton: false,
   sceneModePicker: false, navigationHelpButton: false, fullscreenButton: false,
-  infoBox: false, selectionIndicator: false, requestRenderMode: true
+  infoBox: false, selectionIndicator: false
 };
 
 async function crearVisor() {
@@ -23,12 +23,9 @@ async function crearVisor() {
     viewer = new C.Viewer('cesium', { ...opcionesBase, globe: false, baseLayer: false });
     viewer.scene.skyAtmosphere.show = true;
     try {
-      const tileset = await C.createGooglePhotorealistic3DTileset();
-      viewer.scene.primitives.add(tileset);
-      aviso('');
+      viewer.scene.primitives.add(await C.createGooglePhotorealistic3DTileset());
     } catch (e) {
       console.error(e);
-      toast('No cargó el 3D de Google. Paso a vista satelital.');
       modo = 'satelite';
       return crearVisor();
     }
@@ -40,61 +37,98 @@ async function crearVisor() {
         C.ArcGisMapServerImageryProvider.fromUrl('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer')
       )
     });
-    aviso(key ? '' : 'Vista satelital. Para ver edificios en 3D cargá tu clave de Google en <a href="config.html">Configuración</a>.');
   }
   viewer.scene.screenSpaceCameraController.minimumZoomDistance = 30;
-  agregarPuntos();
-  configurarClicks();
-  $('btnCapa').hidden = !key;
-  $('btnCapa').textContent = modo === 'google' ? '🛰️ Satélite' : '🏙️ 3D Google';
-}
-
-// Altura de los marcadores: con el 3D de Google no hay terreno donde "apoyarlos".
-const alturaMarca = () => (modo === 'google' ? 70 : 25);
-
-function agregarPuntos() {
   for (const poi of datos.pois) {
-    const cat = datos.categorias[poi.categoria] || { color: '#ffffff' };
     viewer.entities.add({
       id: poi.id,
       position: C.Cartesian3.fromDegrees(poi.lon, poi.lat, alturaMarca()),
-      point: { pixelSize: 14, color: C.Color.fromCssColorString(cat.color), outlineColor: C.Color.WHITE, outlineWidth: 2, disableDepthTestDistance: Number.POSITIVE_INFINITY },
-      label: {
-        text: poi.nombre, font: '600 14px system-ui, sans-serif', fillColor: C.Color.WHITE,
-        outlineColor: C.Color.BLACK, outlineWidth: 3, style: C.LabelStyle.FILL_AND_OUTLINE,
-        pixelOffset: new C.Cartesian2(0, -20), disableDepthTestDistance: Number.POSITIVE_INFINITY,
-        distanceDisplayCondition: new C.DistanceDisplayCondition(0, 1600)
-      }
+      point: { pixelSize: 16, color: C.Color.fromCssColorString('#e8b04b'), outlineColor: C.Color.WHITE, outlineWidth: 3, disableDepthTestDistance: Number.POSITIVE_INFINITY }
     });
   }
-}
-
-function configurarClicks() {
-  const h = new C.ScreenSpaceEventHandler(viewer.scene.canvas);
-  h.setInputAction(click => {
-    const pick = viewer.scene.pick(click.position);
-    const poi = datos.pois.find(p => p.id === pick?.id?.id);
-    if (poi) { pararTour(); irA(poi); }
+  // Tocar un punto dorado abre su portal
+  new C.ScreenSpaceEventHandler(viewer.scene.canvas).setInputAction(click => {
+    const poi = datos.pois.find(p => p.id === viewer.scene.pick(click.position)?.id?.id);
+    if (poi) { pausar(); irA(poi).then(() => abrirPortal(poi, { camara: false })); }
   }, C.ScreenSpaceEventType.LEFT_CLICK);
 }
 
-function irA(poi, { narrarAlLlegar = false } = {}) {
+const alturaMarca = () => (modo === 'google' ? 70 : 25);
+
+function irA(poi) {
   return new Promise(resolve => {
     const cam = poi.camara3d || { rango: 400, heading: 0, pitch: -30 };
-    const centro = C.Cartesian3.fromDegrees(poi.lon, poi.lat, alturaMarca() - 40);
-    viewer.camera.flyToBoundingSphere(new C.BoundingSphere(centro, 20), {
+    viewer.camera.flyToBoundingSphere(new C.BoundingSphere(C.Cartesian3.fromDegrees(poi.lon, poi.lat, alturaMarca() - 40), 20), {
       offset: new C.HeadingPitchRange(C.Math.toRadians(cam.heading), C.Math.toRadians(cam.pitch), cam.rango),
-      duration: 3.5,
-      complete: () => {
-        hoja.abrir(poi, fichaHTML(poi, datos, { acciones: `<a class="btn small sec" href="mapa.html?poi=${encodeURIComponent(poi.id)}">🗺️ Mapa</a>` }));
-        if (narrarAlLlegar) narrar(poi).then(resolve); else resolve();
-      },
-      cancel: resolve
+      duration: 5, complete: resolve, cancel: resolve
     });
   });
 }
 
-function vistaInicial(duracion = 2.5) {
+// La cámara gira despacio alrededor del lugar mientras se espera
+function orbitar(segundos) {
+  return new Promise(resolve => {
+    const fin = Date.now() + segundos * 1000;
+    const paso = () => {
+      if (!volando || Date.now() > fin) return resolve();
+      viewer.camera.rotate(C.Cartesian3.UNIT_Z, -0.0012);
+      requestAnimationFrame(paso);
+    };
+    paso();
+  });
+}
+
+// ---------- Tarjeta ----------
+function mostrarTarjeta(poi, arriba, abajo) {
+  $('tarjeta').hidden = false;
+  $('tarjetaFoto').style.backgroundImage = `url('${esc(poi.fotosHistoricas[0].archivo)}')`;
+  $('tarjetaArriba').textContent = arriba;
+  $('tarjetaNombre').textContent = poi.nombre;
+  $('tarjetaAbajo').textContent = abajo;
+}
+
+// ---------- Vuelo automático ----------
+let volando = false;
+let indice = 0;
+
+async function volar() {
+  volando = true;
+  $('tarjetaIcono').textContent = '⏸';
+  while (volando && indice < datos.pois.length) {
+    const poi = datos.pois[indice];
+    precargar(poi);
+    mostrarTarjeta(poi, 'Volando hacia', 'Tocá para pausar');
+    await irA(poi);
+    if (!volando) break;
+    await orbitar(1.5);
+    if (!volando) break;
+    await abrirPortal(poi, { camara: false });
+    indice++;
+  }
+  if (indice >= datos.pois.length) {
+    indice = 0;
+    volando = false;
+    frase('vuelo-fin', 'Este fue el recorrido. ¡Gracias por visitar Río Gallegos!');
+    vistaGeneral();
+    mostrarTarjeta(datos.pois[0], 'Recorrido terminado', 'Tocá para volar de nuevo');
+    $('tarjetaIcono').textContent = '▶';
+  }
+}
+
+function pausar() {
+  if (!volando) return;
+  volando = false;
+  cerrarPortal();
+  callar();
+  viewer.camera.cancelFlight();
+  const poi = datos.pois[indice];
+  mostrarTarjeta(poi, 'En pausa', 'Tocá para seguir volando');
+  $('tarjetaIcono').textContent = '▶';
+}
+
+$('tarjeta').onclick = () => (volando ? pausar() : volar());
+
+function vistaGeneral(duracion = 3) {
   const { centro } = datos.ciudad;
   viewer.camera.flyTo({
     destination: C.Cartesian3.fromDegrees(centro.lon + 0.004, centro.lat - 0.022, 1500),
@@ -103,43 +137,22 @@ function vistaInicial(duracion = 2.5) {
   });
 }
 
-// ---------- Recorrido guiado ----------
-let tourActivo = false;
-async function iniciarTour() {
-  tourActivo = true;
-  $('btnTour').textContent = '⏹ Detener';
-  for (const poi of datos.pois) {
-    if (!tourActivo) break;
-    await irA(poi, { narrarAlLlegar: true });
-    if (!tourActivo) break;
-    await new Promise(r => setTimeout(r, 1200));
-  }
-  pararTour();
-}
-function pararTour() {
-  if (!tourActivo) return;
-  tourActivo = false;
-  callar();
-  $('btnTour').textContent = '▶ Recorrido guiado';
-}
-$('btnTour').onclick = () => (tourActivo ? pararTour() : iniciarTour());
-$('btnInicio').onclick = () => { pararTour(); hoja.cerrar(); vistaInicial(); };
-$('btnCapa').onclick = async () => {
-  pararTour();
-  modo = modo === 'google' ? 'satelite' : 'google';
-  guardarAjuste('vista3d', modo);
-  await crearVisor();
-  vistaInicial(0);
+// ---------- Música ----------
+const btnMusica = $('btnMusica');
+const pintarMusica = () => {
+  btnMusica.textContent = musicaEncendida() ? '🎵' : '🔇';
+  btnMusica.setAttribute('aria-label', musicaEncendida() ? 'Apagar música' : 'Prender música');
 };
-
-// Chips para saltar a cada lugar
-$('chips').innerHTML = datos.pois.map(p => `<button class="chip" data-id="${esc(p.id)}">${esc(p.nombre)}</button>`).join('');
-$('chips').addEventListener('click', e => {
-  const b = e.target.closest('.chip'); if (!b) return;
-  pararTour();
-  irA(datos.pois.find(p => p.id === b.dataset.id));
-});
+btnMusica.onclick = () => { alternarMusica(); pintarMusica(); };
+pintarMusica();
 
 await crearVisor();
-const inicial = datos.pois.find(p => p.id === parametro('poi'));
-if (inicial) { vistaInicial(0); irA(inicial); } else vistaInicial(0);
+vistaGeneral(0);
+
+$('btnVolar').onclick = async () => {
+  iniciarSonido();
+  $('inicio').classList.add('oculto');
+  setTimeout(() => $('inicio').remove(), 900);
+  await frase('vuelo-inicio', 'Vamos a volar sobre Río Gallegos. Acomodate y disfrutá del paseo.');
+  volar();
+};

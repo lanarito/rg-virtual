@@ -77,28 +77,11 @@ export function seguirPosicion(onPos, onError) {
   return () => navigator.geolocation.clearWatch(id);
 }
 
-// ---------- Brújula ----------
-// Llama a onRumbo(grados) con 0 = norte. En iPhone necesita permiso dentro de un toque del usuario.
-export async function iniciarBrujula(onRumbo) {
-  const DOE = window.DeviceOrientationEvent;
-  if (!DOE) return false;
-  if (typeof DOE.requestPermission === 'function') {
-    try { if (await DOE.requestPermission() !== 'granted') return false; } catch { return false; }
-  }
-  let absoluta = false;
-  const manejar = e => {
-    let h = null;
-    if (typeof e.webkitCompassHeading === 'number') h = e.webkitCompassHeading;
-    else if (e.absolute || e.type === 'deviceorientationabsolute') { if (e.alpha != null) h = (360 - e.alpha) % 360; }
-    if (h != null) onRumbo(h);
-  };
-  window.addEventListener('deviceorientationabsolute', e => { absoluta = true; manejar(e); });
-  window.addEventListener('deviceorientation', e => { if (!absoluta) manejar(e); });
-  return true;
-}
-
 // ---------- Narración ----------
+// Avisa con eventos 'narracion:inicio' / 'narracion:fin' (la música baja sola) y, si se pide,
+// informa el avance (0 a 1) para mostrar subtítulos.
 let audioActual = null;
+let idNarracion = 0;
 
 // Voz del navegador (solo de respaldo): primero argentina, después latinoamericana; la de España, última.
 const ORDEN_ACENTOS = ['es-AR', 'es-UY', 'es-419', 'es-US', 'es-MX', 'es-CL', 'es-CO'];
@@ -114,17 +97,24 @@ function elegirVoz() {
 
 // La voz grabada (mp3, Elena de Argentina) se usa salvo que el usuario elija la del navegador.
 const usarGrabada = () => leerAjuste('vozGrabada', true);
+const avisar = nombre => window.dispatchEvent(new Event(nombre));
 
-function reproducir(src, textoRespaldo) {
+function reproducir(src, texto, onProgreso) {
   callar();
-  if (!src || !usarGrabada()) return hablar(textoRespaldo);
+  const id = ++idNarracion;
+  avisar('narracion:inicio');
+  const terminar = resolve => () => { if (id === idNarracion) avisar('narracion:fin'); resolve(); };
+  if (!src || !usarGrabada()) return hablarInterno(texto, onProgreso).then(() => { if (id === idNarracion) avisar('narracion:fin'); });
   return new Promise(resolve => {
     const a = new Audio(src);
     audioActual = a;
     a.playbackRate = leerAjuste('velocidad', 1);
-    a.onended = () => resolve();
-    a.onerror = () => { if (audioActual === a) hablar(textoRespaldo).then(resolve); else resolve(); };
-    a.play().catch(() => { if (audioActual === a) hablar(textoRespaldo).then(resolve); else resolve(); });
+    const fin = terminar(resolve);
+    const respaldo = () => { if (audioActual === a) hablarInterno(texto, onProgreso).then(fin); else fin(); };
+    if (onProgreso) a.ontimeupdate = () => a.duration && onProgreso(a.currentTime / a.duration);
+    a.onended = fin;
+    a.onerror = respaldo;
+    a.play().catch(respaldo);
   });
 }
 
@@ -133,18 +123,24 @@ export function frase(clave, texto) {
   return reproducir(`assets/audio/frase-${clave}.mp3`, texto);
 }
 
+// Usa el mp3 del POI si existe; si no, lee el texto con la voz del navegador.
+export function narrar(poi, onProgreso) {
+  return reproducir(poi.audio, `${poi.nombre}. ${poi.texto}`, onProgreso);
+}
+
 export function vocesEspanol() {
   if (!('speechSynthesis' in window)) return [];
   return speechSynthesis.getVoices().filter(v => v.lang?.toLowerCase().startsWith('es'));
 }
 
 export function callar() {
+  idNarracion++;
   try { speechSynthesis.cancel(); } catch { /* nada */ }
   if (audioActual) { audioActual.pause(); audioActual = null; }
+  avisar('narracion:fin');
 }
 
-export function hablar(texto) {
-  callar();
+function hablarInterno(texto, onProgreso) {
   return new Promise(resolve => {
     if (!('speechSynthesis' in window)) return resolve();
     const u = new SpeechSynthesisUtterance(texto);
@@ -152,14 +148,19 @@ export function hablar(texto) {
     const voz = elegirVoz();
     if (voz) { u.voice = voz; u.lang = voz.lang; }
     u.rate = leerAjuste('velocidad', 1);
+    if (onProgreso) u.onboundary = e => onProgreso(e.charIndex / texto.length);
     u.onend = u.onerror = () => resolve();
     speechSynthesis.speak(u);
   });
 }
 
-// Usa el mp3 del POI si existe; si no, lee el texto con la voz del navegador.
-export function narrar(poi) {
-  return reproducir(poi.audio, `${poi.nombre}. ${poi.texto}`);
+export function hablar(texto) {
+  return reproducir(null, texto);
+}
+
+// Parte un texto en frases para mostrarlas como subtítulos.
+export function frases(texto) {
+  return texto.match(/[^.!?]+[.!?]*/g)?.map(f => f.trim()).filter(Boolean) || [texto];
 }
 
 // ---------- Fichas ----------

@@ -1,41 +1,5 @@
 <!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Mapa y paseo</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%80%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/app.css">
-  <style>
-    body { display: flex; flex-direction: column; height: 100dvh; }
-    #mapa { flex: 1; min-height: 0; }
-    .flotantes { position: fixed; right: 12px; bottom: 24px; z-index: 1200; display: grid; gap: 8px; justify-items: end; }
-    .estado { background: var(--surface); color: var(--text); border-radius: 12px; padding: 6px 10px; font-size: .85rem; box-shadow: var(--shadow); }
-    .pin { width: 34px; height: 34px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: grid; place-items: center; border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
-    .pin span { transform: rotate(45deg); font-size: 16px; }
-    .pin.visto { opacity: .55; }
-    .yo { width: 18px; height: 18px; border-radius: 50%; background: #1d70b8; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(29,112,184,.25); }
-    .opacidad { display: none; align-items: center; gap: 6px; }
-    .opacidad.on { display: flex; }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <a class="back" href="index.html" aria-label="Volver">‹</a>
-    <h1>Mapa y paseo</h1>
-    <button class="btn small sec" id="btnPlano" title="Ver la carta de 1931 sobre el mapa">📜 1931</button>
-  </header>
-  <nav class="chips" id="chips"></nav>
-  <div id="mapa"></div>
-
-  <div class="flotantes">
-    <div class="estado opacidad" id="opacidad">Plano 1931 <input type="range" id="sliderPlano" min="0" max="1" step="0.05" value="0.7"></div>
-    <div class="estado" id="estado" hidden></div>
-    <button class="btn" id="btnPaseo">🚶 Activar modo paseo</button>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="modules/mapa.js"></script>
-</body>
-</html>
+<meta charset="utf-8">
+<title>Río Gallegos Inmersivo</title>
+<meta http-equiv="refresh" content="0; url=index.html">
+<a href="index.html">Ir al paseo</a>

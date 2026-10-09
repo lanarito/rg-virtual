@@ -4,53 +4,44 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Río Gallegos Inmersivo</title>
-  <meta name="description" content="Paseo virtual por Río Gallegos: mapa, ciudad 3D, Street View y portales al pasado.">
-  <meta name="theme-color" content="#1d5fa8">
+  <meta name="description" content="Paseo por Río Gallegos con portales al pasado: llegás a un lugar histórico y ves cómo era hace más de cien años.">
+  <meta name="theme-color" content="#14110d">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8C%80%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
-  <header class="hero">
-    <h1>Río Gallegos Inmersivo</h1>
-    <p>Recorré la ciudad hoy y viajá a cómo era hace más de cien años.</p>
-  </header>
+<body class="app">
+  <div id="mapa" aria-label="Mapa de Río Gallegos con los portales"></div>
 
-  <main class="wrap">
-    <div class="cards">
-      <a class="card" href="mapa.html">
-        <div class="ico">🗺️</div>
-        <h2>Mapa y paseo</h2>
-        <p>Los lugares de interés con su historia. Activá el modo paseo y el celu te avisa cuando llegás a cada uno.</p>
-        <span class="tag">Funciona sin configurar nada</span>
-      </a>
-      <a class="card" href="portal.html">
-        <div class="ico">🌀</div>
-        <h2>Portal al pasado</h2>
-        <p>En cada lugar de interés se abre un portal: cruzalo y mirá cómo era hace 50, 100 o 400 años.</p>
-        <span class="tag">Realidad aumentada · cámara + GPS</span>
-      </a>
-      <a class="card" href="ciudad3d.html">
-        <div class="ico">🛰️</div>
-        <h2>Ciudad 3D</h2>
-        <p>Volá sobre la ciudad, la ría, Laguna Azul y Cabo Vírgenes con recorrido guiado narrado.</p>
-        <span class="tag">Mejor con clave de Google</span>
-      </a>
-      <a class="card" href="paseo360.html">
-        <div class="ico">📷</div>
-        <h2>Paseo 360</h2>
-        <p>Caminá las calles con Street View moviendo el celular. Te cuenta qué hay cerca.</p>
-        <span class="tag">Requiere clave de Google</span>
-      </a>
+  <button class="redondo arriba-der" id="btnMusica" aria-label="Apagar música">🎵</button>
+
+  <button class="tarjeta" id="tarjeta" hidden>
+    <span class="tarjeta-portal" id="tarjetaFoto" aria-hidden="true"></span>
+    <span class="tarjeta-texto">
+      <small id="tarjetaArriba">Portal más cercano</small>
+      <b id="tarjetaNombre"></b>
+      <span id="tarjetaAbajo"></span>
+    </span>
+    <span class="tarjeta-ir" aria-hidden="true">›</span>
+  </button>
+
+  <section class="inicio" id="inicio">
+    <div class="inicio-fondo">
+      <img src="assets/fotos/actuales/centro.jpg" alt="">
+      <img class="antes" src="assets/fotos/historicas/tehuelches-25-mayo-1900.jpg" alt="">
     </div>
-
-    <div class="box">
-      <div class="row" style="justify-content: space-between">
-        <span>⚙️ Clave de Google, voz de la narración y créditos</span>
-        <a class="btn small sec" href="config.html">Configuración</a>
-      </div>
+    <div class="inicio-contenido">
+      <div class="inicio-anillo" aria-hidden="true"></div>
+      <h1>Río Gallegos</h1>
+      <p class="inicio-sub">Un paseo con portales al pasado</p>
+      <p>Caminá por la ciudad. Cuando llegues a un lugar histórico se abre un portal, y vas a ver cómo era hace más de cien años.</p>
+      <button class="btn grande" id="btnEmpezar">Empezar</button>
+      <a class="inicio-link" href="ciudad3d.html">o volá sobre la ciudad en 3D</a>
+      <a class="inicio-ajustes" href="config.html">Ajustes</a>
     </div>
+  </section>
 
-    <p class="credito">Prototipo personal, sin fines comerciales. Fotos históricas y actuales de Wikimedia Commons; los créditos aparecen junto a cada imagen. Mapas © OpenStreetMap.</p>
-  </main>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="modules/app.js"></script>
 </body>
 </html>
