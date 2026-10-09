@@ -5,3 +5,6 @@ dist/
 
 # Links privados (contiene la clave de Google)
 links/
+
+# Fotos sin revisar ni permiso confirmado
+fotos-para-revisar/
