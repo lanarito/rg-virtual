@@ -22,6 +22,8 @@ const PENTATONICA = [440, 523.25, 587.33, 659.25, 783.99, 880, 1046.5];
 
 export function iniciarSonido() {
   if (ctx) { ctx.resume(); return; }
+  // iPhone: que la música suene aunque el celular esté en modo silencio (Safari 17+)
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch { /* nada */ }
   const AC = window.AudioContext || window.webkitAudioContext;
   if (!AC) return;
   ctx = new AC();

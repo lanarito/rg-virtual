@@ -80,8 +80,13 @@ export function seguirPosicion(onPos, onError) {
 // ---------- Narración ----------
 // Avisa con eventos 'narracion:inicio' / 'narracion:fin' (la música baja sola) y, si se pide,
 // informa el avance (0 a 1) para mostrar subtítulos.
-let audioActual = null;
 let idNarracion = 0;
+
+// Un único reproductor para toda la narración. En iPhone, un audio solo puede sonar sin que
+// toquen la pantalla si ese mismo reproductor ya sonó una vez después de un toque ("Empezar").
+const reproductor = new Audio();
+reproductor.preload = 'auto';
+reproductor.setAttribute('playsinline', '');
 
 // Voz del navegador (solo de respaldo): primero argentina, después latinoamericana; la de España, última.
 const ORDEN_ACENTOS = ['es-AR', 'es-UY', 'es-419', 'es-US', 'es-MX', 'es-CL', 'es-CO'];
@@ -106,15 +111,16 @@ function reproducir(src, texto, onProgreso) {
   const terminar = resolve => () => { if (id === idNarracion) avisar('narracion:fin'); resolve(); };
   if (!src || !usarGrabada()) return hablarInterno(texto, onProgreso).then(() => { if (id === idNarracion) avisar('narracion:fin'); });
   return new Promise(resolve => {
-    const a = new Audio(src);
-    audioActual = a;
-    a.playbackRate = leerAjuste('velocidad', 1);
+    const a = reproductor;
     const fin = terminar(resolve);
-    const respaldo = () => { if (audioActual === a) hablarInterno(texto, onProgreso).then(fin); else fin(); };
-    if (onProgreso) a.ontimeupdate = () => a.duration && onProgreso(a.currentTime / a.duration);
-    a.onended = fin;
-    a.onerror = respaldo;
-    a.play().catch(respaldo);
+    const vigente = () => id === idNarracion;
+    const respaldo = () => { if (vigente()) hablarInterno(texto, onProgreso).then(fin); else fin(); };
+    a.ontimeupdate = onProgreso ? () => vigente() && a.duration && onProgreso(a.currentTime / a.duration) : null;
+    a.onended = () => vigente() && fin();
+    a.onerror = () => vigente() && respaldo();
+    a.src = src;
+    a.playbackRate = leerAjuste('velocidad', 1);
+    a.play().catch(() => vigente() && respaldo());
   });
 }
 
@@ -136,7 +142,7 @@ export function vocesEspanol() {
 export function callar() {
   idNarracion++;
   try { speechSynthesis.cancel(); } catch { /* nada */ }
-  if (audioActual) { audioActual.pause(); audioActual = null; }
+  reproductor.pause();
   avisar('narracion:fin');
 }
 
