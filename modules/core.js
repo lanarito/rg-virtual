@@ -100,13 +100,37 @@ export async function iniciarBrujula(onRumbo) {
 // ---------- Narración ----------
 let audioActual = null;
 
+// Voz del navegador (solo de respaldo): primero argentina, después latinoamericana; la de España, última.
+const ORDEN_ACENTOS = ['es-AR', 'es-UY', 'es-419', 'es-US', 'es-MX', 'es-CL', 'es-CO'];
 function elegirVoz() {
-  const voces = speechSynthesis.getVoices();
+  const voces = speechSynthesis.getVoices().filter(v => v.lang?.replace('_', '-').startsWith('es'));
   const preferida = leerAjuste('voz', '');
+  const lang = v => v.lang.replace('_', '-');
   return voces.find(v => v.name === preferida)
-    || voces.find(v => v.lang === 'es-AR')
-    || voces.find(v => v.lang?.startsWith('es-4') || v.lang === 'es-US' || v.lang === 'es-MX')
-    || voces.find(v => v.lang?.startsWith('es'));
+    || ORDEN_ACENTOS.map(l => voces.find(v => lang(v) === l)).find(Boolean)
+    || voces.find(v => lang(v) !== 'es-ES')
+    || voces[0];
+}
+
+// La voz grabada (mp3, Elena de Argentina) se usa salvo que el usuario elija la del navegador.
+const usarGrabada = () => leerAjuste('vozGrabada', true);
+
+function reproducir(src, textoRespaldo) {
+  callar();
+  if (!src || !usarGrabada()) return hablar(textoRespaldo);
+  return new Promise(resolve => {
+    const a = new Audio(src);
+    audioActual = a;
+    a.playbackRate = leerAjuste('velocidad', 1);
+    a.onended = () => resolve();
+    a.onerror = () => { if (audioActual === a) hablar(textoRespaldo).then(resolve); else resolve(); };
+    a.play().catch(() => { if (audioActual === a) hablar(textoRespaldo).then(resolve); else resolve(); });
+  });
+}
+
+// Frases cortas de la app, grabadas en assets/audio/frase-<clave>.mp3
+export function frase(clave, texto) {
+  return reproducir(`assets/audio/frase-${clave}.mp3`, texto);
 }
 
 export function vocesEspanol() {
@@ -135,18 +159,15 @@ export function hablar(texto) {
 
 // Usa el mp3 del POI si existe; si no, lee el texto con la voz del navegador.
 export function narrar(poi) {
-  callar();
-  if (poi.audio) {
-    return new Promise(resolve => {
-      audioActual = new Audio(poi.audio);
-      audioActual.onended = audioActual.onerror = () => resolve();
-      audioActual.play().catch(() => hablar(`${poi.nombre}. ${poi.texto}`).then(resolve));
-    });
-  }
-  return hablar(`${poi.nombre}. ${poi.texto}`);
+  return reproducir(poi.audio, `${poi.nombre}. ${poi.texto}`);
 }
 
 // ---------- Fichas ----------
+// "lugar" = la foto es de este sitio; "epoca" = misma historia, otro lugar.
+export function etiquetaRelacion(f) {
+  return f.relacion === 'epoca' ? 'foto de época' : 'foto de este lugar';
+}
+
 export function creditoHTML(f) {
   return `<span class="credito">${esc(f.autor)} · ${esc(f.licencia)} · <a href="${esc(f.fuente)}" target="_blank" rel="noopener">fuente</a></span>`;
 }
@@ -154,7 +175,7 @@ export function creditoHTML(f) {
 export function fichaHTML(poi, datos, { acciones = '' } = {}) {
   const cat = datos.categorias[poi.categoria] || {};
   const figs = [
-    ...poi.fotosHistoricas.map(f => `<figure class="hist"><img loading="lazy" src="${esc(f.archivo)}" alt="${esc(f.titulo)}"><figcaption><b>${esc(f.anio)}</b> · ${esc(f.titulo)}<br>${creditoHTML(f)}</figcaption></figure>`),
+    ...poi.fotosHistoricas.map(f => `<figure class="hist"><img loading="lazy" src="${esc(f.archivo)}" alt="${esc(f.titulo)}"><figcaption><b>${esc(f.anio)}</b> · ${esc(f.titulo)} <i>(${esc(etiquetaRelacion(f))})</i><br>${creditoHTML(f)}</figcaption></figure>`),
     ...poi.fotosActuales.map(f => `<figure><img loading="lazy" src="${esc(f.archivo)}" alt="${esc(f.titulo)}"><figcaption>Hoy · ${esc(f.titulo)}<br>${creditoHTML(f)}</figcaption></figure>`)
   ].join('');
   return `<div class="ficha">

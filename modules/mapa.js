@@ -1,5 +1,5 @@
 import {
-  cargarDatos, fichaHTML, crearHoja, narrar, hablar, seguirPosicion, distancia, textoDistancia,
+  cargarDatos, fichaHTML, crearHoja, narrar, frase, seguirPosicion, distancia, textoDistancia,
   toast, vibrar, esc, parametro, leerAjuste, guardarAjuste
 } from './core.js';
 
@@ -118,7 +118,8 @@ function actualizarPosicion(pos) {
 
 function activarPaseo() {
   // Un primer "hablar" dentro del toque habilita la voz automática después (Chrome lo exige).
-  hablar(simular ? 'Modo paseo simulado. Tocá el mapa para moverte.' : 'Modo paseo activado. Te aviso cuando llegues a un lugar.');
+  if (simular) frase('paseo-simulado', 'Modo paseo simulado. Tocá el mapa para moverte.');
+  else frase('paseo-activado', 'Modo paseo activado. Te aviso cuando llegues a un lugar.');
   btnPaseo.textContent = '⏹ Terminar paseo';
   if (simular) {
     toast('Simulación: tocá el mapa para "caminar"');

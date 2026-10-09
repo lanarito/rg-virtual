@@ -1,6 +1,6 @@
 import {
   cargarDatos, buscarPoi, parametro, seguirPosicion, distancia, textoDistancia, rumbo,
-  iniciarBrujula, narrar, hablar, callar, vibrar, toast, esc
+  iniciarBrujula, narrar, frase, callar, vibrar, toast, esc, etiquetaRelacion
 } from './core.js';
 
 const AFRAME_URL = 'https://cdn.jsdelivr.net/npm/aframe@1.8.0/dist/aframe-v1.8.0.min.js';
@@ -20,15 +20,23 @@ function mostrarLista() {
   $('secLista').hidden = false;
   $('lista').innerHTML = conPortal.map(p => {
     const f = p.fotosHistoricas[0];
-    return `<a class="item" href="portal.html?poi=${encodeURIComponent(p.id)}">
-      <img src="${esc(f.archivo)}" alt="">
-      <div><b>${esc(p.nombre)}</b><br><small>Viajá a ${esc(f.anio)} · <span data-dist="${p.id}">calculando distancia…</span></small></div>
+    const anios = [...new Set(p.fotosHistoricas.map(x => x.anio))].sort().join(', ');
+    return `<a class="item" data-id="${esc(p.id)}" href="portal.html?poi=${encodeURIComponent(p.id)}">
+      <img src="${esc(f.archivo)}" alt="" loading="lazy">
+      <div><b>${esc(p.nombre)}</b><br><small>Viajá a ${esc(anios)} · <span data-dist="${p.id}">calculando distancia…</span></small></div>
     </a>`;
   }).join('');
+  let ordenado = false;
   const parar = seguirPosicion(pos => {
+    const dist = new Map(conPortal.map(p => [p.id, distancia(pos.lat, pos.lon, p.lat, p.lon)]));
     for (const p of conPortal) {
       const el = document.querySelector(`[data-dist="${p.id}"]`);
-      if (el) el.textContent = `a ${textoDistancia(distancia(pos.lat, pos.lon, p.lat, p.lon))}`;
+      if (el) el.textContent = `a ${textoDistancia(dist.get(p.id))}`;
+    }
+    // La primera vez, ordena la lista: el lugar más cercano arriba.
+    if (!ordenado) {
+      ordenado = true;
+      [...$('lista').children].sort((a, b) => dist.get(a.dataset.id) - dist.get(b.dataset.id)).forEach(el => $('lista').append(el));
     }
   }, () => document.querySelectorAll('[data-dist]').forEach(el => { el.textContent = 'sin GPS'; }));
   addEventListener('pagehide', parar);
@@ -118,7 +126,7 @@ function mostrarFotoVentana() {
   $('fotoPasado').alt = f.titulo;
   $('tituloFoto').textContent = `${f.anio} · ${f.titulo}`;
   $('anioSlider').textContent = f.anio;
-  $('creditoFoto').innerHTML = `${esc(f.autor)} · ${esc(f.licencia)}${f.nota ? ` · ${esc(f.nota)}` : ''}`;
+  $('creditoFoto').innerHTML = `<b>${esc(etiquetaRelacion(f))}</b> · ${esc(f.autor)} · ${esc(f.licencia)}${f.nota ? ` · ${esc(f.nota)}` : ''}`;
   aplicarSlider();
 }
 
@@ -251,14 +259,25 @@ function crearEscena() {
   $('arOverlay').addEventListener('beforexrselect', e => e.preventDefault());
   $('arColocarAdelante').onclick = colocarAdelante;
   $('arNarrar').onclick = () => narrar(poi);
+  $('arOtraFoto').hidden = poi.fotosHistoricas.length < 2;
+  $('arOtraFoto').onclick = () => {
+    indiceFoto = (indiceFoto + 1) % poi.fotosHistoricas.length;
+    actualizarTexturaAR();
+    mostrarFotoVentana();
+    toast(`${fotoActual().anio} · ${fotoActual().titulo}`);
+  };
   $('arSalir').onclick = () => escena.exitVR();
 
   const tex = $('texPasado');
+  // Foto apaisada: 6 m de ancho. Retrato vertical: 4 m de alto.
   const ajustarProporcion = () => {
     const prop = tex.naturalWidth / tex.naturalHeight || 1.5;
-    $('fotoGrande').setAttribute('height', 6 / prop);
+    const ancho = prop >= 1 ? 6 : 4 * prop;
+    $('fotoGrande').setAttribute('width', ancho);
+    $('fotoGrande').setAttribute('height', ancho / prop);
   };
-  tex.complete ? ajustarProporcion() : tex.addEventListener('load', ajustarProporcion);
+  tex.addEventListener('load', ajustarProporcion);
+  if (tex.complete) ajustarProporcion();
 }
 
 function actualizarTexturaAR() {
@@ -295,6 +314,7 @@ function colocadoPortal() {
   escena.setAttribute('ar-hit-test', 'enabled', false);
   $('arColocarAdelante').hidden = true;
   $('arAviso').textContent = '¡Portal abierto! Caminá a través del anillo para entrar al pasado.';
+  frase('portal-abierto', '¡Portal abierto! Caminá a través del anillo para viajar al pasado.');
   vibrar(60);
 }
 
@@ -320,7 +340,7 @@ function entrarAlPasado() {
   foto.lookAt(portal.position.x, 1.8, portal.position.z);
   mundo.setAttribute('visible', true);
   modoAgujero(true);
-  $('arAviso').textContent = `Estás en ${fotoActual().anio}. Volvé a cruzar el portal para regresar.`;
+  $('arAviso').textContent = `Estás en ${fotoActual().anio} (${etiquetaRelacion(fotoActual())}). Volvé a cruzar el portal para regresar.`;
   vibrar([40, 40, 120]);
   narrar(poi);
 }
@@ -341,8 +361,7 @@ function volverAlPresente() {
   $('mundoPasado').setAttribute('visible', false);
   modoAgujero(false);
   $('arAviso').textContent = 'Volviste al presente. Cruzá de nuevo cuando quieras.';
-  callar();
-  hablar('De vuelta al presente.');
+  frase('presente', 'De vuelta al presente.');
 }
 
 function salirAR() {
