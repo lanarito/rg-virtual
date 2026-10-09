@@ -29,7 +29,11 @@ export function guardarAjuste(clave, valor) {
     else localStorage.setItem(PREFIJO + clave, JSON.stringify(valor));
   } catch { /* sin almacenamiento */ }
 }
-export const googleKey = () => leerAjuste('googleKey', '');
+// Clave pública de Google Maps del sitio. Es segura de publicar porque en Google Cloud está
+// restringida a lanarito.github.io, solo a Maps JavaScript API + Map Tiles API, y con topes
+// diarios por debajo de la cuota gratis. Si se carga otra en Ajustes, se usa esa.
+const CLAVE_GOOGLE_SITIO = 'AIzaSyCIdykVXYKwU6d3r8CchGVBis72bju6p-E';
+export const googleKey = () => leerAjuste('googleKey', '') || CLAVE_GOOGLE_SITIO;
 
 // ---------- Utilidades ----------
 export function esc(s) {

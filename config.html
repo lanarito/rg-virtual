@@ -15,7 +15,7 @@
   <main class="wrap">
     <section class="box">
       <h2>Clave de Google</h2>
-      <p class="hint">Se guarda solo en este dispositivo. No queda en el código ni en GitHub.</p>
+      <p class="hint">El sitio ya trae una clave propia, así que no hace falta cargar nada. Solo completá esto si querés usar otra clave en este dispositivo.</p>
       <div class="field">
         <label for="key">API key</label>
         <input id="key" type="password" autocomplete="off" placeholder="AIza…">
@@ -81,7 +81,7 @@
       toast('Clave de Google guardada en este dispositivo ✅', 4000);
     }
     key.value = leerAjuste('googleKey', '');
-    const estado = () => { $('estadoKey').textContent = leerAjuste('googleKey', '') ? '✅ Hay una clave guardada.' : 'Sin clave: el mapa y el portal funcionan igual; el 3D usa satélite y Street View queda deshabilitado.'; };
+    const estado = () => { $('estadoKey').textContent = leerAjuste('googleKey', '') ? '✅ Usando tu clave propia en este dispositivo.' : '✅ Usando la clave del sitio. No hace falta hacer nada.'; };
     estado();
     $('guardar').onclick = () => { guardarAjuste('googleKey', key.value.trim()); estado(); toast('Clave guardada'); };
     $('borrar').onclick = () => { key.value = ''; guardarAjuste('googleKey', null); estado(); };
