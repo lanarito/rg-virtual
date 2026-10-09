@@ -58,7 +58,7 @@
       "lon": -69.205292,
       "radio": 50,
       "resumen": "Donde todo empezó: la subprefectura de 1885.",
-      "texto": "Río Gallegos nació el 19 de diciembre de 1885, cuando se instaló a orillas de la ría una subprefectura marítima. Eran unas pocas casillas de madera y chapa, rodeadas de estepa y viento. En 1904 el pueblo pasó a ser la capital del Territorio de Santa Cruz. El Reloj del Centenario recuerda los cien años de la ciudad, cumplidos en 1985.",
+      "texto": "Río Gallegos nació el 19 de diciembre de 1885, cuando se instaló a orillas de la ría una subprefectura marítima. Eran unas pocas casillas de madera y chapa, rodeadas de estepa y viento. En 1888 el pueblo pasó a ser la capital del Territorio de Santa Cruz. El Reloj del Centenario recuerda los cien años de la ciudad, cumplidos en 1985.",
       "audio": "assets/audio/fundacion.mp3",
       "panorama360": null,
       "streetView": {
@@ -463,6 +463,70 @@
       "verificado": false
     },
     {
+      "id": "escuela-1",
+      "nombre": "Escuela N°1 Hernando de Magallanes",
+      "categoria": "historia",
+      "lat": -51.624119,
+      "lon": -69.218219,
+      "radio": 30,
+      "resumen": "La primera escuela de la ciudad, de 1888.",
+      "texto": "La Escuela Provincial Número 1, Hernando de Magallanes, es la primera escuela de Río Gallegos: se fundó en 1888. Funcionó en distintos edificios, entre ellos uno sobre la calle Zapiola, hasta que en noviembre de 1930 se mudó a su edificio actual, en la calle Maipú 53. Por sus aulas pasaron generaciones de vecinos, y el Congreso la declaró de interés histórico nacional.",
+      "audio": "assets/audio/escuela-1.mp3",
+      "panorama360": null,
+      "streetView": {
+        "heading": 0,
+        "pitch": 5
+      },
+      "camara3d": {
+        "rango": 220,
+        "heading": 0,
+        "pitch": -28
+      },
+      "portal": true,
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/escuela-1.jpg",
+          "titulo": "La Escuela N°1 hoy",
+          "autor": "Mikelzubi",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Escuela_Provincial_N%C2%BA_1_Hernando_de_Magallanes.jpg"
+        }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/roil/alumnas-guardapolvo.jpg",
+          "titulo": "Alumnas de guardapolvo blanco frente a la escuela",
+          "anio": "c. 1935",
+          "relacion": "epoca",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO3.JPG)",
+          "nota": "Escuela a identificar. Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
+          "archivo": "assets/fotos/roil/alumnas-escuela.jpg",
+          "titulo": "Chicas frente a una escuela",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto106.jpg)",
+          "nota": "Escuela a identificar. Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        }
+      ],
+      "verificado": false
+    },
+    {
       "id": "avenida-roca",
       "nombre": "Avenida Roca y el Club Británico",
       "categoria": "historia",
@@ -602,14 +666,85 @@
       "verificado": false
     },
     {
+      "id": "hotel-argentino",
+      "nombre": "Hotel Argentino",
+      "categoria": "historia",
+      "lat": -51.62215,
+      "lon": -69.21335,
+      "radio": 30,
+      "resumen": "Un hotel histórico en Chacabuco y Roca.",
+      "texto": "En la esquina de Chacabuco y Roca funcionó el Hotel Argentino, uno de los hoteles históricos del centro de Río Gallegos. Ya aparece en fotos de principios de la década de 1920, y Foto Roil lo retrató varias veces, con los autos de la época estacionados en la puerta. Por sus habitaciones pasaron estancieros, viajantes y recién llegados a la Patagonia.",
+      "audio": "assets/audio/hotel-argentino.mp3",
+      "panorama360": null,
+      "streetView": {
+        "heading": 0,
+        "pitch": 5
+      },
+      "camara3d": {
+        "rango": 220,
+        "heading": 0,
+        "pitch": -28
+      },
+      "portal": true,
+      "fotosActuales": [],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/roil/hotel-argentino-autos.jpg",
+          "titulo": "El Hotel Argentino y los autos de la época",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 023.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
+          "archivo": "assets/fotos/roil/hotel-argentino-antiguo.jpg",
+          "titulo": "Hotel Argentino",
+          "anio": "c. 1925",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto110.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
+          "archivo": "assets/fotos/roil/hotel-argentino-esquina.jpg",
+          "titulo": "La esquina del Hotel Argentino",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO28.JPG)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        }
+      ],
+      "verificado": false
+    },
+    {
       "id": "balcon-de-roca",
       "nombre": "Balcón de Roca",
       "categoria": "historia",
       "lat": -51.623176,
       "lon": -69.211298,
-      "radio": 35,
-      "resumen": "Desde aquí habló el presidente Roca en 1899.",
-      "texto": "Desde este balcón, el presidente Julio Argentino Roca habló a los vecinos durante su visita a Río Gallegos en 1899. Ese mismo verano, el 15 de febrero, se encontró en Punta Arenas con el presidente chileno Federico Errázuriz, en lo que se conoce como el Abrazo del Estrecho. El balcón es Monumento Histórico Nacional.",
+      "radio": 30,
+      "resumen": "Lo único que quedó de la primera Gobernación.",
+      "texto": "Desde este balcón, el presidente Julio Argentino Roca habló a los vecinos de Río Gallegos en 1899, el mismo verano del Abrazo del Estrecho con el presidente de Chile. El balcón es lo único que quedó de la primera sede de la Gobernación del Territorio: un edificio de dos pisos, de madera y zinc. A fines de los años treinta, el gobernador Juan Manuel Gregores lo hizo desarmar, y sobre sus cimientos se construyó la Jefatura de Policía. Hoy es Monumento Histórico Nacional.",
       "audio": "assets/audio/balcon-de-roca.mp3",
       "panorama360": null,
       "streetView": {
@@ -633,6 +768,21 @@
       ],
       "fotosHistoricas": [
         {
+          "archivo": "assets/fotos/roil/jefatura-policia.jpg",
+          "titulo": "La Jefatura de Policía, levantada sobre los cimientos de la primera Gobernación",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 018.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
           "archivo": "assets/fotos/roil/monumento-roca.jpg",
           "titulo": "Monumento al General Roca",
           "anio": "c. 1940",
@@ -648,21 +798,6 @@
           }
         },
         {
-          "archivo": "assets/fotos/roil/monumento-roca-nieve.jpg",
-          "titulo": "La calle Roca nevada y el monumento a Roca",
-          "anio": "c. 1940",
-          "relacion": "epoca",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 071.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
           "archivo": "assets/fotos/historicas/abrazo-del-estrecho-1899.jpg",
           "titulo": "El Abrazo del Estrecho, en Punta Arenas",
           "autor": "Autor desconocido",
@@ -671,6 +806,70 @@
           "anio": 1899,
           "relacion": "epoca",
           "nota": "No es Río Gallegos: es el viaje de Roca de ese año.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "casa-de-gobierno",
+      "nombre": "Casa de Gobierno",
+      "categoria": "historia",
+      "lat": -51.6225,
+      "lon": -69.21005,
+      "radio": 30,
+      "resumen": "Sede del gobierno de Santa Cruz, en la calle Alcorta.",
+      "texto": "La Casa de Gobierno de Santa Cruz está en la calle Alcorta 231. Se levantó en tiempos del gobernador Juan Manuel Gregores, en el terreno vecino a la primera Gobernación de madera, cuando el viejo edificio ya quedaba chico para un territorio que crecía gracias a la lana. Hoy es la sede del gobierno de la provincia. A pocos metros están la Residencia del Gobernador, la Legislatura y los museos Casa de Gregores y Naval.",
+      "audio": "assets/audio/casa-de-gobierno.mp3",
+      "panorama360": null,
+      "streetView": {
+        "heading": 0,
+        "pitch": 5
+      },
+      "camara3d": {
+        "rango": 220,
+        "heading": 0,
+        "pitch": -28
+      },
+      "portal": true,
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/casa-de-gobierno.jpg",
+          "titulo": "Casa de Gobierno, Alcorta 231",
+          "autor": "Gonce",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Casa_GOB_santa_cruz.jpg"
+        }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/roil/edificio-gobernacion.jpg",
+          "titulo": "Edificio de la Gobernación",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 013.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
+          "archivo": "assets/fotos/roil/monumento-roca-nieve.jpg",
+          "titulo": "La calle Roca nevada y el monumento a Roca",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 071.jpg)",
+          "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -703,21 +902,6 @@
       "portal": true,
       "fotosActuales": [],
       "fotosHistoricas": [
-        {
-          "archivo": "assets/fotos/roil/alumnas-guardapolvo.jpg",
-          "titulo": "Alumnas de guardapolvo blanco frente a la escuela",
-          "anio": "c. 1935",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO3.JPG)",
-          "nota": "Escuela a identificar. Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
         {
           "archivo": "assets/fotos/historicas/fagnano-1924.jpg",
           "titulo": "Monseñor José Fagnano, que bendijo la iglesia en 1900",
