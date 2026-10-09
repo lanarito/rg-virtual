@@ -71,7 +71,15 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/monumento-centenario.jpg",
+          "titulo": "Monumento al Centenario",
+          "autor": "Maula",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Monumento_al_Centenario_de_Rio_Gallegos_(2011_03)_-_panoramio.jpg"
+        }
+      ],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/tehuelches-dia-patrio-1889.jpg",
@@ -151,21 +159,6 @@
             "lon": null,
             "rumbo": null
           }
-        },
-        {
-          "archivo": "assets/fotos/historicas/tehuelches-visitan-gallegos-1902.jpg",
-          "titulo": "Tehuelches de visita en Gallegos",
-          "autor": "H. Hesketh Prichard, Through the Heart of Patagonia (1902)",
-          "licencia": "Dominio público",
-          "fuente": "https://www.gutenberg.org/files/43366/43366-h/43366-h.htm",
-          "anio": 1902,
-          "relacion": "epoca",
-          "nota": "Lugar exacto desconocido.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
         }
       ],
       "verificado": false
@@ -193,6 +186,13 @@
       "portal": true,
       "fotosActuales": [
         {
+          "archivo": "assets/fotos/actuales/catedral-3.jpg",
+          "titulo": "La Catedral hoy",
+          "autor": "Mikelzubi",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Catedral_de_R%C3%ADo_Gallegos.jpg"
+        },
+        {
           "archivo": "assets/fotos/actuales/catedral.jpg",
           "titulo": "Fachada de la Catedral",
           "autor": "Dieter Jungblut",
@@ -209,6 +209,21 @@
       ],
       "fotosHistoricas": [
         {
+          "archivo": "assets/fotos/historicas/tehuelches-visitan-gallegos-1902.jpg",
+          "titulo": "Tehuelches de visita en Gallegos",
+          "autor": "H. Hesketh Prichard, Through the Heart of Patagonia (1902)",
+          "licencia": "Dominio público",
+          "fuente": "https://www.gutenberg.org/files/43366/43366-h/43366-h.htm",
+          "anio": 1902,
+          "relacion": "epoca",
+          "nota": "Lugar exacto desconocido.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
           "archivo": "assets/fotos/historicas/fagnano-1924.jpg",
           "titulo": "Monseñor José Fagnano, que bendijo la iglesia en 1900",
           "autor": "Autor desconocido",
@@ -217,21 +232,6 @@
           "anio": 1924,
           "relacion": "epoca",
           "nota": "Retrato publicado en 1924.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/historicas/tehuelches-visitan-gallegos-1902.jpg",
-          "titulo": "Así eran las construcciones de chapa del pueblo",
-          "autor": "H. Hesketh Prichard, Through the Heart of Patagonia (1902)",
-          "licencia": "Dominio público",
-          "fuente": "https://www.gutenberg.org/files/43366/43366-h/43366-h.htm",
-          "anio": 1902,
-          "relacion": "epoca",
-          "nota": "No es la Catedral: muestra el estilo de la época.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -249,7 +249,7 @@
       "lon": -69.217424,
       "radio": 30,
       "resumen": "Sede del gobierno de la ciudad, frente a la plaza.",
-      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Es la sede del gobierno de la ciudad. Dato a confirmar: el edificio sería de 1925. En la carta náutica de 1931 ya se ve el damero del pueblo con la plaza en el centro.",
+      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Es la sede del gobierno de la ciudad. Dato a confirmar: el edificio sería de 1925. En los años de las huelgas de la Patagonia Rebelde, en 1920 y 1921, Edelmiro Correa Falcón fue gobernador interino del Territorio de Santa Cruz.",
       "audio": "assets/audio/municipalidad.mp3",
       "panorama360": null,
       "streetView": {
@@ -265,14 +265,14 @@
       "fotosActuales": [],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
-          "titulo": "El pueblo de Gallegos en la carta náutica",
-          "autor": "Servicio de Hidrografía Naval",
+          "archivo": "assets/fotos/historicas/correa-falcon-1928.jpg",
+          "titulo": "Edelmiro Correa Falcón, gobernador interino del Territorio y presidente de la Sociedad Rural",
+          "autor": "Publicada en \"La Patagonia Trágica\", J. M. Borrero (1928)",
           "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg",
-          "anio": 1931,
-          "relacion": "lugar",
-          "nota": "Buscá la palabra \"plaza\" en el damero.",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Edelmiro_Correa_Falc%C3%B3n.png",
+          "anio": 1928,
+          "relacion": "epoca",
+          "nota": "Retrato.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -281,13 +281,13 @@
         },
         {
           "archivo": "assets/fotos/historicas/tehuelches-25-mayo-1900.jpg",
-          "titulo": "Fiesta patria en el pueblo",
+          "titulo": "Tehuelches celebrando el 25 de Mayo en Río Gallegos",
           "autor": "Autor desconocido – Archivo General de la Nación",
           "licencia": "Dominio público",
           "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches_celebr_25may_riogallegos_1900.jpg",
           "anio": 1900,
           "relacion": "epoca",
-          "nota": "Lugar exacto desconocido.",
+          "nota": "Es en el pueblo, pero no se sabe el lugar exacto.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -450,13 +450,13 @@
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/fagnano-1924.jpg",
-          "titulo": "Monseñor José Fagnano, prefecto apostólico de la Patagonia meridional",
+          "titulo": "Monseñor José Fagnano, que bendijo la iglesia en 1900",
           "autor": "Autor desconocido",
           "licencia": "Dominio público",
           "fuente": "https://commons.wikimedia.org/wiki/File:Monse%C3%B1or_Jos%C3%A9_Fagnano._Prefecto_apost%C3%B3lico.jpg",
           "anio": 1924,
           "relacion": "epoca",
-          "nota": "Retrato.",
+          "nota": "Retrato publicado en 1924.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -513,14 +513,14 @@
           }
         },
         {
-          "archivo": "assets/fotos/historicas/tehuelches-visitan-gallegos-1902.jpg",
-          "titulo": "Casa de chapa en Gallegos",
-          "autor": "H. Hesketh Prichard, Through the Heart of Patagonia (1902)",
-          "licencia": "Dominio público",
-          "fuente": "https://www.gutenberg.org/files/43366/43366-h/43366-h.htm",
-          "anio": 1902,
+          "archivo": "assets/fotos/historicas/bano-ovejas-felton-1923.jpg",
+          "titulo": "Baño de ovejas en la estancia Felton",
+          "autor": "Expedición Marshall Field – The Field Museum Library",
+          "licencia": "Sin restricciones conocidas",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Dipping_lambs._Felton%27s_sheep_farm._1923._(3526465774).jpg",
+          "anio": 1923,
           "relacion": "epoca",
-          "nota": "Lugar exacto desconocido.",
+          "nota": "Las familias pioneras vivían de la oveja.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -541,7 +541,10 @@
       "texto": "El Museo Regional lleva el nombre del sacerdote salesiano Manuel Jesús Molina, investigador de la historia y la naturaleza de Santa Cruz. Reúne colecciones de paleontología, arqueología, historia y arte de la provincia, y cuenta la historia de los pueblos originarios, como los aonikenk o tehuelches.",
       "audio": "assets/audio/museo-padre-molina.mp3",
       "panorama360": null,
-      "streetView": null,
+      "streetView": {
+        "heading": 0,
+        "pitch": 5
+      },
       "camara3d": {
         "rango": 250,
         "heading": 0,
@@ -559,21 +562,6 @@
           "anio": 1917,
           "relacion": "epoca",
           "nota": "Entre los ríos Gallegos y Santa Cruz.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/historicas/tehuelches-dia-patrio-1889.jpg",
-          "titulo": "Tehuelches en Río Gallegos",
-          "autor": "Autor desconocido",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches_festejando_d%C3%ADa_patrio_1889.JPG",
-          "anio": 1889,
-          "relacion": "epoca",
-          "nota": "Imagen de baja resolución.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -602,6 +590,13 @@
       },
       "portal": true,
       "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/locomotoras-firt.jpg",
+          "titulo": "Locomotoras del ramal de Río Turbio",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Cementrio_de_locomotoras_del_FIRT,_R%C3%ADo_Gallegos,_Santa_Cruz,_Argentina_-_panoramio.jpg"
+        },
         {
           "archivo": "assets/fotos/actuales/museo-ferroviario.jpg",
           "titulo": "Locomotora en el Museo Ferroviario",
@@ -640,21 +635,6 @@
             "lon": null,
             "rumbo": null
           }
-        },
-        {
-          "archivo": "assets/fotos/historicas/muelle-ycf-1957.jpg",
-          "titulo": "Descarga de una locomotora en el muelle de YCF",
-          "autor": "Autor desconocido (restauración digital: J. A. Weisser)",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Gallegos_-_Muelle_El_Turbio_de_YCF._Descarga_de_locomotora_Henschel_2-8-2_y_material_rodante_del_Ramal_Ferro_Industrial_Eva_Per%C3%B3n,_c_1957.jpg",
-          "anio": 1957,
-          "relacion": "lugar",
-          "nota": "Río Gallegos.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
         }
       ],
       "verificado": false
@@ -677,7 +657,15 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/remolcador-enrique-ycf.jpg",
+          "titulo": "El remolcador Enrique en el muelle de YCF",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:El_remolcador_Enrique_anclado_en_el_muelle_de_YCF,_R%C3%ADo_Gallegos,_Santa_Cruz,_Argentina_-_panoramio.jpg"
+        }
+      ],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/muelle-ycf-1957.jpg",
@@ -791,6 +779,13 @@
       "portal": true,
       "fotosActuales": [
         {
+          "archivo": "assets/fotos/actuales/viejo-muelle-costanera.jpg",
+          "titulo": "El viejo muelle de la costanera",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Viejo_muelle,_costanera_de_R%C3%ADo_Gallegos,_Santa_Crruz,_Argentina_-_panoramio.jpg"
+        },
+        {
           "archivo": "assets/fotos/actuales/costanera-cartel.jpg",
           "titulo": "Cartel de la costanera",
           "autor": "Preyes",
@@ -808,28 +803,13 @@
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
-          "titulo": "Carta náutica de la ría (Puerto Gallegos)",
+          "titulo": "El damero del pueblo en la carta náutica",
           "autor": "Servicio de Hidrografía Naval",
           "licencia": "Dominio público",
           "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg",
           "anio": 1931,
           "relacion": "lugar",
-          "nota": "Se ven el damero del pueblo y los bancos de la ría.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          }
-        },
-        {
-          "archivo": "assets/fotos/historicas/muelle-ycf-1957.jpg",
-          "titulo": "Barcos y grúas en el muelle de YCF",
-          "autor": "Autor desconocido (restauración digital: J. A. Weisser)",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Gallegos_-_Muelle_El_Turbio_de_YCF._Descarga_de_locomotora_Henschel_2-8-2_y_material_rodante_del_Ramal_Ferro_Industrial_Eva_Per%C3%B3n,_c_1957.jpg",
-          "anio": 1957,
-          "relacion": "lugar",
-          "nota": "",
+          "nota": "Se ve la cuadrícula de manzanas y la plaza.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -857,17 +837,25 @@
         "pitch": -35
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/ria-marea-baja.jpg",
+          "titulo": "La ría con marea baja",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Marea_baja,_R%C3%ADa_del_Gallegos,_Santa_Cruz,_Argentina_-_panoramio.jpg"
+        }
+      ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/historicas/plano-rio-gallegos-1931.jpg",
-          "titulo": "Los bancos de la ría en la carta náutica",
-          "autor": "Servicio de Hidrografía Naval",
+          "archivo": "assets/fotos/historicas/killik-aike-puerto-1900.jpg",
+          "titulo": "Lanchas en el río Gallegos, en la estancia Killik Aike Norte",
+          "autor": "Autor desconocido (publicada en \"Una historia de la Patagonia\", J. L. Blake)",
           "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Rio_Gallegos_Argentina_1931.jpg",
-          "anio": 1931,
-          "relacion": "lugar",
-          "nota": "Banco del Pueblo, Banco del Centro, Banco del Sud.",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Puerto_de_la_Estancia_Killik_Aike_Norte_de_Herbert_Stanley_Felton._Fundada_en_1890_luego_administrada_por_su_hijo_Carlos_Felton.jpg",
+          "anio": 1900,
+          "relacion": "epoca",
+          "nota": "Así se navegaba el estuario hace más de cien años.",
           "tomada": {
             "lat": null,
             "lon": null,
@@ -943,6 +931,13 @@
       "portal": true,
       "fotosActuales": [
         {
+          "archivo": "assets/fotos/actuales/laguna-azul-2.jpg",
+          "titulo": "Laguna Azul desde el borde del cráter",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:La_Laguna_Azul,_Monte_Aymond,_Santa_Cruz,_Argentina_-_panoramio.jpg"
+        },
+        {
           "archivo": "assets/fotos/actuales/laguna-azul.jpg",
           "titulo": "Laguna Azul",
           "autor": "Mikelzubi",
@@ -988,6 +983,13 @@
       },
       "portal": true,
       "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/pinguinos-cabo-virgenes.jpg",
+          "titulo": "Pingüinos de Magallanes en Cabo Vírgenes",
+          "autor": "Martin St-Amant (S23678)",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:133_-_Cap_Virgenes_-_Manchot_de_Magellan_-_Janvier_2010.JPG"
+        },
         {
           "archivo": "assets/fotos/actuales/faro-cabo-virgenes.jpg",
           "titulo": "Faro Cabo Vírgenes",

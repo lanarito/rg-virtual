@@ -40,7 +40,7 @@ También podés grabar tu propia voz y reemplazar el mp3.
 
 ## Clave de Google
 
-El sitio trae su clave en `modules/core.js`. Es una clave de navegador **restringida en Google Cloud** a `lanarito.github.io`, a Maps JavaScript API + Map Tiles API, y con topes diarios por debajo de la cuota gratis (3D: 30/día; Maps/Street View: 150/día), más una alerta de presupuesto de USD 1. Si alguien la copia, no le funciona en otro sitio, y aunque se abusara del sitio, al llegar al tope el 3D pasa a satélite: no hay cobro.
+El sitio trae su clave en `modules/core.js`. Es una clave de navegador **restringida en Google Cloud** a `lanarito.github.io`, a Maps JavaScript API + Map Tiles API + Street View Static API, y con topes diarios por debajo de la cuota gratis (3D: 30/día; Maps/Street View interactivo: 150/día; imagen de Street View para el "HOY" del portal: 300/día), más una alerta de presupuesto de USD 1. Si alguien la copia, no le funciona en otro sitio, y aunque se abusara del sitio, al llegar al tope el 3D pasa a satélite: no hay cobro.
 
 Para usar otra clave en un dispositivo: `config.html#key=OTRA_CLAVE`.
 

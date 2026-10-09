@@ -206,7 +206,7 @@ body.app #mapa { position: fixed; inset: 0; }
   filter: sepia(.35) contrast(1.05); opacity: 0; transition: opacity 1.4s; }
 .portal-foto.activa { opacity: 1; }
 .portal.abriendo:not(.adentro) .portal-foto { object-fit: cover; }
-.portal-foto.kenburns { animation: kenburns 16s ease-in-out forwards; }
+.portal-foto.kenburns, .portal-presente-foto.kenburns { animation: kenburns 16s ease-in-out forwards; }
 @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.14) translateY(-1.5%); } }
 .portal-vineta { position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(ellipse at center, transparent 45%, rgba(20,12,4,.75)); }
@@ -223,22 +223,23 @@ body.app #mapa { position: fixed; inset: 0; }
 .portal.adentro .portal-anillo { transform: translate(-50%, -50%) scale(6); opacity: 0; }
 @keyframes girarAnillo { to { rotate: 360deg; } }
 
-.portal-aviso { position: absolute; left: 0; right: 0; bottom: 14%; text-align: center; font-size: 1.35rem; font-weight: 600;
+.portal-aviso { position: absolute; left: 0; right: 0; top: calc(46% + var(--r) + 30px); text-align: center; font-size: 1.35rem; font-weight: 600;
   text-shadow: 0 2px 10px #000; opacity: 0; transition: opacity .6s; padding: 0 20px; }
 .portal.abriendo:not(.adentro) .portal-aviso { opacity: 1; }
 
 .portal-arriba { position: absolute; top: 0; left: 0; right: 0; padding: max(16px, env(safe-area-inset-top)) 80px 40px 20px;
   background: linear-gradient(rgba(10,6,2,.8), transparent); opacity: 0; transition: opacity 1s .6s; }
-.portal.abriendo .portal-arriba { opacity: 1; }
+.portal.visible .portal-arriba { opacity: 1; transition-delay: 0s; }
 .portal-anio { font-size: clamp(2.6rem, 12vw, 4.2rem); font-weight: 800; line-height: 1; color: var(--oro-claro);
   text-shadow: 0 2px 16px rgba(0,0,0,.7); font-variant-numeric: tabular-nums; }
 .portal-lugar { font-size: 1.25rem; font-weight: 700; margin-top: 4px; }
 .portal-relacion { font-size: .9rem; color: #e5dccb; margin-top: 2px; }
-.portal:not(.adentro) .portal-relacion { display: none; }
+.portal.abriendo:not(.adentro) .portal-relacion { display: none; }
 
 .portal-abajo { position: absolute; left: 0; right: 0; bottom: 0; padding: 50px 20px max(18px, env(safe-area-inset-bottom));
   background: linear-gradient(transparent, rgba(10,6,2,.88) 40%); opacity: 0; transition: opacity 1s .8s; }
-.portal.adentro .portal-abajo { opacity: 1; }
+.portal.visible .portal-abajo { opacity: 1; transition-delay: .3s; }
+.portal:not(.adentro) .portal-puntos { visibility: hidden; }
 .portal-subtitulo { font-size: clamp(1.15rem, 4.6vw, 1.45rem); line-height: 1.45; margin: 0 auto 10px; max-width: 720px;
   text-align: center; min-height: 3em; text-shadow: 0 1px 6px #000; }
 .portal-credito { font-size: .72rem; color: #b9ad98; text-align: center; }
@@ -253,7 +254,6 @@ body.app #mapa { position: fixed; inset: 0; }
   .pin-portal, .pin-portal::after, .tarjeta-portal, .inicio-anillo, .portal-foto.kenburns,
   .portal.abriendo .portal-anillo, .inicio-fondo img.antes { animation: none !important; }
 }
-.portal.sin-camara { background: transparent; }
 
 /* Portales más chicos con el mapa alejado */
 #mapa[data-zoom="medio"] .pin-portal { transform: scale(.72); }
@@ -263,3 +263,7 @@ body.app #mapa { position: fixed; inset: 0; }
 
 /* Mientras el portal está abierto, solo se ve el portal */
 body:has(.portal.visible) .redondo, body:has(.portal.visible) .tarjeta { visibility: hidden; }
+
+/* Etapa HOY */
+.portal.hoy:not(.abriendo) .portal-anio { color: #fff; letter-spacing: .06em; }
+.portal.hoy:not(.abriendo) .portal-relacion { color: var(--oro-claro); font-weight: 600; font-size: 1rem; }
