@@ -58,7 +58,7 @@
       "lon": -69.205292,
       "radio": 50,
       "resumen": "Donde todo empezó: la subprefectura de 1885.",
-      "texto": "Río Gallegos nació el 19 de diciembre de 1885, cuando se instaló a orillas de la ría una subprefectura marítima. Eran unas pocas casillas de madera y chapa, rodeadas de estepa y viento. En 1888 el pueblo pasó a ser la capital del Territorio de Santa Cruz. El Reloj del Centenario recuerda los cien años de la ciudad, cumplidos en 1985.",
+      "texto": "Río Gallegos nació el 19 de diciembre de 1885, cuando se instaló a orillas de la ría una subprefectura marítima. Eran unas pocas casillas de madera y chapa, rodeadas de estepa y viento. En 1888 el pueblo pasó a ser la capital del Territorio de Santa Cruz. El Reloj del Centenario recuerda los cien años de la ciudad, cumplidos en 1985. El nombre viene del río, que recuerda a Blasco Gallegos, piloto de la expedición de García Jofré de Loaísa, que lo alcanzó en 1525. Hoy es la capital de la provincia de Santa Cruz y una de las ciudades más australes del continente americano.",
       "audio": "assets/audio/fundacion.mp3",
       "panorama360": null,
       "streetView": {
@@ -172,7 +172,7 @@
       "lon": -69.215959,
       "radio": 60,
       "resumen": "El corazón de la ciudad desde sus primeros años.",
-      "texto": "La Plaza San Martín es el punto de encuentro de Río Gallegos desde principios del siglo veinte. Frente a ella están la Catedral y la Municipalidad. En el centro está el monumento al General San Martín, con un cóndor a sus pies. Mirá los árboles: muchos crecen inclinados, empujados durante décadas por el viento patagónico. Hace más de cien años, los tehuelches y los pobladores celebraban juntos las fiestas patrias en el pueblo. Hace unas décadas, la plaza tenía un estanque con patos y barquitos, y en invierno quedaba cubierta de nieve.",
+      "texto": "La Plaza San Martín es el punto de encuentro de Río Gallegos desde principios del siglo veinte. Frente a ella están la Catedral y la Municipalidad. En el centro está el monumento al General San Martín, con un cóndor a sus pies. Mirá los árboles: muchos crecen inclinados, empujados durante décadas por el viento patagónico. Hace más de cien años, los tehuelches y los pobladores celebraban juntos las fiestas patrias en el pueblo. Hace unas décadas, la plaza tenía un estanque con patos y barquitos, y en invierno quedaba cubierta de nieve. Hoy sigue siendo el escenario de los actos patrios, las ferias y los encuentros de la ciudad.",
       "audio": "assets/audio/plaza-san-martin.mp3",
       "panorama360": null,
       "streetView": {
@@ -302,7 +302,7 @@
       "lon": -69.217173,
       "radio": 35,
       "resumen": "La iglesia de madera y chapa de 1899.",
-      "texto": "La Catedral Nuestra Señora de Luján se construyó en 1899 en madera y chapa, al estilo de las casas de los inmigrantes ingleses, bajo la dirección del sacerdote salesiano Juan Bernabé. La impulsó el gobernador Matías Mackinlay Zapiola, con fondos donados por el presidente Julio Argentino Roca. La primera misa se celebró en la Navidad de 1899, y en 1900 la bendijo monseñor José Fagnano. Se la considera una de las iglesias más antiguas de la Patagonia argentina y es Monumento Histórico Nacional.",
+      "texto": "La Catedral Nuestra Señora de Luján se construyó en 1899 en madera y chapa, al estilo de las casas de los inmigrantes ingleses, bajo la dirección del sacerdote salesiano Juan Bernabé. La impulsó el gobernador Matías Mackinlay Zapiola, con fondos donados por el presidente Julio Argentino Roca. La primera misa se celebró en la Navidad de 1899, y en 1900 la bendijo monseñor José Fagnano. Se la considera una de las iglesias más antiguas de la Patagonia argentina y es Monumento Histórico Nacional. En 1961, cuando el papa Juan XXIII creó la diócesis de Río Gallegos, esta pequeña iglesia de madera pasó a ser su catedral.",
       "audio": "assets/audio/catedral.mp3",
       "panorama360": null,
       "streetView": {
@@ -462,7 +462,7 @@
       "lon": -69.217424,
       "radio": 30,
       "resumen": "Sede del gobierno de la ciudad, frente a la plaza.",
-      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Fue inaugurado en 1925 y, desde entonces, conserva su fachada original. En 2025 la ciudad celebró sus cien años, y hoy es patrimonio histórico municipal. Desde hace un siglo es la sede del gobierno de la ciudad.",
+      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Fue inaugurado en 1925 y, desde entonces, conserva su fachada original. En 2025 la ciudad celebró sus cien años, y hoy es patrimonio histórico municipal. Desde hace un siglo es la sede del gobierno de la ciudad. Su construcción de una sola planta, con techo de chapa roja y aberturas de madera, muestra cómo se edificaba en la Patagonia de comienzos del siglo veinte.",
       "audio": "assets/audio/municipalidad.mp3",
       "panorama360": null,
       "streetView": {
@@ -498,7 +498,7 @@
       "lon": -69.218219,
       "radio": 30,
       "resumen": "La primera escuela de la ciudad, de 1888.",
-      "texto": "La Escuela Provincial Número 1, Hernando de Magallanes, es la primera escuela de Río Gallegos: se fundó en 1888. Funcionó en distintos edificios, entre ellos uno sobre la calle Zapiola, hasta que en noviembre de 1930 se mudó a su edificio actual, en la calle Maipú 53. Por sus aulas pasaron generaciones de vecinos, y el Congreso la declaró de interés histórico nacional.",
+      "texto": "La Escuela Provincial Número 1, Hernando de Magallanes, es la primera escuela de Río Gallegos: se fundó en 1888. Funcionó en distintos edificios, entre ellos uno sobre la calle Zapiola, hasta que en noviembre de 1930 se mudó a su edificio actual, en la calle Maipú 53. Por sus aulas pasaron generaciones de vecinos, y el Congreso la declaró de interés histórico nacional. Lleva el nombre del navegante que en 1520 descubrió el estrecho que une los océanos Atlántico y Pacífico, muy cerca de aquí.",
       "audio": "assets/audio/escuela-1.mp3",
       "panorama360": null,
       "streetView": {
@@ -548,7 +548,7 @@
       "lon": -69.2155,
       "radio": 50,
       "resumen": "La calle comercial histórica, hoy Av. Néstor Kirchner.",
-      "texto": "La Avenida Roca, hoy llamada Avenida Néstor Kirchner, fue durante más de un siglo la calle comercial de la ciudad. Sobre ella sigue funcionando el Club Británico, fundado el 18 de abril de 1911, en la época de oro de la lana, cuando muchos pobladores llegaban desde las Islas Malvinas y Gran Bretaña. En 1920 y 1921, la Sociedad Obrera de Río Gallegos encabezó las huelgas de los peones rurales, la historia que hoy conocemos como la Patagonia Rebelde. Del otro lado estaba la Sociedad Rural, presidida por Edelmiro Correa Falcón. Sobre la calle Roca había también un gran reloj de columna, uno de los puntos de encuentro del centro. Sobre la misma calle se levanta el monumento al general Julio Argentino Roca.",
+      "texto": "La Avenida Roca, hoy llamada Avenida Néstor Kirchner, fue durante más de un siglo la calle comercial de la ciudad. Sobre ella sigue funcionando el Club Británico, fundado el 18 de abril de 1911, en la época de oro de la lana, cuando muchos pobladores llegaban desde las Islas Malvinas y Gran Bretaña. En 1920 y 1921, la Sociedad Obrera de Río Gallegos encabezó las huelgas de los peones rurales, la historia que hoy conocemos como la Patagonia Rebelde. Del otro lado estaba la Sociedad Rural, presidida por Edelmiro Correa Falcón. Sobre la calle Roca había también un gran reloj de columna, uno de los puntos de encuentro del centro. Sobre la misma calle se levanta el monumento al general Julio Argentino Roca. Durante décadas fue el corazón del comercio: almacenes de ramos generales, tiendas, bancos y confiterías se alineaban a lo largo de sus veredas.",
       "audio": "assets/audio/avenida-roca.mp3",
       "panorama360": null,
       "streetView": {
@@ -713,7 +713,7 @@
       "lon": -69.21335,
       "radio": 30,
       "resumen": "Un hotel histórico en Chacabuco y Roca.",
-      "texto": "En esta esquina de Chacabuco y la avenida principal se levantaba el histórico Hotel Argentino, aunque su edificio ya no existe. Fue uno de los hoteles tradicionales del centro de Río Gallegos, y ya aparece en fotografías de principios de la década de 1920. Foto Roil lo retrató varias veces, con los automóviles de la época estacionados frente a su puerta. Por sus habitaciones y su salón pasaron estancieros, viajantes y familias recién llegadas a la Patagonia.",
+      "texto": "En esta esquina de Chacabuco y la avenida principal se levantaba el histórico Hotel Argentino, aunque su edificio ya no existe. Fue uno de los hoteles tradicionales del centro de Río Gallegos, y ya aparece en fotografías de principios de la década de 1920. Foto Roil lo retrató varias veces, con los automóviles de la época estacionados frente a su puerta. Por sus habitaciones y su salón pasaron estancieros, viajantes y familias recién llegadas a la Patagonia. En aquellos años no había rutas pavimentadas: se llegaba en barco después de varios días de viaje, y el hotel era la primera casa de muchos recién llegados.",
       "audio": "assets/audio/hotel-argentino.mp3",
       "panorama360": null,
       "streetView": {
@@ -789,7 +789,7 @@
       "lon": -69.211298,
       "radio": 30,
       "resumen": "Lo único que quedó de la primera Gobernación.",
-      "texto": "Desde este balcón, el presidente Julio Argentino Roca habló a los vecinos de Río Gallegos en 1899, el mismo verano del Abrazo del Estrecho con el presidente de Chile. El balcón es lo único que quedó de la primera sede de la Gobernación del Territorio: un edificio de dos pisos, de madera y zinc. A fines de los años treinta, el gobernador Juan Manuel Gregores lo hizo desarmar, y sobre sus cimientos se construyó la Jefatura de Policía. Hoy es Monumento Histórico Nacional.",
+      "texto": "Desde este balcón, el presidente Julio Argentino Roca habló a los vecinos de Río Gallegos en 1899, el mismo verano del Abrazo del Estrecho con el presidente de Chile. El balcón es lo único que quedó de la primera sede de la Gobernación del Territorio: un edificio de dos pisos, de madera y zinc. A fines de los años treinta, el gobernador Juan Manuel Gregores lo hizo desarmar, y sobre sus cimientos se construyó la Jefatura de Policía. Hoy es Monumento Histórico Nacional. Roca fue el primer presidente argentino en visitar Río Gallegos, y en su discurso anunció obras para el progreso del territorio.",
       "audio": "assets/audio/balcon-de-roca.mp3",
       "panorama360": null,
       "streetView": {
@@ -903,7 +903,7 @@
       "lon": -69.21005,
       "radio": 30,
       "resumen": "Sede del gobierno de Santa Cruz, en la calle Alcorta.",
-      "texto": "La Casa de Gobierno de Santa Cruz está en la calle Alcorta 231. Se levantó en tiempos del gobernador Juan Manuel Gregores, en el terreno vecino a la primera Gobernación de madera, cuando el viejo edificio ya quedaba chico para un territorio que crecía gracias a la lana. Hoy es la sede del gobierno de la provincia. A pocos metros están la Residencia del Gobernador, la Legislatura y los museos Casa de Gregores y Naval.",
+      "texto": "La Casa de Gobierno de Santa Cruz está en la calle Alcorta 231. Se levantó en tiempos del gobernador Juan Manuel Gregores, en el terreno vecino a la primera Gobernación de madera, cuando el viejo edificio ya quedaba chico para un territorio que crecía gracias a la lana. Hoy es la sede del gobierno de la provincia. A pocos metros están la Residencia del Gobernador, la Legislatura y los museos Casa de Gregores y Naval. Santa Cruz dejó de ser territorio nacional y se convirtió en provincia en la década de 1950, y desde 1958 aquí trabajan los gobernadores elegidos por el voto.",
       "audio": "assets/audio/casa-de-gobierno.mp3",
       "panorama360": null,
       "streetView": {
@@ -970,7 +970,7 @@
       "lon": -69.209841,
       "radio": 40,
       "resumen": "Los salesianos y la educación en la Patagonia austral.",
-      "texto": "Los misioneros salesianos llegaron a la Patagonia austral a fines del siglo diecinueve, guiados por monseñor José Fagnano. En Río Gallegos levantaron la primera iglesia, el Colegio Salesiano y, junto a las hermanas de María Auxiliadora, escuelas donde estudiaron generaciones de chicos y chicas de la ciudad.",
+      "texto": "Los misioneros salesianos llegaron a la Patagonia austral a fines del siglo diecinueve, guiados por monseñor José Fagnano. En Río Gallegos levantaron la primera iglesia, el Colegio Salesiano y, junto a las hermanas de María Auxiliadora, escuelas donde estudiaron generaciones de chicos y chicas de la ciudad. En 1906, los misioneros fotografiaron en Río Gallegos el día del bautismo de familias tehuelches, una imagen que hoy guarda la memoria de aquel encuentro entre dos culturas. Las hermanas de María Auxiliadora son la rama femenina de la obra fundada por Don Bosco en Italia. Más de un siglo después, el colegio sigue abierto y es uno de los más tradicionales de la ciudad.",
       "audio": "assets/audio/maria-auxiliadora.mp3",
       "panorama360": null,
       "streetView": {
@@ -1043,6 +1043,21 @@
             "rumbo": null
           },
           "desdeFrase": 1.5
+        },
+        {
+          "archivo": "assets/fotos/historicas/tehuelches-bautismo-1906.jpg",
+          "titulo": "Familias tehuelches el día del bautismo en Río Gallegos",
+          "anio": "1906",
+          "relacion": "epoca",
+          "autor": "Misioneros salesianos",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Tehuelches_en_el_d%C3%ADa_del_bautismo,_R%C3%ADo_Gallegos,_1906_-_Los_Shelknam_(page_184_crop).jpg",
+          "desdeFrase": 2,
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
         }
       ],
       "verificado": false
@@ -1055,7 +1070,7 @@
       "lon": -69.225972,
       "radio": 35,
       "resumen": "Una casa prefabricada de los primeros pobladores.",
-      "texto": "El Museo de los Pioneros funciona en una de las casas más antiguas de la ciudad, una vivienda prefabricada de madera y chapa típica de fines del siglo diecinueve, conocida como Casa Parisi. Adentro se recrea cómo vivían las primeras familias: muchas venían de Malvinas, de Gran Bretaña y de Europa, y trabajaban en las estancias ovejeras de la zona.",
+      "texto": "El Museo de los Pioneros funciona en una de las casas más antiguas de la ciudad, una vivienda prefabricada de madera y chapa típica de fines del siglo diecinueve, conocida como Casa Parisi. Adentro se recrea cómo vivían las primeras familias: muchas venían de Malvinas, de Gran Bretaña y de Europa, y trabajaban en las estancias ovejeras de la zona. En sus vigas de madera todavía se leen las iniciales G W R, que podrían ser de una sociedad ganadera de fines del siglo diecinueve. Allí vivió la familia de Arthur Fenton, el primer médico de Santa Cruz, y más tarde la de Roque Parisi, que le dio el nombre a la casa. En 1989 la Municipalidad la restauró y abrió el museo, con muebles y objetos que prestaron los descendientes de los pioneros.",
       "audio": "assets/audio/museo-pioneros.mp3",
       "panorama360": null,
       "streetView": {
@@ -1169,7 +1184,7 @@
       "lon": -69.229255,
       "radio": 45,
       "resumen": "Paleontología, arqueología e historia de Santa Cruz.",
-      "texto": "El Museo Regional lleva el nombre del sacerdote salesiano Manuel Jesús Molina, investigador de la historia y la naturaleza de Santa Cruz. Reúne colecciones de paleontología, arqueología, historia y arte de la provincia, y cuenta la historia de los pueblos originarios, como los aonikenk o tehuelches.",
+      "texto": "El Museo Regional lleva el nombre del sacerdote salesiano Manuel Jesús Molina, investigador de la historia y la naturaleza de Santa Cruz. Reúne colecciones de paleontología, arqueología, historia y arte de la provincia, y cuenta la historia de los pueblos originarios, como los aonikenk o tehuelches. Entre sus piezas se destacan restos de dinosaurios y de los grandes mamíferos que habitaron la Patagonia hace miles de años.",
       "audio": "assets/audio/museo-padre-molina.mp3",
       "panorama360": null,
       "streetView": {
@@ -1288,7 +1303,7 @@
       "lon": -69.225152,
       "radio": 45,
       "resumen": "Las locomotoras del tren del carbón.",
-      "texto": "En el Museo Ferroviario se conservan locomotoras y vagones del Ramal Ferro Industrial de Río Turbio, el tren que traía el carbón desde las minas, cerca de la cordillera, hasta el muelle de Río Gallegos, atravesando más de doscientos kilómetros de estepa. El ingeniero argentino Livio Dante Porta modificó sus pequeñas locomotoras a vapor hasta convertirlas en algunas de las más eficientes del mundo.",
+      "texto": "En el Museo Ferroviario se conservan locomotoras y vagones del Ramal Ferro Industrial de Río Turbio, el tren que traía el carbón desde las minas, cerca de la cordillera, hasta el muelle de Río Gallegos, atravesando más de doscientos kilómetros de estepa. El ingeniero argentino Livio Dante Porta modificó sus pequeñas locomotoras a vapor hasta convertirlas en algunas de las más eficientes del mundo. El ramal se inauguró en 1951 y fue uno de los ferrocarriles más australes del mundo, con una trocha angosta de apenas setenta y cinco centímetros. Las locomotoras llegaban en barco y se bajaban en el muelle de Río Gallegos, como en esta foto de fines de los años cincuenta. Durante décadas, largos trenes cargados de carbón cruzaron la estepa de día y de noche.",
       "audio": "assets/audio/museo-ferroviario.mp3",
       "panorama360": null,
       "streetView": null,
@@ -1378,6 +1393,36 @@
             "rumbo": null
           },
           "desdeFrase": 1.5
+        },
+        {
+          "archivo": "assets/fotos/historicas/muelle-ycf-locomotora-1957.jpg",
+          "titulo": "Descarga de una locomotora en el muelle de YCF de Río Gallegos",
+          "anio": "c. 1957",
+          "relacion": "epoca",
+          "autor": "Fotógrafo desconocido (restauración digital: José A. Weisser)",
+          "licencia": "Dominio público",
+          "fuente": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Gallegos_-_Muelle_El_Turbio_de_YCF._Descarga_de_locomotora_Henschel_2-8-2_y_material_rodante_del_Ramal_Ferro_Industrial_Eva_Per%C3%B3n,_c_1957.jpg",
+          "desdeFrase": 3,
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
+        },
+        {
+          "archivo": "assets/fotos/historicas/tren-carbon-1973.jpg",
+          "titulo": "Tren de carbón de Río Turbio cerca de Río Gallegos",
+          "anio": "1973",
+          "relacion": "epoca",
+          "autor": "Lao-ke",
+          "licencia": "CC BY-SA 4.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:DW_photo_of_coal_train_1.jpg",
+          "desdeFrase": 4,
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          }
         }
       ],
       "verificado": false
@@ -1390,7 +1435,7 @@
       "lon": -69.21055,
       "radio": 35,
       "resumen": "Un edificio que llegó desarmado en barco desde Europa hacia 1900.",
-      "texto": "En la calle Gobernador Lista 60 se levanta la histórica Barraca Amberense, de los hermanos Kreglinger, construida hacia el año 1900. El edificio de madera y chapa llegó en barco desde Europa, probablemente desde Bélgica, desarmado en piezas numeradas, y se armó frente a la ría. Allí se acopiaban lanas, cueros y mercaderías para las estancias, y más tarde funcionó la Aduana. Desde 1992 es la Casa de la Cultura de Fundacruz, y en 2018 fue declarada Monumento Histórico Nacional.",
+      "texto": "En la calle Gobernador Lista 60 se levanta la histórica Barraca Amberense, de los hermanos Kreglinger, construida hacia el año 1900. El edificio de madera y chapa llegó en barco desde Europa, probablemente desde Bélgica, desarmado en piezas numeradas, y se armó frente a la ría. Allí se acopiaban lanas, cueros y mercaderías para las estancias, y más tarde funcionó la Aduana. Desde 1992 es la Casa de la Cultura de Fundacruz, y en 2018 fue declarada Monumento Histórico Nacional. Es uno de los pocos edificios de su tipo que se conservan en la Patagonia, y un testimonio del comercio de la lana con Europa.",
       "audio": "assets/audio/barraca-amberense.mp3",
       "panorama360": null,
       "streetView": {
@@ -1456,7 +1501,7 @@
       "lon": -69.232632,
       "radio": 70,
       "resumen": "Todo llegaba y salía por la ría.",
-      "texto": "Antes de que hubiera rutas, todo llegaba y salía por la ría: la lana, los cueros, la mercadería y los pasajeros. Las estancias tenían sus propios muelles y lanchas para cruzar el río y llevar la producción al pueblo. Con la marea baja, los barcos quedaban apoyados en el barro. Más tarde, el muelle de Yacimientos Carboníferos Fiscales recibió el carbón del tren de Río Turbio para embarcarlo hacia el norte.",
+      "texto": "Antes de que hubiera rutas, todo llegaba y salía por la ría: la lana, los cueros, la mercadería y los pasajeros. Las estancias tenían sus propios muelles y lanchas para cruzar el río y llevar la producción al pueblo. Con la marea baja, los barcos quedaban apoyados en el barro. Más tarde, el muelle de Yacimientos Carboníferos Fiscales recibió el carbón del tren de Río Turbio para embarcarlo hacia el norte. El tren y el puerto convirtieron a Río Gallegos en la salida al mar del carbón de Río Turbio, el principal yacimiento de carbón del país.",
       "audio": "assets/audio/puerto-viejo.mp3",
       "panorama360": null,
       "streetView": null,
@@ -1631,7 +1676,7 @@
       "lon": -69.216272,
       "radio": 35,
       "resumen": "Ovejas, lana y frigoríficos.",
-      "texto": "A principios del siglo veinte, la Patagonia austral vivió de la oveja. Las estancias producían lana y carne que salían por la ría hacia Europa. En Río Gallegos funcionó el frigorífico de la empresa Swift, y esta barcaza recuerda esa época. En la esquila trabajaban cuadrillas de peones que recorrían las estancias de toda la región. Largas tropas de carros traían los fardos desde el campo hasta la costa, donde esperaban el barco.",
+      "texto": "A principios del siglo veinte, la Patagonia austral vivió de la oveja. Las estancias producían lana y carne que salían por la ría hacia Europa. En Río Gallegos funcionó el frigorífico de la empresa Swift, y esta barcaza recuerda esa época. En la esquila trabajaban cuadrillas de peones que recorrían las estancias de toda la región. Largas tropas de carros traían los fardos desde el campo hasta la costa, donde esperaban el barco. La actividad empezó en 1899 con una grasería llamada La Blanca, que fue la base del frigorífico, y en sus mejores años la empresa llegó a tener unos cuatrocientos trabajadores.",
       "audio": "assets/audio/frigorifico-swift.mp3",
       "panorama360": null,
       "streetView": {
@@ -1779,7 +1824,7 @@
       "lon": -69.219491,
       "radio": 50,
       "resumen": "La ría del Gallegos y sus mareas gigantes.",
-      "texto": "Desde la costanera se ve la ría del río Gallegos. Acá las mareas son de las más grandes del país: en la carta náutica de 1931 ya figuraban pleamares de más de diez metros en Punta Loyola. Con la marea baja aparecen enormes bancos de barro donde se alimentan las aves. Frente a esta costa, en 1911, se incendió el velero escocés Marjory Glen; sus restos todavía se ven en Punta Loyola.",
+      "texto": "Desde la costanera se ve la ría del río Gallegos. Acá las mareas son de las más grandes del país: en la carta náutica de 1931 ya figuraban pleamares de más de diez metros en Punta Loyola. Con la marea baja aparecen enormes bancos de barro donde se alimentan las aves. Frente a esta costa, en 1911, se incendió el velero escocés Marjory Glen; sus restos todavía se ven en Punta Loyola. Hoy la costanera es el paseo preferido de los vecinos para caminar, andar en bicicleta y mirar el atardecer sobre la ría.",
       "audio": "assets/audio/costanera.mp3",
       "panorama360": null,
       "streetView": {
@@ -1883,7 +1928,7 @@
       "lon": -69.157318,
       "radio": 150,
       "resumen": "Aves playeras migratorias en plena ciudad.",
-      "texto": "La Reserva Costera Urbana protege las costas de la ría, donde cada temporada llegan aves playeras migratorias que viajan miles de kilómetros desde el hemisferio norte para alimentarse en el barro que deja la marea. En estas costas también han quedado varadas ballenas, como muestra una foto antigua.",
+      "texto": "La Reserva Costera Urbana protege las costas de la ría, donde cada temporada llegan aves playeras migratorias que viajan miles de kilómetros desde el hemisferio norte para alimentarse en el barro que deja la marea. En estas costas también han quedado varadas ballenas, como muestra una foto antigua. Por eso, desde 2005 el estuario forma parte de la Red Hemisférica de Reservas para Aves Playeras, como sitio de importancia internacional para especies como el playero rojizo y la becasa de mar.",
       "audio": "assets/audio/reserva-costera.mp3",
       "panorama360": null,
       "streetView": null,
@@ -1946,7 +1991,7 @@
       "lon": -69.225228,
       "radio": 60,
       "resumen": "Memoria de la guerra de 1982.",
-      "texto": "Durante la guerra de Malvinas, en 1982, Río Gallegos fue una de las bases desde donde operó la Fuerza Aérea Argentina. La ciudad recuerda a los caídos con el Monumento a Malvinas Argentinas y con el Museo de Guerra Malvinas Argentinas.",
+      "texto": "Durante la guerra de Malvinas, en 1982, Río Gallegos fue una de las bases desde donde operó la Fuerza Aérea Argentina. La ciudad recuerda a los caídos con el Monumento a Malvinas Argentinas y con el Museo de Guerra Malvinas Argentinas. Desde la base aérea de Río Gallegos despegaron aviones que combatieron en las islas, y la ciudad vivió esos meses con oscurecimientos y simulacros. Cada 2 de abril, los vecinos se reúnen aquí para homenajear a los veteranos y a los caídos.",
       "audio": "assets/audio/malvinas.mp3",
       "panorama360": null,
       "streetView": null,
@@ -1993,7 +2038,7 @@
       "lon": -69.580622,
       "radio": 600,
       "resumen": "Una laguna dentro de un volcán, a 62 km.",
-      "texto": "A unos 62 kilómetros al sur de Río Gallegos, la Laguna Azul ocupa el cráter de un volcán inactivo del campo volcánico Pali Aike. El cráter mide unos 560 metros de diámetro. Es reserva provincial desde 2005, por la Ley 2828. Estas tierras eran recorridas por los aonikenk, los tehuelches del sur.",
+      "texto": "A unos 62 kilómetros al sur de Río Gallegos, la Laguna Azul ocupa el cráter de un volcán inactivo del campo volcánico Pali Aike. El cráter mide unos 560 metros de diámetro. Es reserva provincial desde 2005, por la Ley 2828. Estas tierras eran recorridas por los aonikenk, los tehuelches del sur. Su agua, de un azul intenso, contrasta con las rocas oscuras de lava que la rodean, en un paisaje con cientos de conos volcánicos.",
       "audio": "assets/audio/laguna-azul.mp3",
       "panorama360": null,
       "streetView": null,
@@ -2047,7 +2092,7 @@
       "lon": -68.3542,
       "radio": 1000,
       "resumen": "Pingüinos de Magallanes y el km 0 de la Ruta 40.",
-      "texto": "A unos 134 kilómetros al sureste, Cabo Vírgenes marca la entrada al Estrecho de Magallanes. Hernando de Magallanes llegó aquí el 21 de octubre de 1520. Cerca, en 1584, Pedro Sarmiento de Gamboa fundó la Ciudad del Nombre de Jesús. El faro funciona desde 1904, y acá empieza la Ruta Nacional 40, en su kilómetro cero. En temporada se puede caminar entre miles de pingüinos de Magallanes.",
+      "texto": "A unos 134 kilómetros al sureste, Cabo Vírgenes marca la entrada al Estrecho de Magallanes. Hernando de Magallanes llegó aquí el 21 de octubre de 1520. Cerca, en 1584, Pedro Sarmiento de Gamboa fundó la Ciudad del Nombre de Jesús. El faro funciona desde 1904, y acá empieza la Ruta Nacional 40, en su kilómetro cero. En temporada se puede caminar entre miles de pingüinos de Magallanes. La colonia de pingüinos es una de las más grandes de la Argentina: llegan en primavera para anidar y vuelven al mar a fines del verano.",
       "audio": "assets/audio/cabo-virgenes.mp3",
       "panorama360": null,
       "streetView": null,
