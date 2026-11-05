@@ -152,7 +152,7 @@ async function volar() {
     if (!llego) break;
     posicion = { lat: poi.lat, lon: poi.lon, rumbo: rumbo(posicion.lat, posicion.lon, poi.lat, poi.lon) };
     mostrarTarjeta(poi, t('vuelo.llegaste'), t('vuelo.seAbre'));
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise(r => setTimeout(r, 250));
     if (!volando) break;
     await abrirPortal(poi, { camara: false });
     indice++;

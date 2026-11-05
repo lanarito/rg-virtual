@@ -20,6 +20,20 @@ def con_pausas(texto):
     # Pausas más largas entre frases y después de los dos puntos: suena más natural y tranquila
     return re.sub(r'([.!?]) ', lambda m: m.group(1) + '.. ', texto).replace(': ', '... ')
 
+# Cómo se pronuncian algunas siglas y abreviaturas (solo para la voz; en pantalla queda igual)
+PRONUNCIACION = {
+    'es': [(r'\bYCF\b', 'i ce efe'), (r'N°\s?(\d)', r'Número \1'), (r'\bAv\.', 'Avenida')],
+    'en': [(r'\bYCF\b', 'Y C F'), (r'No\.\s?(\d)', r'Number \1')],
+    'pt': [(r'\bYCF\b', 'ípsilon cê efe'), (r'Nº\s?(\d)', r'Número \1')],
+}
+
+
+def pronunciar(texto, lang):
+    for patron, reemplazo in PRONUNCIACION[lang]:
+        texto = re.sub(patron, reemplazo, texto)
+    return texto
+
+
 FRASES = ['bienvenida', 'bienvenida-paseo', 'lejos', 'vuelo-inicio', 'vuelo-fin']
 
 base = sys.argv[1]
@@ -43,10 +57,25 @@ def texto_frase(lang, clave):
     return valor[1:-1].replace("\\'", "'")
 
 
-async def gen(texto, destino, voz, lang):
+async def gen(texto, destino, voz, lang, titulo=None):
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     rate, pitch, pausas = AJUSTES[lang]
-    await edge_tts.Communicate(con_pausas(texto) if pausas else texto, voz, rate=rate, pitch=pitch).save(destino)
+    cuerpo = pronunciar(texto, lang)
+    if pausas:
+        cuerpo = con_pausas(cuerpo)
+    # El nombre del lugar va con una pausa corta, sin el silencio largo de las demás frases
+    final = f"{pronunciar(titulo, lang)}. {cuerpo}" if titulo else cuerpo
+    # Reintenta si se corta internet (un archivo a medio generar no sirve)
+    for intento in range(4):
+        try:
+            await edge_tts.Communicate(final, voz, rate=rate, pitch=pitch).save(destino)
+            if os.path.getsize(destino) > 5000:
+                break
+        except Exception as e:
+            print('reintento', intento + 1, os.path.basename(destino), type(e).__name__)
+        await asyncio.sleep(3 * (intento + 1))
+    else:
+        raise SystemExit(f'No se pudo generar {destino}')
     print(os.path.relpath(destino, base), os.path.getsize(destino) // 1024, 'KB')
 
 
@@ -60,7 +89,7 @@ async def main():
                 x = p if lang == 'es' else trad[lang]['pois'].get(p['id'])
                 if not x:
                     print('sin traducción:', lang, p['id']); continue
-                await gen(f"{x['nombre']}. {x['texto']}", os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang], lang)
+                await gen(x['texto'], os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang], lang, titulo=x['nombre'])
         if not solo or solo_frases:
             for clave in FRASES:
                 await gen(texto_frase(lang, clave), os.path.join(base, carpeta, f'frase-{clave}.mp3'), VOCES[lang], lang)

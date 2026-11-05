@@ -3,14 +3,14 @@
 //   2. Se abre el anillo dorado con la foto antigua adentro.
 //   3. ADENTRO: las fotos antiguas a pantalla completa mientras la voz cuenta la historia.
 // Al terminar la narración se cierra solo.
-import { narrar, callar, frases, etiquetaRelacion, vibrar, googleKey } from './core.js';
+import { narrar, callar, frases, etiquetaRelacion, vibrar, googleKey, conVersion } from './core.js';
 import { t } from './i18n.js';
 
 const anio = a => (a === 's/f' ? t('anio.sf') : a === 'Hoy' ? t('portal.hoy') : a);
 import { whoosh } from './sonido.js';
 
-const SEGUNDOS_HOY = 4.5;
-const SEGUNDOS_ANILLO = 2.6;
+const SEGUNDOS_HOY = 3.2;
+const SEGUNDOS_ANILLO = 2.0;
 const MIN_SEGUNDOS_POR_FOTO = 7;
 
 let capa = null;
@@ -52,13 +52,22 @@ function imagenDeHoy(poi) {
   if (f) return { src: f.archivo, credito: `${t('portal.hoyCredito')} · ${f.autor} · ${f.licencia}` };
   const key = googleKey();
   if (poi.streetView && key) {
-    const p = new URLSearchParams({
-      size: '640x640', scale: '2', location: `${poi.lat},${poi.lon}`, fov: '80', pitch: String(poi.streetView.pitch ?? 5),
-      source: 'outdoor', return_error_code: 'true', key
-    });
+    const sv = poi.streetView;
+    const p = new URLSearchParams({ size: '640x640', scale: '2', fov: String(sv.fov ?? 80), pitch: String(sv.pitch ?? 5), return_error_code: 'true', key });
+    if (sv.pano) { p.set('pano', sv.pano); p.set('heading', String(sv.heading ?? 0)); }
+    else { p.set('location', `${poi.lat},${poi.lon}`); p.set('source', 'outdoor'); }
     return { src: `https://maps.googleapis.com/maps/api/streetview?${p}`, credito: `${t('portal.hoyCredito')} · © Google Street View` };
   }
   return null;
+}
+
+// Saca las fotos del portal anterior, para que nunca se vea una foto vieja mientras carga la nueva.
+function limpiarImagenes() {
+  capa.querySelectorAll('.portal-presente-foto, .portal-foto').forEach(img => {
+    img.removeAttribute('src');
+    img.classList.remove('activa', 'actual', 'kenburns');
+  });
+  capa.querySelector('.portal-presente-foto').hidden = true;
 }
 
 // Abre el portal de un lugar. Devuelve una promesa que se resuelve cuando se cierra.
@@ -88,7 +97,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
   return new Promise(resolve => {
     // ---------- 1. HOY ----------
     video.hidden = true;
-    fotoHoy.hidden = true;
+    limpiarImagenes();
     const hoy = imagenDeHoy(poi);
     let creditoHoy = hoy?.credito || '';
     if (hoy) {
@@ -117,15 +126,15 @@ export function abrirPortal(poi, { camara = true } = {}) {
     // En qué frase aparece cada foto: la marcada en los datos, o repartidas parejo.
     const inicios = fotos.map((f, k) => f.desdeFrase ?? (k * lineas.length) / fotos.length);
     let ultimoAvance = 0;
-    subt.textContent = '';
+    subt.textContent = lineas[0] || poi.texto;
     if (fotos.length) prepararFoto(0);
 
     capa.className = 'portal visible hoy';
     vibrar([60, 40, 60]);
     document.body.style.overflow = 'hidden';
 
-    // La voz arranca enseguida y sigue durante todo el portal.
-    despues(0.6, () => {
+    // La voz arranca en el segundo 0 y sigue durante todo el portal.
+    {
       narrar(poi, avance => {
         ultimoAvance = Date.now();
         // Posición en la narración medida en frases (por ejemplo 2.5 = mitad de la tercera frase)
@@ -150,7 +159,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
           if (i !== indice) mostrarFoto(i);
         }
       }).then(() => { if (!cerrado) despues(2.5, () => cerrar()); });
-    });
+    }
 
     // ---------- 2. Se abre el anillo ----------
     if (fotos.length) despues(SEGUNDOS_HOY, abrirAnillo);
@@ -181,6 +190,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
       visible = imgA;
       imgA.src = fotos[i].archivo; imgA.alt = fotos[i].titulo;
       imgA.classList.add('activa'); imgB.classList.remove('activa');
+      imgA.classList.toggle('actual', fotos[i].anio === 'Hoy');
     }
 
     function mostrarFoto(i, inmediato = false) {
@@ -190,6 +200,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
       const siguiente = inmediato ? visible : (visible === imgA ? imgB : imgA);
       siguiente.src = f.archivo;
       siguiente.alt = f.titulo;
+      siguiente.classList.toggle('actual', f.anio === 'Hoy');
       siguiente.classList.remove('kenburns'); void siguiente.offsetWidth; siguiente.classList.add('kenburns');
       if (!inmediato) { siguiente.classList.add('activa'); visible.classList.remove('activa'); visible = siguiente; }
       $('.portal-anio').textContent = anio(f.anio);
@@ -222,6 +233,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
         stream?.getTracks().forEach(t => t.stop());
         if (gen === generacion) {
           capa.className = 'portal';
+          limpiarImagenes();
           video.srcObject = null;
           document.body.style.overflow = '';
         }
@@ -243,4 +255,5 @@ export function cerrarPortal() { abierto?.cerrar(); }
 // Para precargar las fotos de un lugar antes de abrir el portal.
 export function precargar(poi) {
   for (const f of [...poi.fotosActuales.slice(0, 1), ...poi.fotosHistoricas]) { const i = new Image(); i.src = f.archivo; }
+  if (poi.audio) { const a = new Audio(); a.preload = 'auto'; a.src = conVersion(poi.audio); }
 }

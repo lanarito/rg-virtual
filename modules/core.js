@@ -3,9 +3,13 @@ import { idioma, t, VOZ_LANG } from './i18n.js';
 
 let datosCache = null;
 
+// Cambiala cuando se actualicen datos o audios: así el celular no usa versiones viejas guardadas.
+export const VERSION = '2026-11-05b';
+export const conVersion = url => `${url}${url.includes('?') ? '&' : '?'}v=${VERSION}`;
+
 export async function cargarDatos() {
   if (!datosCache) {
-    const r = await fetch('data/pois.json', { cache: 'no-cache' });
+    const r = await fetch(conVersion('data/pois.json'), { cache: 'no-cache' });
     if (!r.ok) throw new Error('No se pudo leer data/pois.json');
     datosCache = await r.json();
     const lang = idioma();
@@ -17,7 +21,7 @@ export async function cargarDatos() {
 // Reemplaza nombres, textos, títulos de fotos y audios por los del idioma elegido.
 async function aplicarTraduccion(datos, lang) {
   let tr = null;
-  try { tr = (await (await fetch('data/traducciones.json', { cache: 'no-cache' })).json())[lang]; } catch { /* queda en español */ }
+  try { tr = (await (await fetch(conVersion('data/traducciones.json'), { cache: 'no-cache' })).json())[lang]; } catch { /* queda en español */ }
   if (!tr) return;
   for (const poi of datos.pois) {
     const x = tr.pois?.[poi.id];
@@ -121,7 +125,7 @@ function elegirVoz() {
   return voces.find(v => v.name === preferida)
     || ORDEN_ACENTOS.map(l => voces.find(v => lang(v) === l)).find(Boolean)
     || voces.find(v => lang(v) !== 'es-ES')
-    || voces[0];
+    || null;
 }
 
 // La voz grabada (mp3, Elena de Argentina) se usa salvo que el usuario elija la del navegador.
@@ -138,13 +142,28 @@ function reproducir(src, texto, onProgreso) {
     const a = reproductor;
     const fin = terminar(resolve);
     const vigente = () => id === idNarracion;
+    let reintentos = 0;
+    // Solo si el mp3 de verdad no está (después de reintentar) se usa el respaldo.
     const respaldo = () => { if (vigente()) hablarInterno(texto, onProgreso).then(fin); else fin(); };
+    const sonar = () => a.play().catch(err => {
+      if (!vigente() || err.name === 'AbortError') return;         // se cambió de audio: no es un error
+      if (err.name === 'NotAllowedError') return respaldo();      // el navegador bloqueó el sonido
+      a.addEventListener('canplay', () => vigente() && a.play().catch(() => {}), { once: true });
+    });
+    const cargar = () => {
+      a.src = conVersion(src);
+      a.playbackRate = leerAjuste('velocidad', 1);
+      sonar();
+    };
     a.ontimeupdate = onProgreso ? () => vigente() && a.duration && onProgreso(a.currentTime / a.duration) : null;
     a.onended = () => vigente() && fin();
-    a.onerror = () => vigente() && respaldo();
-    a.src = src;
-    a.playbackRate = leerAjuste('velocidad', 1);
-    a.play().catch(() => vigente() && respaldo());
+    // Internet lento o corte: reintenta el mismo mp3 antes de rendirse.
+    a.onerror = () => {
+      if (!vigente()) return;
+      if (reintentos++ < 2) setTimeout(() => vigente() && cargar(), 900);
+      else respaldo();
+    };
+    cargar();
   });
 }
 
@@ -172,16 +191,31 @@ export function callar() {
 }
 
 function hablarInterno(texto, onProgreso) {
+  const voz = 'speechSynthesis' in window ? elegirVoz() : null;
+  if (!voz) return leerEnSilencio(texto, onProgreso);
   return new Promise(resolve => {
-    if (!('speechSynthesis' in window)) return resolve();
     const u = new SpeechSynthesisUtterance(texto);
-    u.lang = VOZ_LANG[idioma()];
-    const voz = elegirVoz();
-    if (voz) { u.voice = voz; u.lang = voz.lang; }
+    u.voice = voz; u.lang = voz.lang;
     u.rate = leerAjuste('velocidad', 1);
     if (onProgreso) u.onboundary = e => onProgreso(e.charIndex / texto.length);
     u.onend = u.onerror = () => resolve();
     speechSynthesis.speak(u);
+  });
+}
+
+// Sin una voz adecuada: los subtítulos avanzan solos al ritmo de una lectura tranquila.
+function leerEnSilencio(texto, onProgreso) {
+  const id = idNarracion;
+  const duracion = Math.max(6000, texto.length * 70);
+  const inicio = Date.now();
+  return new Promise(resolve => {
+    const paso = () => {
+      if (id !== idNarracion) return resolve();
+      const avance = Math.min(1, (Date.now() - inicio) / duracion);
+      onProgreso?.(avance);
+      if (avance >= 1) resolve(); else setTimeout(paso, 250);
+    };
+    paso();
   });
 }
 

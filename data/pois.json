@@ -462,12 +462,14 @@
       "lon": -69.217424,
       "radio": 30,
       "resumen": "Sede del gobierno de la ciudad, frente a la plaza.",
-      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Es la sede del gobierno de la ciudad. Dato a confirmar: el edificio sería de 1925. En los años de las huelgas de la Patagonia Rebelde, en 1920 y 1921, Edelmiro Correa Falcón fue gobernador interino del Territorio de Santa Cruz.",
+      "texto": "El Palacio Municipal está sobre la Avenida San Martín, frente a la plaza y al lado de la Catedral. Fue inaugurado en 1925 y, desde entonces, conserva su fachada original. En 2025 la ciudad celebró sus cien años, y hoy es patrimonio histórico municipal. Desde hace un siglo es la sede del gobierno de la ciudad.",
       "audio": "assets/audio/municipalidad.mp3",
       "panorama360": null,
       "streetView": {
-        "heading": 30,
-        "pitch": 5
+        "pano": "kPtTxe5axwOrEWN51TXqWg",
+        "heading": 325,
+        "pitch": 5,
+        "fov": 70
       },
       "camara3d": {
         "rango": 200,
@@ -476,40 +478,7 @@
       },
       "portal": true,
       "fotosActuales": [],
-      "fotosHistoricas": [
-        {
-          "archivo": "assets/fotos/roil/avenida-san-martin.jpg",
-          "titulo": "Avenida San Martín",
-          "anio": "c. 1945",
-          "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 072.jpg)",
-          "nota": "Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          },
-          "desdeFrase": 0
-        },
-        {
-          "archivo": "assets/fotos/historicas/correa-falcon-1928.jpg",
-          "titulo": "Edelmiro Correa Falcón, gobernador interino del Territorio y presidente de la Sociedad Rural",
-          "autor": "Publicada en \"La Patagonia Trágica\", J. M. Borrero (1928)",
-          "licencia": "Dominio público",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Edelmiro_Correa_Falc%C3%B3n.png",
-          "anio": 1928,
-          "relacion": "epoca",
-          "nota": "Retrato.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          },
-          "desdeFrase": 3
-        }
-      ],
+      "fotosHistoricas": [],
       "verificado": false
     },
     {
@@ -542,7 +511,24 @@
           "fuente": "https://commons.wikimedia.org/wiki/File:Escuela_Provincial_N%C2%BA_1_Hernando_de_Magallanes.jpg"
         }
       ],
-      "fotosHistoricas": [],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/roil/alumnas-escuela.jpg",
+          "titulo": "Escolares frente a un edificio escolar de chapa de la época",
+          "anio": "c. 1940",
+          "relacion": "epoca",
+          "autor": "Autor desconocido (colección particular)",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto106.jpg)",
+          "nota": "Escuela a identificar.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0
+        }
+      ],
       "verificado": false
     },
     {
@@ -557,8 +543,10 @@
       "audio": "assets/audio/avenida-roca.mp3",
       "panorama360": null,
       "streetView": {
-        "heading": 45,
-        "pitch": 5
+        "pano": "sgfjpefR92Bs0klyt4tUAw",
+        "heading": 125,
+        "pitch": 5,
+        "fov": 90
       },
       "camara3d": {
         "rango": 300,
@@ -566,15 +554,7 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [
-        {
-          "archivo": "assets/fotos/actuales/avenida-roca.jpg",
-          "titulo": "Avenida Roca en 2006",
-          "autor": "Heretiq",
-          "licencia": "CC BY-SA 2.5",
-          "fuente": "https://commons.wikimedia.org/wiki/File:RioGallegos-AvdaRoca.jpg"
-        }
-      ],
+      "fotosActuales": [],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/roil/calle-roca-1955.jpg",
@@ -715,12 +695,14 @@
       "lon": -69.21335,
       "radio": 30,
       "resumen": "Un hotel histórico en Chacabuco y Roca.",
-      "texto": "En la esquina de Chacabuco y Roca funcionó el Hotel Argentino, uno de los hoteles históricos del centro de Río Gallegos. Ya aparece en fotos de principios de la década de 1920, y Foto Roil lo retrató varias veces, con los autos de la época estacionados en la puerta. Por sus habitaciones pasaron estancieros, viajantes y recién llegados a la Patagonia.",
+      "texto": "En esta esquina de Chacabuco y la avenida principal se levantaba el histórico Hotel Argentino, aunque su edificio ya no existe. Fue uno de los hoteles tradicionales del centro de Río Gallegos, y ya aparece en fotografías de principios de la década de 1920. Foto Roil lo retrató varias veces, con los automóviles de la época estacionados frente a su puerta. Por sus habitaciones y su salón pasaron estancieros, viajantes y familias recién llegadas a la Patagonia.",
       "audio": "assets/audio/hotel-argentino.mp3",
       "panorama360": null,
       "streetView": {
-        "heading": 0,
-        "pitch": 5
+        "pano": "6vwbrS-SpIsqseoU21LN6g",
+        "heading": 60,
+        "pitch": 5,
+        "fov": 90
       },
       "camara3d": {
         "rango": 220,
@@ -731,13 +713,13 @@
       "fotosActuales": [],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/hotel-argentino-autos.jpg",
-          "titulo": "El Hotel Argentino y los autos de la época",
+          "archivo": "assets/fotos/roil/hotel-argentino-esquina.jpg",
+          "titulo": "La esquina del Hotel Argentino",
           "anio": "c. 1940",
           "relacion": "lugar",
-          "autor": "Foto Roil",
+          "autor": "Autor desconocido (colección particular)",
           "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (fotos antiguas rio gallegos 023.jpg)",
+          "fuente": "Colección particular (FOTO28.JPG)",
           "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
@@ -763,13 +745,13 @@
           "desdeFrase": 1
         },
         {
-          "archivo": "assets/fotos/roil/hotel-argentino-esquina.jpg",
-          "titulo": "La esquina del Hotel Argentino",
+          "archivo": "assets/fotos/roil/hotel-argentino-autos.jpg",
+          "titulo": "El Hotel Argentino y los autos de la época",
           "anio": "c. 1940",
           "relacion": "lugar",
-          "autor": "Autor desconocido (colección particular)",
+          "autor": "Foto Roil",
           "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO28.JPG)",
+          "fuente": "Colección particular (fotos antiguas rio gallegos 023.jpg)",
           "nota": "Año aproximado.",
           "tomada": {
             "lat": null,
@@ -830,7 +812,7 @@
         },
         {
           "archivo": "assets/fotos/historicas/abrazo-del-estrecho-1899.jpg",
-          "titulo": "El Abrazo del Estrecho, en Punta Arenas",
+          "titulo": "El presidente Roca (al centro) a bordo, en el viaje al sur de 1899, el mismo año en que habló desde este balcón",
           "autor": "Autor desconocido",
           "licencia": "Dominio público",
           "fuente": "https://commons.wikimedia.org/wiki/File:Abrazo_del_Estrecho_(1899).jpg",
@@ -973,8 +955,10 @@
       "audio": "assets/audio/maria-auxiliadora.mp3",
       "panorama360": null,
       "streetView": {
-        "heading": 0,
-        "pitch": 5
+        "pano": "cjL4t4QFBKXQ3mDpCl9dzg",
+        "heading": 10,
+        "pitch": 5,
+        "fov": 80
       },
       "camara3d": {
         "rango": 200,
@@ -1623,8 +1607,10 @@
       "audio": "assets/audio/frigorifico-swift.mp3",
       "panorama360": null,
       "streetView": {
-        "heading": 20,
-        "pitch": 0
+        "pano": "FRgOPhgZkR6kNefxkcM-OQ",
+        "heading": 250,
+        "pitch": 3,
+        "fov": 45
       },
       "camara3d": {
         "rango": 250,
@@ -1756,18 +1742,18 @@
       "portal": true,
       "fotosActuales": [
         {
-          "archivo": "assets/fotos/actuales/viejo-muelle-costanera.jpg",
-          "titulo": "El viejo muelle de la costanera",
-          "autor": "rodoluca",
-          "licencia": "CC BY-SA 3.0",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Viejo_muelle,_costanera_de_R%C3%ADo_Gallegos,_Santa_Crruz,_Argentina_-_panoramio.jpg"
-        },
-        {
           "archivo": "assets/fotos/actuales/costanera-cartel.jpg",
           "titulo": "Cartel de la costanera",
           "autor": "Preyes",
           "licencia": "CC BY-SA 4.0",
           "fuente": "https://commons.wikimedia.org/wiki/File:Cartel_de_la_costanera_de_R%C3%ADo_Gallego.jpg"
+        },
+        {
+          "archivo": "assets/fotos/actuales/viejo-muelle-costanera.jpg",
+          "titulo": "El viejo muelle de la costanera",
+          "autor": "rodoluca",
+          "licencia": "CC BY-SA 3.0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Viejo_muelle,_costanera_de_R%C3%ADo_Gallegos,_Santa_Crruz,_Argentina_-_panoramio.jpg"
         },
         {
           "archivo": "assets/fotos/actuales/ria-marea-baja.jpg",

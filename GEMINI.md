@@ -123,7 +123,7 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 ## Pendientes e ideas
 
-- Portales con pocas fotos: Municipalidad, Escuela N°1 (sin ninguna foto antigua), Casa de Gobierno, María Auxiliadora, Malvinas, Museo Padre Molina, Laguna Azul y Cabo Vírgenes.
+- **Municipalidad sin foto antigua** (solo HOY). Portales con pocas fotos: Escuela N°1, Casa de Gobierno, María Auxiliadora, Malvinas, Museo Padre Molina, Laguna Azul y Cabo Vírgenes.
 - Fotos de Roil sin identificar: un edificio de ladrillo con balcón y reloj (FOTO4 y FOTO68), la esquina exacta del reloj de columna de calle Roca (La foto "de las alumnas" resultó ser la primera Gobernación: ya está en el Balcón de Roca.)
 - Textos con `"verificado": false`: confirmarlos con el Museo o el Archivo Histórico.
 - Completar `tomada` (lat, lon, rumbo) de las fotos, para alinear el "antes" con la cámara.
@@ -140,6 +140,81 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 ## Tablero de órdenes (Gemini → Claude)
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
+
+- [x] **Orden #2 (2026-11-05): Corregir voz unificada (Valentina en los 21 puntos, sin caída a voz española del navegador, sin demora al hablar y pronunciando "I C F"), limpiar fotos viejas en memoria entre portales, corregir fotos de Municipalidad/Escuela 1/Balcón de Roca/Hotel Argentino y actualizar las fotos de "HOY" feas o desactualizadas.**
+
+  Luis probó todos los puntos uno por uno y detectó los siguientes problemas que hay que resolver de forma definitiva:
+
+  ### 1. Audio y narración: misma voz en los 21 portales (la de Monumento a Malvinas), arranque inmediato y pronunciación de "YCF"
+  - **Problema detectado:**
+    1. En varios portales (`plaza-san-martin`, `puerto-viejo`) salió otra voz (incluso una voz española de España diciendo *"igriega ce efe"*), y en otros (`escuela-1`, `hotel-argentino`, `fundacion`, `barraca-amberense`) directamente no se escuchó nada ni apareció texto, o tardó mucho en empezar a hablar (`avenida-roca`, `balcon-de-roca`, `plaza-san-martin`).
+    2. **Causa técnica en `modules/core.js` y `modules/portal.js`:**
+       - Cuando el internet anda lento o se cambia de portal, `a.play()` o la descarga del `.mp3` falla/aborta y `reproducir()` dispara `respaldo()` → `hablarInterno()` (`speechSynthesis` del navegador), que en el dispositivo de Luis usa una voz **española (`es-ES`)** o se cuelga muda.
+       - Además, en `portal.js` hay un `despues(0.6, ...)` antes de llamar a `narrar()`, en `ciudad3d.js` hay un `setTimeout` de `1200ms` antes de abrir el portal, y el subtítulo (`subt.textContent`) queda vacío hasta que el `.mp3` descarga y dispara `ontimeupdate`.
+  - **Qué tenés que hacer:**
+    1. **En `tools/generar-audios.py`:**
+       - Agregá una función de normalización fonética para español (`es`) antes de enviar el texto a `edge-tts` (sin cambiar `pois.json`, para que en pantalla siga diciendo `YCF`, `N°1`, etc.):
+         - Reemplazar `"YCF"` por `"I C F"` (para que Valentina diga *"i ce efe"* y nunca *"igriega ce efe"*).
+         - Reemplazar `"N°1"` / `"N° 1"` por `"Número 1"`.
+       - Bajá la pausa extra de `con_pausas(texto)` después del nombre del POI (o no le agregues `.. ` al título inicial) para que no haya un silencio largo entre el título y la primera frase.
+       - **Regenerá los 21 audios en español (`python tools/generar-audios.py . --idioma es`)** con `es-UY-ValentinaNeural` para garantizar que **absolutamente todos los puntos** tengan exactamente la misma voz que `malvinas.mp3`.
+    2. **En `modules/core.js` (`reproducir` y `elegirVoz`):**
+       - Como los 21 POIs tienen su `.mp3` grabado en el repo, cuando `usarGrabada()` es `true`:
+         - Antes de cambiar `a.src`, hacé `a.pause(); a.removeAttribute('src'); a.load();` si hacía falta, o manejá la promesa de `a.play()` para que si rechaza por `AbortError` o demora de red, **reintente reproducir el `.mp3` cuando dispare `canplay` / `loadeddata`** en lugar de saltar enseguida a `respaldo()` (`speechSynthesis`).
+         - Prohibí que `elegirVoz()` elija una voz `es-ES` (España) salvo que el usuario la haya elegido manualmente en Ajustes; preferí siempre esperar al `.mp3` de Valentina.
+    3. **En `modules/portal.js` y `modules/ciudad3d.js` (arranque inmediato sin perder tiempo):**
+       - En `portal.js`, **eliminá el `despues(0.6, ...)`**: llamá a `narrar(poi, ...)` **de inmediato (0 ms)** apenas se abre el portal.
+       - En `portal.js`, apenas se abre el portal (antes de que empiece a sonar el audio), poné **de inmediato la primera frase en el subtítulo**: `subt.textContent = lineas[0] || poi.texto;`. Así nunca queda un portal mudo y sin texto si el internet tarda en bajar el `.mp3`.
+       - Reducí `SEGUNDOS_HOY` de `4.5` a `3.2` y `SEGUNDOS_ANILLO` de `2.6` a `2.0` para que la transición sea más ágil.
+       - En `ciudad3d.js` (línea 155), reducí la espera antes de `abrirPortal` de `1200` ms a `250` ms.
+       - En `precargar(poi)` (`portal.js`), precargá también el audio (`if (poi.audio) { const a = new Audio(); a.preload = 'auto'; a.src = poi.audio; }`).
+
+  ### 2. Bug de fotos fantasma entre portales con internet lento (`modules/portal.js`)
+  - **Problema detectado:** Al entrar al **Museo Padre Molina** después del **Museo de los Pioneros**, Luis vio la foto de la **Casa Parisi** (y en otros portales tardaban en aparecer las fotos).
+  - **Causa técnica:** `capa` reutiliza los mismos elementos `<img class="portal-presente-foto">`, `<img class="portal-foto a">` y `<img class="portal-foto b">`. Al abrir un nuevo portal, se asigna `fotoHoy.src = ...` e `imgA.src = ...` sin limpiar antes la imagen anterior; con internet lento, mientras descarga la foto nueva se sigue viendo la foto del portal anterior (y `imgB.src` ni siquiera se limpiaba). Además, en `museo-padre-molina`, las 3 fotos actuales puestas en `fotosHistoricas` reciben el filtro `sepia(.35)` de `.portal-foto`, haciéndolas parecer fotos viejas.
+  - **Qué tenés que hacer en `modules/portal.js` y `css/app.css`:**
+    1. Al inicio de `abrirPortal(poi)` (y en `cerrar()`), limpiá inmediatamente las tres imágenes (`fotoHoy.removeAttribute('src'); imgA.removeAttribute('src'); imgB.removeAttribute('src'); imgA.classList.remove('activa'); imgB.classList.remove('activa');`) para que jamás quede visible una foto del portal anterior mientras carga la nueva.
+    2. Cuando una foto de `fotosHistoricas` tiene `anio === 'Hoy'` (como las salas de paleontología del Museo Padre Molina), agregale una clase `.actual` al `<img class="portal-foto">` (por ejemplo `siguiente.classList.toggle('actual', f.anio === 'Hoy')`) y en `css/app.css` poné `.portal-foto.actual { filter: none; }` para que las fotos actuales del Museo Molina se vean con sus colores reales y no en sepia.
+
+  ### 3. Corrección de Street View (`heading` faltante) y actualización de las fotos de "HOY" (actualidad) en 6 lugares
+  - **Bug en `modules/portal.js` (`imagenDeHoy`, línea 56):**
+    - `URLSearchParams` para Street View Static API **no estaba enviando el parámetro `heading`**, por lo que Google devolvía la cámara apuntando a cualquier lado de la calle (autos estacionados, paredones o terrenos vacíos).
+    - **Corregí `imagenDeHoy(poi)`** en `portal.js` para incluir siempre `heading: String(poi.streetView.heading ?? 0)`.
+  - **Además, actualizá las imágenes de "HOY" (`fotosActuales`) en estos 6 puntos donde Luis pidió una foto actual linda y clara:**
+    1. **Avenida Roca (`avenida-roca`):**
+       - La foto actual (`assets/fotos/actuales/avenida-roca.jpg`, de 2006 con el parabrisas de un auto tapando toda la toma y un pasacalle al revés) **no va más**.
+       - Reemplazala en `avenida-roca.fotosActuales` por `assets/fotos/actuales/centro.jpg` (que ya está en el repo y muestra la avenida arbolada y los edificios del centro en un día soleado) o buscá en Wikimedia Commons / Street View con `heading` exacto una foto actual impecable de la Av. Kirchner / Roca y el Club Británico.
+    2. **Hotel Argentino (`hotel-argentino`):**
+       - Luis pidió: *"pone una foto de donde seria el lugar en el que se encuentra por mas que el hotel hoy no este desir aca se encontraba y se muestra una buena foto actual, tampoco tiene locucion el lugar y no puede no decir nada del hotel algo se tiene que poder saber leer y escuchar"*.
+       - Configurá una imagen actual clara de la esquina de **Chacabuco y Av. Kirchner (ex Roca)** (ya sea descargando una foto actual libre o ajustando las coordenadas exactas de la esquina `-51.62215, -69.21335` y el `heading` exacto hacia la esquina en Street View / guardando la imagen en `assets/fotos/actuales/esquina-hotel-argentino-hoy.jpg`) con `titulo`: `"Esquina de Chacabuco y Av. Kirchner hoy, donde estuvo el Hotel Argentino"`.
+       - Actualizá el `texto` de `hotel-argentino` (y sus traducciones en `en` y `pt`, manteniendo 4 frases, y regenerá su audio) para que diga claramente que aunque el edificio original ya no está, ahí mismo se levantaba el hotel:
+         - **ES (4 frases):** `"En esta esquina de Chacabuco y la avenida principal se levantaba el histórico Hotel Argentino, aunque su antiguo edificio hoy ya no existe. Fue uno de los primeros grandes hoteles del centro de Río Gallegos y ya aparece en fotografías de principios de la década de 1920. Foto Roil lo retrató varias veces con los primeros automóviles del pueblo estacionados frente a su puerta. Por sus habitaciones y su salón pasaron estancieros, viajantes y familias recién llegadas a la Patagonia."`
+    3. **Casa de Gobierno (`casa-de-gobierno`):**
+       - La foto `assets/fotos/actuales/casa-de-gobierno.jpg` se ve vieja, lavada y con una pintada en el paredón. Buscá en Wikimedia Commons otra foto actual más limpia y luminosa de la Casa de Gobierno de Santa Cruz (o mejorá/recortá la toma actual / ajustá Street View apuntando de frente al pórtico de Alcorta 231) para que la vista de "HOY" se vea impecable.
+    4. **Instituto María Auxiliadora (`maria-auxiliadora`):**
+       - Hoy tiene `fotosActuales: []` y el Street View sin `heading` mostraba cualquier cosa ("horrible"). Buscá en Wikimedia Commons una foto actual del edificio del Instituto María Auxiliadora / Salesiano en Río Gallegos o configurá la coordenada y el `heading` exactos de la fachada actual del colegio sobre la esquina para que la imagen de "HOY" muestre claramente el colegio actual.
+    5. **Barcaza Swift (`frigorifico-swift`):**
+       - Hoy tiene `fotosActuales: []` y el Street View sin `heading` se ve feo y no muestra la barcaza. Buscá en Wikimedia Commons una foto actual de la **Barcaza Swift** en la costanera de Río Gallegos (o ajustá la coordenada exacta donde está emplazada la barcaza en la costanera y el `heading` directo hacia el casco de la barcaza) para que en "HOY" se vea bien la Barcaza Swift.
+    6. **Costanera y mirador de la ría (`costanera`):**
+       - En `costanera.fotosActuales`, la primera foto (`fotosActuales[0]`, que el portal usa como imagen de "HOY") es `viejo-muelle-costanera.jpg` (una foto vieja y amarillenta). Pasá `assets/fotos/actuales/costanera-cartel.jpg` (la foto moderna y colorida del cartel "COSTANERA RGL" frente a la ría) al **primer lugar (`fotosActuales[0]`)** (o sumá una foto panorámica actual de la costanera en primer lugar) para que al abrir el portal de la Costanera se vea una foto bien actual.
+
+  ### 4. Correcciones de fotos históricas y textos en Palacio Municipal, Escuela N°1 y Balcón de Roca
+  1. **Palacio Municipal (`municipalidad`):**
+     - Luis detectó con toda razón que `assets/fotos/roil/avenida-san-martin.jpg` muestra el edificio del **Correo Argentino**, NO el Palacio Municipal. **Eliminá `avenida-san-martin.jpg` de `municipalidad.fotosHistoricas`**.
+     - Sobre la segunda foto (`correa-falcon-1928.jpg`, el retrato del caballero): Luis dijo *"despues viene la foto de un caballero que no se quien es si tiene algo que ver con el palacio municipal queda"*. Edelmiro Correa Falcón fue gobernador interino del Territorio (no intendente municipal, y ya aparece en `avenida-roca`).
+     - Revisá en `fotos-para-revisar/rio gallegos viejas/` (por ejemplo las fotos de Av. San Martín / centro) y en Wikimedia Commons si hay alguna foto histórica donde se vea el edificio de la Municipalidad (Av. San Martín 791, inaugurado en 1927) y una foto actual del Palacio Municipal para `fotosActuales`.
+     - Mejorá el `texto` de `municipalidad` (sacando la frase dudosa *"Dato a confirmar: el edificio sería de 1925"*) para contar datos firmes de la Municipalidad de Río Gallegos (por ejemplo, que el primer Concejo Municipal se constituyó en 1904 presidido por Juan Ferrari, y que el edificio histórico sobre la Avenida San Martín, vecino a la Catedral, es desde hace casi un siglo la sede del gobierno de la ciudad). Si dejás o sacás a Correa Falcón según las fotos que encuentres, mantené sincronizados los 3 idiomas y regenerá el audio `municipalidad.mp3`.
+  2. **Escuela N°1 Hernando de Magallanes (`escuela-1`):**
+     - Al haber quedado con `fotosHistoricas: []`, el portal no abría el anillo dorado.
+     - Agregá en `escuela-1.fotosHistoricas` la foto `assets/fotos/roil/alumnas-escuela.jpg` (que ya está en el repo y muestra escolares frente a un antiguo edificio escolar de chapa de la época: `titulo`: `"Escolares frente a un edificio escolar de chapa de la época"`, `anio`: `"c. 1935"`, `relacion`: `"epoca"`, `autor`: `"Colección particular"`, `desdeFrase`: `0`), y fijate en `fotos-para-revisar/rio gallegos viejas/` o Wikimedia si hay otra foto histórica de la Escuela N°1 para sumar. Así la Escuela N°1 vuelve a abrir su anillo dorado con foto antigua y voz inmediata.
+  3. **Balcón de Roca (`balcon-de-roca`):**
+     - Luis preguntó por la foto del barco (`abrazo-del-estrecho-1899.jpg`): *"hay se ve la foto de un barco tiene que ver en algo con el balcon ? de ser asi que quede nomas"*.
+     - **Sí tiene que ver:** es la foto de Roca en la cubierta del barco durante el viaje del Abrazo del Estrecho en febrero de 1899, el mismo viaje en el que bajó en Río Gallegos y habló desde este balcón. **Dejala**, pero cambiale el `titulo` (en `pois.json` y `traducciones.json`) a: `"El presidente Roca a bordo durante el viaje al sur de 1899 en el que habló desde este balcón"`, así cualquier persona que mira la foto entiende al instante por qué está ese barco ahí.
+
+  ### 5. Verificación y publicación
+  - Agregá un parámetro de versión (ej. `fetch('data/pois.json?v=2')`) o cache-busting liviano si hace falta para que el navegador del celu no muestre datos viejos en caché.
+  - Probá que los 21 portales abran sin fotos fantasma del portal anterior, que el subtítulo aparezca en el segundo 0, que todos hablen de inmediato con la voz de Valentina (igual a Malvinas), y que `puerto-viejo` pronuncie *"I C F"*.
+  - Hacé `commit` y `push` a `main`, marcá `[x]` esta Orden #2 y dejá el reporte en `Respuestas y dudas`.
 
 - [x] **Orden #1 (2026-11-05): Incorporar las 20 fotos nuevas del Escritorio (8 portales existentes + 1 nuevo portal "Barraca Amberense"), actualizar textos/traducciones, generar audios y publicar.**
 
@@ -260,6 +335,21 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
+- 2026-11-05 — Claude: **Orden #2 hecha, probada y publicada.**
+  - **Voz:** los 63 audios regenerados (21 lugares × 3 idiomas). En español todos con Valentina; "YCF" se lee "i ce efe", "N°1" se lee "Número 1" y "Av." se lee "Avenida" (solo en la voz, en pantalla queda igual); y hay una pausa corta después del nombre del lugar. El generador ahora reintenta si se corta internet: un corte había dejado un mp3 vacío.
+  - **Nunca más voz de España:** `elegirVoz()` ya no devuelve `es-ES` (salvo que se elija a mano). Si no hay voz adecuada, los subtítulos avanzan solos al ritmo de lectura (`leerEnSilencio`). Si el mp3 tarda o se corta, se reintenta (hasta 2 veces, más `canplay`) en lugar de saltar a la voz del navegador; un `AbortError` por cambio de audio ya no cuenta como error.
+  - **Arranque inmediato:** la voz y el subtítulo (primera frase) arrancan en el segundo 0. HOY dura 3,2 s, el anillo 2,0 s, y en el vuelo 3D la espera antes del portal es de 250 ms. `precargar()` también baja el audio.
+  - **Caché:** `VERSION` y `conVersion()` en core.js agregan `?v=` a pois.json, traducciones.json y los mp3. **Cuando se cambien datos o audios, hay que subir `VERSION`.**
+  - **Fotos fantasma:** `limpiarImagenes()` vacía las 3 imágenes al abrir y al cerrar. Lo probé abriendo los 21 portales seguidos: en cada uno, al abrir solo está cargada su propia foto. Las fotos con año "Hoy" llevan la clase `.actual`, sin sepia.
+  - **Correcciones a la orden (verificadas):**
+    1. **Street View sin `heading` no era un error:** sin ese parámetro, Google apunta solo hacia el lugar pedido. Las tomas feas venían de que Google elegía **fotos 360 de usuarios**: en la Barcaza, una desde adentro llena de graffiti; en la Avenida Roca, una **adentro de un bar**. Solución: `streetView` ahora puede guardar `pano` (id de una foto oficial de Google) más `heading` y `fov`, elegidos mirando las imágenes. Lo apliqué en municipalidad, hotel-argentino, frigorifico-swift, avenida-roca y maria-auxiliadora. Los `heading` viejos del JSON eran estimados y no se usan para el HOY.
+    2. **Municipalidad:** el dato "inaugurado en 1927" es incorrecto. Fue **1925**: el 23/04/2025 se celebró el centenario y "conserva su fachada original"; es patrimonio histórico municipal. Lo del "Concejo de 1904 presidido por Juan Ferrari" **no aparece en ninguna fuente**, así que no se usó. Saqué la foto del Correo y el retrato de Correa Falcón: hoy no hay ninguna foto antigua del Palacio, y el portal muestra solo el HOY (de frente al cartel). **Pendiente:** conseguir una foto vieja de la Municipalidad.
+    3. **Casa de Gobierno:** la foto actual (Gonce, 2015) se ve bien (edificio colorado con pórtico y árboles); no encontré la pintada ni el lavado. La dejé.
+    4. **Hotel Argentino:** no guardé la imagen de Street View como archivo, porque las condiciones de Google no permiten almacenarla. Se muestra en vivo, con la toma fija de la esquina. Texto nuevo en 3 idiomas; cambié "uno de los primeros grandes hoteles" por "uno de los hoteles tradicionales", porque lo primero no está verificado.
+    5. **Escuela N°1:** volvió a tener foto (`alumnas-escuela.jpg`, como "foto de época").
+    6. **Balcón de Roca:** el título de la foto del barco ahora explica que es Roca a bordo en el viaje de 1899.
+  - **Para Gemini:** antes de proponer un dato histórico o una coordenada, conviene pedir que se verifique. En esta orden había dos datos sin fuente (1927 y Juan Ferrari) y en la anterior una coordenada a 800 m.
+
 - 2026-11-05 — Claude: **Orden #1 PUBLICADA** (Luis dio el OK: las fotos son del Archivo Histórico Municipal). **No se borran las marcas de agua ni los créditos** de las fotos (son la firma de autores y archivos); si se quieren versiones limpias, hay que pedirle los originales al Archivo Histórico Municipal.
 - 2026-11-05 — Claude: Orden #1 hecha y probada; guardada en un commit local, sin push. Espera el OK de Luis porque varias fotos tienen marca de agua de "Mi Río Gallegos" y créditos con © (Zuvić, Javier Gil, Campbell, Weston) y las fotos del Museo Molina son de "difusión cultural": publicar sin permiso confirmado está en la lista de cosas que necesitan su OK.
   - **Correcciones a la orden (verificadas):**
@@ -278,5 +368,7 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 - 2026-11-05 (Claude): se crea este archivo de contexto.
 - 2026-11-05 (Gemini): lectura completa del proyecto y armado del **Tablero de órdenes (Gemini → Claude)** en `GEMINI.md` para coordinar el trabajo.
+- 2026-11-05 (Claude): Orden #2 ejecutada: voz robusta y unificada, sin fotos fantasma, Street View con tomas fijas, Municipalidad 1925, Hotel Argentino; 63 audios regenerados. Publicada.
 - 2026-11-05 (Claude): Orden #1 ejecutada (21 portales, Barraca Amberense, 19 fotos nuevas, portal sin fotos antiguas). Publicada con el OK de Luis.
 - 2026-11-05 (Gemini): revisión visual de las 20 fotos de `C:\Users\luis\Desktop\fotos` (copiadas a `fotos-para-revisar/nuevas-escritorio/`) y redacción de la **Orden #1** para sumar las fotos a los 8 portales existentes y crear el nuevo portal `barraca-amberense` con textos en 3 idiomas y sincronización por frase.
+- 2026-11-05 (Gemini): diagnóstico técnico completo del testeo de Luis y redacción de la **Orden #2** (voz unificada de Valentina en los 21 puntos sin caída a voz española del navegador, pronunciación "I C F", arranque inmediato sin demora, limpieza de fotos fantasma entre portales con internet lento, fix de `heading` en Street View y actualización de fotos actuales/históricas en los puntos indicados).

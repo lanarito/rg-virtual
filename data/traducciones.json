@@ -20,7 +20,7 @@
       "municipalidad": {
         "nombre": "City Hall",
         "resumen": "Seat of the city government, facing the square.",
-        "texto": "City Hall stands on San Martín Avenue, facing the square and next to the Cathedral. It is the seat of the city government. Still to be confirmed: the building would date from 1925. During the strikes of Rebel Patagonia, in 1920 and 1921, Edelmiro Correa Falcón was acting governor of the Territory of Santa Cruz."
+        "texto": "City Hall stands on San Martín Avenue, facing the square and next to the Cathedral. It opened in 1925 and has kept its original facade ever since. In 2025 the city celebrated its hundredth anniversary, and today it is a municipal heritage site. For a century it has been the seat of the city government."
       },
       "escuela-1": {
         "nombre": "School No. 1 Hernando de Magallanes",
@@ -35,7 +35,7 @@
       "hotel-argentino": {
         "nombre": "Hotel Argentino",
         "resumen": "A historic hotel at Chacabuco and Roca.",
-        "texto": "On the corner of Chacabuco and Roca stood the Hotel Argentino, one of the historic hotels of downtown Río Gallegos. It already appears in photos from the early 1920s, and Foto Roil photographed it several times, with the cars of the time parked at the door. Ranchers, traveling salesmen and newcomers to Patagonia stayed in its rooms."
+        "texto": "On this corner of Chacabuco and the main avenue stood the historic Hotel Argentino, although its building no longer exists. It was one of the traditional hotels of downtown Río Gallegos, and it already appears in photographs from the early 1920s. Foto Roil photographed it several times, with the cars of the time parked at its door. Ranchers, traveling salesmen and families newly arrived in Patagonia passed through its rooms and its hall."
       },
       "balcon-de-roca": {
         "nombre": "Roca's Balcony",
@@ -216,7 +216,9 @@
       "Sala del Museo Padre Molina": "A hall of the Father Molina Museum",
       "La Barraca Amberense en sus primeros años": "The Barraca Amberense in its early years",
       "La calle nevada frente a la Barraca Amberense": "The snowy street in front of the Barraca Amberense",
-      "Fundacruz, Casa de la Cultura": "Fundacruz Cultural Center"
+      "Fundacruz, Casa de la Cultura": "Fundacruz Cultural Center",
+      "El presidente Roca (al centro) a bordo, en el viaje al sur de 1899, el mismo año en que habló desde este balcón": "President Roca (center) on board during the 1899 trip south, the same year he spoke from this balcony",
+      "Escolares frente a un edificio escolar de chapa de la época": "Schoolchildren in front of a tin school building of the time"
     }
   },
   "pt": {
@@ -239,7 +241,7 @@
       "municipalidad": {
         "nombre": "Prefeitura",
         "resumen": "Sede do governo da cidade, em frente à praça.",
-        "texto": "A Prefeitura fica na Avenida San Martín, em frente à praça e ao lado da Catedral. É a sede do governo da cidade. Dado a confirmar: o prédio seria de 1925. Nos anos das greves da Patagônia Rebelde, em 1920 e 1921, Edelmiro Correa Falcón foi governador interino do Território de Santa Cruz."
+        "texto": "A Prefeitura fica na Avenida San Martín, em frente à praça e ao lado da Catedral. Foi inaugurada em 1925 e, desde então, conserva sua fachada original. Em 2025 a cidade comemorou seus cem anos, e hoje é patrimônio histórico municipal. Há um século é a sede do governo da cidade."
       },
       "escuela-1": {
         "nombre": "Escola Nº 1 Hernando de Magallanes",
@@ -254,7 +256,7 @@
       "hotel-argentino": {
         "nombre": "Hotel Argentino",
         "resumen": "Um hotel histórico na esquina de Chacabuco e Roca.",
-        "texto": "Na esquina das ruas Chacabuco e Roca funcionou o Hotel Argentino, um dos hotéis históricos do centro de Río Gallegos. Ele já aparece em fotos do começo da década de 1920, e a Foto Roil o fotografou várias vezes, com os carros da época estacionados na porta. Por seus quartos passaram fazendeiros, caixeiros-viajantes e recém-chegados à Patagônia."
+        "texto": "Nesta esquina da rua Chacabuco com a avenida principal ficava o histórico Hotel Argentino, embora seu prédio já não exista. Foi um dos hotéis tradicionais do centro de Río Gallegos, e já aparece em fotografias do começo da década de 1920. A Foto Roil o fotografou várias vezes, com os carros da época estacionados em frente à porta. Por seus quartos e seu salão passaram fazendeiros, caixeiros-viajantes e famílias recém-chegadas à Patagônia."
       },
       "balcon-de-roca": {
         "nombre": "Sacada de Roca",
@@ -435,7 +437,9 @@
       "Sala del Museo Padre Molina": "Sala do Museu Padre Molina",
       "La Barraca Amberense en sus primeros años": "A Barraca Amberense nos seus primeiros anos",
       "La calle nevada frente a la Barraca Amberense": "A rua com neve em frente à Barraca Amberense",
-      "Fundacruz, Casa de la Cultura": "Fundacruz, Casa da Cultura"
+      "Fundacruz, Casa de la Cultura": "Fundacruz, Casa da Cultura",
+      "El presidente Roca (al centro) a bordo, en el viaje al sur de 1899, el mismo año en que habló desde este balcón": "O presidente Roca (no centro) a bordo, na viagem ao sul de 1899, o mesmo ano em que falou desta sacada",
+      "Escolares frente a un edificio escolar de chapa de la época": "Escolares diante de um prédio escolar de zinco da época"
     }
   }
 }

@@ -295,3 +295,6 @@ body:has(.portal.visible) .redondo, body:has(.portal.visible) .tarjeta { visibil
   50% { transform: rotateY(22deg) rotateX(-4deg) translateY(-8px); } }
 @keyframes escudoBrillo { 0%, 55% { transform: translateX(-120%); } 75%, 100% { transform: translateX(120%); } }
 @media (prefers-reduced-motion: reduce) { .escudo3d::before, .escudo-moneda, .escudo-brillo { animation: none !important; } }
+
+/* Fotos actuales dentro del portal (por ejemplo, las salas del Museo Molina): con sus colores reales */
+.portal-foto.actual { filter: none; }
