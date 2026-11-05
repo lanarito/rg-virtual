@@ -141,6 +141,49 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
+- [ ] **Orden #6 (2026-11-05): Implementar las 2 experiencias de Realidad Aumentada (AR) en el portal (`modules/portal.js`, `css/app.css`, `modules/sonido.js`, `modules/i18n.js`): (1) Modo "Ventana Mágica / Fantasma AR" con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir una Postal AR combinando el HOY + el Anillo al Pasado.**
+
+  **Pedido de Luis:** Le propuse a Luis dos experiencias de Realidad Aumentada dentro del portal (sin instalar nada y con costo $0) y pidió expresamente: *"me gustan esas dos agamosla"*.
+
+  ### 1. Experiencia AR #1: "Ventana Mágica / Modo Fantasma" + Efecto Giroscopio 3D (`modules/portal.js` y `css/app.css`)
+  - **Objetivo:** Que cuando estés frente al lugar histórico (con tu cámara en vivo encendida o con la foto de HOY si estás sin cámara), puedas ver el pasado flotando sobre el presente o superpuesto en modo fantasma para comparar el edificio de 1910 con el actual, y que al inclinar/mover el celular el portal reaccione con profundidad 3D.
+  - **Qué tenés que hacer:**
+    1. **Efecto Giroscopio / Parallax 3D en el portal:**
+       - Mientras el portal está abierto, escuchá `deviceorientation` (`gamma` y `beta`, suavizados con interpolación para que no tiemble; y en escritorio podés acompañar suavemente con `pointermove`).
+       - Actualizá variables CSS en `.portal` (`--px`, `--py` alrededor de `50%` y `46%`, con desplazamiento máximo de `±8%`, y `--dx`, `--dy` en píxeles `±18px`).
+       - Usá `var(--px, 50%) var(--py, 46%)` como centro del `clip-path: circle(...)` de `.portal-pasado` y de la posición de `.portal-anillo` (`left: var(--px, 50%); top: var(--py, 46%)`), y aplicá un leve desplazamiento parallax a `.portal-foto` cuando está en modo anillo/ventana. Así, al mover el teléfono en la mano, el anillo dorado parece flotar anclado en el aire frente al edificio real.
+    2. **Modo "Ventana AR / Fantasma" dentro del portal (cuando `fotos.length > 0`):**
+       - Agregá en la esquina superior derecha del portal (a la izquierda del botón `.portal-cerrar`) un botón redondo discreto `.portal-btn-ar` (por ejemplo con icono `◐` o `👁️` y etiqueta corta / `aria-label` traducida en `es`, `en`, `pt`) que alterne entre 3 vistas mientras escuchás o mirás las fotos:
+         - **Vista normal (`adentro`):** la foto antigua a pantalla completa como ahora.
+         - **Vista "Ventana AR" (`.portal.ar-ventana`):** mantiene encendido el fondo de HOY (`<video class="portal-presente">` en vivo o `.portal-presente-foto`) y muestra en el centro el **anillo dorado grande** (`--r: min(40vw, 30vh)`) con la foto antigua adentro, permitiendo ver al mismo tiempo la calle actual por fuera del anillo y el pasado por dentro.
+         - **Vista "Fantasma AR" (`.portal.ar-fantasma`):** muestra el fondo de HOY en vivo y superpone encima la foto antigua a pantalla completa con opacidad regulable (ej. `opacity: 0.55` o un pequeño control deslizante `.portal-slider-fantasma` de `0%` a `100%` que aparece solo en este modo) para calzar exactamente el edificio antiguo (o el Hotel Argentino desaparecido) sobre la calle actual.
+       - **Importante:** Si el usuario toca el botón AR (`.portal-btn-ar`) o el slider, **desactivá el cierre automático al terminar el audio** (`noCerrarSolo = true`) para que pueda seguir apuntando con la cámara, comparando las fotos (tocando para pasar de foto antigua) y sacando postales todo el tiempo que quiera hasta tocar `✕`.
+
+  ### 2. Experiencia AR #2: Botón `📸` "Sacar Postal en el Portal" para compartir en WhatsApp / Redes (`modules/portal.js` y `modules/sonido.js`)
+  - **Objetivo:** Que el vecino o turista pueda sacarse una foto en el lugar combinando la vista actual de la cámara (o la foto de HOY) + el portal dorado al pasado + el sello de Río Gallegos Inmersivo, lista para compartir por WhatsApp/Instagram o guardar en el teléfono.
+  - **Qué tenés que hacer:**
+    1. En `modules/sonido.js`, agregá una función exportada `sonidoFoto()` que genere con WebAudio un sonido corto y nítido de obturador de cámara (clic mecánico suave, ~80 ms).
+    2. En `.portal` (`modules/portal.js`), agregá arriba a la derecha (junto a `.portal-btn-ar` y `.portal-cerrar`) el botón redondo `.portal-btn-foto` (`📸`, con `aria-label` traducido en los 3 idiomas: `"Sacar postal del portal"` / `"Take portal postcard"` / `"Tirar postal do portal"`).
+    3. Al tocar `📸`:
+       - Marcá `noCerrarSolo = true`, dispará `sonidoFoto()` y hacé un efecto visual de flash blanco rápido (`.portal-flash`, 180 ms).
+       - Generá en un `<canvas>` de `1080 × 1440` (formato postal vertical 3:4):
+         1. **Fondo ("HOY"):** dibujá con recorte `cover` el frame actual de `<video class="portal-presente">` (si la cámara está activa y ` !video.hidden`) o la imagen `.portal-presente-foto` (si es local y cargó sin bloqueo CORS; si el fondo fuera de Street View externo sin CORS, usá un fondo oscuro degradado elegante para no ensuciar el canvas con `SecurityError`).
+         2. **El Pasado:**
+            - Si el portal está en modo `.ar-fantasma`, dibujá encima la foto histórica activa (`visible`) con la opacidad actual del modo fantasma.
+            - Si está en modo `.ar-ventana`, `.abriendo` o normal (`adentro`), dibujá el **portal circular en el centro** (radio ~380 px en `540, 620`) con la foto histórica activa recortada en círculo y rodeada por un **anillo dorado brillante** (doble aro con resplandor dorado `#e8b04b` / `#ffd98a`), de modo que en la postal siempre se vea el presente alrededor y el portal al pasado en el centro (o si no hay fotos antiguas, como en Municipalidad, la imagen de hoy con el marco dorado).
+         3. **Encabezado y Zócalo institucional en el canvas:**
+            - Arriba: el año de la foto histórica en dorado grande (`c. 1910`, `1899`, etc.) y el nombre del lugar (`poi.nombre`).
+            - Abajo: franja oscura translúcida con borde superior dorado, el **Escudo de la Municipalidad** (`assets/marca/escudo-rio-gallegos.png`), el título de la foto histórica, su crédito (`autor · licencia`) y la firma `"Río Gallegos Inmersivo · Portal al Pasado"`.
+       - Convertí el canvas a Blob JPEG (`0.92`):
+         - Si `navigator.canShare` permite compartir el archivo (`new File([blob], nombreArchivo, { type: 'image/jpeg' })`), abrí `navigator.share({ files: [file], title: poi.nombre })`; y si el usuario cancela o está en un navegador que no soporta `share` con archivos, descargá automáticamente el `.jpg` (`<a download>`).
+         - Mostrá un `toast` breve confirmando (`"📸 Postal lista"` traducido en `es`, `en`, `pt`).
+
+  ### 3. Traducciones, versión y pruebas
+  - Agregá todas las claves nuevas de interfaz en `modules/i18n.js` (`es`, `en`, `pt`).
+  - Subí `VERSION` en `modules/core.js`.
+  - Probá con Puppeteer que los dos botones nuevos (`.portal-btn-ar` y `.portal-btn-foto`) se vean prolijos en vista móvil (390×844), que alternar entre **Adentro → Ventana AR → Fantasma AR (con su slider)** funcione sin errores de consola, y que tocar `📸` genere el JPEG de 1080×1440 sin errores de CORS ni de canvas.
+  - Hacé `commit` y `push` a `main`, marcá `[x]` esta Orden #6 y dejá el reporte en `Respuestas y dudas`.
+
 - [x] **Orden #5 (2026-11-05): Generar en el Escritorio de Luis el archivo PDF `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf` con el resumen completo del funcionamiento, modalidades de visita, GPS/Street View, VR y fotos/capturas explicativas.**
 
   **Pedido de Luis:** Luis pidió un resumen completo de cómo funciona el seguimiento al caminar (GPS, distancia al próximo punto, Street View), todas las modalidades de visita que tiene la app y cómo funciona con VR, dejado también en formato **PDF en su Escritorio (`C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`)** con fotos explicativas del funcionamiento.
@@ -478,3 +521,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): narraciones ampliadas en los 21 puntos (3 idiomas, frases al final), 63 audios regenerados, 4 fotos de Commons (3 para el Ferroviario y 1 para el IMA); se confirmó la esquina como Palacio Municipal.
 - 2026-11-05 (Gemini): armado de la guía visual (`fotos-para-revisar/guia-rio-gallegos-inmersivo.html`) y redacción de la **Orden #5** para que Claude tome las capturas en vivo con Puppeteer y exporte el PDF final en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`.
 - 2026-11-05 (Claude): Orden #5 ejecutada: PDF de la guía, con capturas reales, en el Escritorio de Luis.
+- 2026-11-05 (Gemini): diseño técnico y redacción de la **Orden #6** para implementar las dos funciones de Realidad Aumentada en el portal: (1) Modo Ventana AR / Fantasma AR con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir Postales AR combinando el presente con el anillo al pasado y el sello oficial.

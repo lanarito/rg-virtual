@@ -178,6 +178,23 @@ export function campanita() {
   campana(987.77, t + 0.15, 0.18);
 }
 
+// Obturador de cámara: dos clics cortos de ruido filtrado (~80 ms)
+export function sonidoFoto() {
+  if (!ctx) return;
+  const t = ctx.currentTime;
+  [0, 0.05].forEach((d, i) => {
+    const src = ctx.createBufferSource();
+    src.buffer = ruidoBlanco(0.05);
+    const filtro = ctx.createBiquadFilter();
+    filtro.type = 'highpass'; filtro.frequency.value = i ? 2500 : 1500;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(i ? 0.35 : 0.5, t + d);
+    g.gain.exponentialRampToValueAtTime(0.001, t + d + 0.035);
+    src.connect(filtro).connect(g).connect(fx);
+    src.start(t + d); src.stop(t + d + 0.05);
+  });
+}
+
 function campana(f, t0, vol) {
   const o = ctx.createOscillator();
   o.type = 'sine'; o.frequency.value = f;

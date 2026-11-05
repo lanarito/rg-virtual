@@ -99,7 +99,7 @@ h1, h2, h3 { line-height: 1.2; margin: 0 0 .4em; }
 .credito a { color: inherit; }
 
 .toast {
-  position: fixed; left: 50%; top: 70px; z-index: 3000; transform: translate(-50%, -20px);
+  position: fixed; left: 50%; top: 70px; z-index: 3500; transform: translate(-50%, -20px);
   background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 12px;
   opacity: 0; transition: .25s; pointer-events: none; max-width: calc(100vw - 32px); text-align: center;
 }
@@ -199,9 +199,9 @@ body.app #mapa { position: fixed; inset: 0; }
 
 /* La capa del pasado ocupa toda la pantalla, recortada con un círculo que crece */
 .portal-pasado { position: absolute; inset: 0; background: #20170e;
-  clip-path: circle(0 at 50% 46%); transition: clip-path 1.1s cubic-bezier(.65,0,.35,1); }
-.portal.abriendo .portal-pasado { clip-path: circle(var(--r) at 50% 46%); }
-.portal.adentro .portal-pasado { clip-path: circle(150% at 50% 46%); transition-duration: 1.4s; }
+  clip-path: circle(0 at var(--px, 50%) var(--py, 46%)); transition: clip-path 1.1s cubic-bezier(.65,0,.35,1); }
+.portal.abriendo .portal-pasado { clip-path: circle(var(--r) at var(--px, 50%) var(--py, 46%)); }
+.portal.adentro .portal-pasado { clip-path: circle(150% at var(--px, 50%) var(--py, 46%)); transition-duration: 1.4s; }
 .portal-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
   filter: sepia(.35) contrast(1.05); opacity: 0; transition: opacity 1.4s; }
 .portal-foto.activa { opacity: 1; }
@@ -212,7 +212,7 @@ body.app #mapa { position: fixed; inset: 0; }
   background: radial-gradient(ellipse at center, transparent 45%, rgba(20,12,4,.75)); }
 
 /* Anillo dorado alrededor del círculo */
-.portal-anillo { position: absolute; left: 50%; top: 46%; width: calc(var(--r) * 2 + 36px); height: calc(var(--r) * 2 + 36px);
+.portal-anillo { position: absolute; left: var(--px, 50%); top: var(--py, 46%); width: calc(var(--r) * 2 + 36px); height: calc(var(--r) * 2 + 36px);
   transform: translate(-50%, -50%) scale(0); border-radius: 50%; pointer-events: none;
   background: conic-gradient(from 0deg, var(--oro), rgba(232,176,75,0) 25%, var(--oro-claro) 50%, rgba(232,176,75,0) 75%, var(--oro));
   -webkit-mask: radial-gradient(circle, transparent calc(var(--r) - 2px), #000 var(--r));
@@ -298,3 +298,35 @@ body:has(.portal.visible) .redondo, body:has(.portal.visible) .tarjeta { visibil
 
 /* Fotos actuales dentro del portal (por ejemplo, las salas del Museo Molina): con sus colores reales */
 .portal-foto.actual { filter: none; }
+
+/* =====================================================================
+   Realidad aumentada en el portal: ventana, fantasma y postal
+   ===================================================================== */
+.portal { --rv: min(40vw, 30vh); }
+.portal-botones { position: absolute; top: calc(max(14px, env(safe-area-inset-top)) + 68px); right: 18px; z-index: 2;
+  display: flex; flex-direction: column; gap: 10px; }
+.portal-btn { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(255,217,138,.55); cursor: pointer;
+  background: rgba(0,0,0,.55); color: var(--oro-claro); font-size: 1.35rem; line-height: 1; display: grid; place-items: center; }
+.portal-btn:active { transform: scale(.92); }
+.portal.sin-pasado .portal-btn-ar { display: none; }
+.portal.ar-ventana .portal-btn-ar, .portal.ar-fantasma .portal-btn-ar { background: var(--oro); color: var(--tinta); }
+
+/* Ventana: la calle de hoy alrededor y el pasado dentro del anillo, que sigue el movimiento del celular */
+.portal.adentro.ar-ventana .portal-pasado { clip-path: circle(var(--rv) at var(--px, 50%) var(--py, 46%)); transition: clip-path .35s ease-out; }
+.portal.adentro.ar-ventana .portal-foto { object-fit: cover; translate: var(--dx, 0) var(--dy, 0); }
+.portal.adentro.ar-ventana .portal-anillo { --r: var(--rv); transform: translate(-50%, -50%) scale(1); opacity: 1;
+  animation: girarAnillo 3s linear infinite;
+  transition: left .35s ease-out, top .35s ease-out, transform 1.1s cubic-bezier(.65,0,.35,1), opacity .8s; }
+
+/* Fantasma: el pasado encima de la calle de hoy, con transparencia regulable */
+.portal.adentro.ar-fantasma .portal-pasado { clip-path: none; background: transparent; opacity: var(--fantasma, .55); }
+.portal.adentro.ar-fantasma .portal-foto { object-fit: cover; }
+.portal.ar-fantasma .portal-vineta { display: none; }
+.portal-slider-fantasma { position: absolute; left: 28px; right: 28px; bottom: 230px; z-index: 2; display: none;
+  accent-color: var(--oro); height: 32px; }
+.portal.adentro.ar-fantasma .portal-slider-fantasma { display: block; }
+
+/* Flash de la foto */
+.portal-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 4; }
+.portal-flash.on { animation: flashFoto .18s ease-out; }
+@keyframes flashFoto { from { opacity: .9; } to { opacity: 0; } }

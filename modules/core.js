@@ -4,7 +4,7 @@ import { idioma, t, VOZ_LANG } from './i18n.js';
 let datosCache = null;
 
 // Cambiala cuando se actualicen datos o audios: así el celular no usa versiones viejas guardadas.
-export const VERSION = '2026-11-05f';
+export const VERSION = '2026-11-05g';
 export const conVersion = url => `${url}${url.includes('?') ? '&' : '?'}v=${VERSION}`;
 
 export async function cargarDatos() {
