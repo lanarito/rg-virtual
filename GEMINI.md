@@ -141,7 +141,7 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
-- [ ] **Orden #5 (2026-11-05): Generar en el Escritorio de Luis el archivo PDF `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf` con el resumen completo del funcionamiento, modalidades de visita, GPS/Street View, VR y fotos/capturas explicativas.**
+- [x] **Orden #5 (2026-11-05): Generar en el Escritorio de Luis el archivo PDF `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf` con el resumen completo del funcionamiento, modalidades de visita, GPS/Street View, VR y fotos/capturas explicativas.**
 
   **Pedido de Luis:** Luis pidió un resumen completo de cómo funciona el seguimiento al caminar (GPS, distancia al próximo punto, Street View), todas las modalidades de visita que tiene la app y cómo funciona con VR, dejado también en formato **PDF en su Escritorio (`C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`)** con fotos explicativas del funcionamiento.
 
@@ -411,6 +411,13 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
+- 2026-11-05 — Claude: **Orden #5 hecha.** El PDF está en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`: A4, 1,1 MB, con todas las imágenes cargadas. Usé 8 capturas reales tomadas con Puppeteer a 390×844: inicio, mapa con la tarjeta "A 432 m, hacia el sureste", las etapas HOY, anillo y adentro de la Catedral, la portada del vuelo 3D, el dron volando y el Paseo 360. Las capturas están en `fotos-para-revisar/guia-capturas/` y la fuente en `fotos-para-revisar/guia-final.html`.
+  - **Correcciones a la maqueta:**
+    - El radio de llegada va de 30 a 150 m, no de 35 a 60.
+    - El aviso del Paseo 360 dice "Estás cerca de…", no "tocá para escuchar".
+    - En la etapa HOY se ve la cámara en vivo. Si no hay cámara, aparece la foto actual o Street View.
+    - Que funcione en Meta Quest Browser queda como **no probado** hasta tener un visor: no se puede afirmar que anda.
+    - Saqué el paso 1 dibujado y lo reemplacé por la captura real.
 - 2026-11-05 — Claude: **Pedido directo de Luis: narraciones más informativas en los 21 puntos (es, en y pt), 4 fotos de archivos públicos y Municipalidad confirmada.**
   - **Textos:** a cada narración le sumé de 1 a 3 frases **al final**, para que no se corra ningún `desdeFrase` existente. Los tres idiomas tienen la misma cantidad de frases (verificado con el mismo partidor que usa `frases()`). Datos verificados en la web antes de escribirlos: ramal inaugurado en 1951 con trocha de 750 mm; diócesis creada en 1961 por Juan XXIII; Roca, primer presidente en visitar Río Gallegos; Casa Parisi (iniciales G W R, familia de Arthur Fenton, primer médico de Santa Cruz, museo desde 1989); Swift (grasería La Blanca en 1899, unos 400 trabajadores); estuario en la Red Hemisférica de Reservas para Aves Playeras desde 2005. No incluí datos sin fuente: por ejemplo, la fecha de cierre del Swift no aparece en ningún lado.
   - **Audios:** se regeneraron los 63 mp3 (21 × 3 idiomas) con las mismas voces y ajustes. `VERSION = '2026-11-05f'`.
@@ -470,3 +477,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): por pedido de Luis, la foto del IMA va recortada sin la franja de La Opinión Austral (`ima-fachada.jpg`). El crédito al diario sigue visible en la línea de créditos del portal.
 - 2026-11-05 (Claude): narraciones ampliadas en los 21 puntos (3 idiomas, frases al final), 63 audios regenerados, 4 fotos de Commons (3 para el Ferroviario y 1 para el IMA); se confirmó la esquina como Palacio Municipal.
 - 2026-11-05 (Gemini): armado de la guía visual (`fotos-para-revisar/guia-rio-gallegos-inmersivo.html`) y redacción de la **Orden #5** para que Claude tome las capturas en vivo con Puppeteer y exporte el PDF final en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`.
+- 2026-11-05 (Claude): Orden #5 ejecutada: PDF de la guía, con capturas reales, en el Escritorio de Luis.
