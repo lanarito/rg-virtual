@@ -141,7 +141,7 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
-- [ ] **Orden #6 (2026-11-05): Implementar las 2 experiencias de Realidad Aumentada (AR) en el portal (`modules/portal.js`, `css/app.css`, `modules/sonido.js`, `modules/i18n.js`): (1) Modo "Ventana Mágica / Fantasma AR" con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir una Postal AR combinando el HOY + el Anillo al Pasado.**
+- [x] **Orden #6 (2026-11-05): Implementar las 2 experiencias de Realidad Aumentada (AR) en el portal (`modules/portal.js`, `css/app.css`, `modules/sonido.js`, `modules/i18n.js`): (1) Modo "Ventana Mágica / Fantasma AR" con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir una Postal AR combinando el HOY + el Anillo al Pasado.**
 
   **Pedido de Luis:** Le propuse a Luis dos experiencias de Realidad Aumentada dentro del portal (sin instalar nada y con costo $0) y pidió expresamente: *"me gustan esas dos agamosla"*.
 
@@ -454,6 +454,12 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
+- 2026-11-05 — Claude: **Orden #6 hecha, probada y publicada (realidad aumentada en el portal).**
+  - **Giroscopio:** `seguirMovimiento()` en portal.js escucha `deviceorientation` (gamma y beta, tomando como cero la primera lectura) y, en la compu, `pointermove` con mouse. Suaviza con interpolación (0,12 por cuadro) y actualiza `--px`/`--py` (±8 % alrededor de 50 % y 46 %) y `--dx`/`--dy` (±18 px). El `clip-path` y el anillo usan esas variables. Se apaga al cerrar el portal. En iPhone, el permiso del giroscopio (`DeviceOrientationEvent.requestPermission`) se pide al tocar ◐, porque Safari solo deja pedirlo con un toque.
+  - **Botón ◐ (`.portal-btn-ar`):** pasa de normal a ventana, de ventana a fantasma y de fantasma a normal, con un aviso traducido en cada cambio. Si se toca antes de llegar adentro, entra directo. En los lugares sin fotos antiguas (por ejemplo, la Municipalidad) no aparece. **Ventana:** anillo de `--rv: min(40vw, 30vh)`, con la foto en `cover` y parallax. **Fantasma:** la foto antigua a pantalla completa sobre la de hoy, con opacidad en `--fantasma`, regulada por `.portal-slider-fantasma` (empieza en 55 %).
+  - **Botón 📸 (`.portal-btn-foto`):** suena `sonidoFoto()` (dos clics de ruido filtrado, unos 80 ms), aparece un flash de 180 ms y se arma un canvas de 1080×1440. El fondo es la cámara, o la foto de hoy si es del mismo origen; Street View es de otro origen, así que en ese caso va un degradé, para no "ensuciar" el canvas. Encima va el pasado: círculo con doble aro dorado, o fantasma con su opacidad. En los lugares sin fotos antiguas, un marco dorado. Arriba van el año y el lugar. Abajo, el escudo, el título, el crédito (autor · licencia) y la firma. Sale un JPEG al 0,92 y se usa `navigator.share` con el archivo; si no se puede compartir, se descarga. Después aparece el aviso "📸 Postal lista".
+  - **No se cierra solo:** tocar ◐, 📸 o el control deslizante pone `noCerrarSolo = true`, y el portal queda abierto hasta tocar ✕.
+  - **Prueba (Puppeteer, 390×844):** catedral normal → ventana → fantasma (control al 70 %) → normal, y la Municipalidad sin el botón ◐. Las 3 postales salieron de 1080×1440 (414, 350 y 205 KB), sin errores de consola, de canvas ni de CORS. `VERSION = '2026-11-05g'`. **Falta probarlo en un celular real** (giroscopio, permiso en iPhone y menú de compartir).
 - 2026-11-05 — Claude: **Orden #5 hecha.** El PDF está en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`: A4, 1,1 MB, con todas las imágenes cargadas. Usé 8 capturas reales tomadas con Puppeteer a 390×844: inicio, mapa con la tarjeta "A 432 m, hacia el sureste", las etapas HOY, anillo y adentro de la Catedral, la portada del vuelo 3D, el dron volando y el Paseo 360. Las capturas están en `fotos-para-revisar/guia-capturas/` y la fuente en `fotos-para-revisar/guia-final.html`.
   - **Correcciones a la maqueta:**
     - El radio de llegada va de 30 a 150 m, no de 35 a 60.
@@ -522,3 +528,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Gemini): armado de la guía visual (`fotos-para-revisar/guia-rio-gallegos-inmersivo.html`) y redacción de la **Orden #5** para que Claude tome las capturas en vivo con Puppeteer y exporte el PDF final en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`.
 - 2026-11-05 (Claude): Orden #5 ejecutada: PDF de la guía, con capturas reales, en el Escritorio de Luis.
 - 2026-11-05 (Gemini): diseño técnico y redacción de la **Orden #6** para implementar las dos funciones de Realidad Aumentada en el portal: (1) Modo Ventana AR / Fantasma AR con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir Postales AR combinando el presente con el anillo al pasado y el sello oficial.
+- 2026-11-05 (Claude): Orden #6 ejecutada: AR en el portal (giroscopio, ventana, fantasma con control deslizante) y postal 📸 para compartir.
