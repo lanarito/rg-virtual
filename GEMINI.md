@@ -141,6 +141,19 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
+- [x] **Orden #4 (2026-11-05): Cargar la foto actual del Instituto María Auxiliadora (`ima-actual-3.jpg`) en `maria-auxiliadora.fotosActuales` con el OK expreso de Luis.**
+
+  **Confirmación de Luis:** Le mostré a Luis la foto `fotos-para-revisar/nuevas-escritorio/candidatas/ima-actual-3.jpg` (el ingreso real del Colegio María Auxiliadora en Río Gallegos, altura 521) y confirmó expresamente: *"si metamos esa"*.
+
+  ### Qué tenés que hacer:
+  1. Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/ima-actual-3.jpg` y guardala como JPEG real optimizado en `assets/fotos/actuales/ima-actual-hoy.jpg` (podés dejarla completa con el crédito en `autor: "La Opinión Austral"` o como prefieras según la regla de créditos).
+  2. En `data/pois.json` (`maria-auxiliadora.fotosActuales`), agregá:
+     - `archivo`: `"assets/fotos/actuales/ima-actual-hoy.jpg"`
+     - `titulo`: `"Fachada actual del Colegio María Auxiliadora"`
+     - `autor`: `"La Opinión Austral"`, `licencia`: `"Difusión periodística"`
+  3. Verificá que el título `"Fachada actual del Colegio María Auxiliadora"` esté en `data/traducciones.json` (`en.fotos` y `pt.fotos`).
+  4. Subí `VERSION` en `modules/core.js` a `'2026-11-05d'`, hacé `commit` y `push` a `main`, marcá `[x]` esta Orden #4 y dejá el reporte en `Respuestas y dudas`.
+
 - [x] **Orden #3 (2026-11-05): Reemplazar las fotos de "HOY" (`fotosActuales`) por las fotografías actuales descargadas en `fotos-para-revisar/nuevas-escritorio/` (con el OK expreso de Luis) en Casa de Gobierno, Instituto María Auxiliadora, Barcaza Swift, Palacio Municipal, Avenida Roca y Costanera.**
 
   **Importante (autorización de Luis):** Luis subió personalmente la foto actual de la **Casa de Gobierno** (pintada de blanco y gris, como está hoy; la foto de 2015 color terracota ya quedó vieja) y pidió expresamente que usemos fotografías reales actuales descargadas de la web en lugar de depender de capturas en vivo de Street View o de fotos viejas. Gemini ya buscó, descargó y revisó visualmente una por una las fotos en `fotos-para-revisar/nuevas-escritorio/`. **Tenés el OK expreso de Luis para procesarlas, guardarlas en `assets/fotos/` y publicarlas.**
@@ -383,6 +396,7 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
+- 2026-11-05 — Claude: **Orden #4 hecha y publicada.** `ima-actual-3.jpg` guardada completa (con la franja de La Opinión Austral, sin recortar) como `assets/fotos/actuales/ima-actual-hoy.jpg`, en `maria-auxiliadora.fotosActuales` con autor La Opinión Austral; título traducido en en y pt; `VERSION = '2026-11-05d'`. El HOY del IMA ahora muestra esa foto en vez de Street View. Aparte, por pedido de Luis, estoy buscando fotos antiguas en archivos públicos (Facebook no se puede leer sin cuenta).
 - 2026-11-05 — Claude: **Orden #3 hecha, probada y publicada (con 3 cambios respecto de lo pedido; ver abajo).**
   - **Fotos convertidas** con PIL a JPEG real (RGB, calidad 84, progresivo, máx. 1400 px de ancho): `casa-de-gobierno-hoy.jpg`, `barcaza-swift-actual.jpg`, `municipalidad-actual.jpg`, `avenida-kirchner-actual.jpg` (de 4496 a 1400 px, 285 KB), `costanera-paseo.jpg` y `roil/muelle-swift-invierno.jpg` (sumada en Swift con `desdeFrase` 1.5). Títulos traducidos en en y pt.
   - **Cambio 1, Casa de Gobierno:** la guardé con un nombre nuevo, `casa-de-gobierno-hoy.jpg`, y borré la de 2015. Si se reemplazaba con el mismo nombre, los celulares que ya la tenían guardada iban a seguir mostrando la vieja. Por el mismo motivo, conviene que las fotos nuevas siempre tengan nombre nuevo.
@@ -430,3 +444,5 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Gemini): diagnóstico técnico completo del testeo de Luis y redacción de la **Orden #2** (voz unificada de Valentina en los 21 puntos sin caída a voz española del navegador, pronunciación "I C F", arranque inmediato sin demora, limpieza de fotos fantasma entre portales con internet lento, fix de `heading` en Street View y actualización de fotos actuales/históricas en los puntos indicados).
 - 2026-11-05 (Gemini): búsqueda, descarga y selección visual de fotografías actuales para Casa de Gobierno (foto aportada por Luis), IMA, Barcaza Swift (+ foto histórica del muelle en invierno), Palacio Municipal, Avenida Kirchner/Roca y Costanera en `fotos-para-revisar/nuevas-escritorio/`, y redacción de la **Orden #3** para que Claude las incorpore en `assets/fotos/actuales/` y `data/pois.json`.
 - 2026-11-05 (Claude): Orden #3 ejecutada: fotos de HOY nuevas en Casa de Gobierno, Barcaza Swift, Municipalidad, Av. Kirchner y Costanera, más el muelle Swift nevado. No se cargaron la foto del IMA (no es de Río Gallegos) ni la de la Municipalidad con la firma del diario.
+- 2026-11-05 (Gemini): redacción de la **Orden #4** con la confirmación de Luis para cargar `ima-actual-3.jpg` como foto de HOY del Instituto María Auxiliadora (`maria-auxiliadora`).
+- 2026-11-05 (Claude): Orden #4 ejecutada: foto de HOY del Colegio María Auxiliadora (La Opinión Austral).

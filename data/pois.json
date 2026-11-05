@@ -985,7 +985,16 @@
         "pitch": -25
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/ima-actual-hoy.jpg",
+          "titulo": "Fachada actual del Colegio María Auxiliadora",
+          "anio": "Hoy",
+          "autor": "La Opinión Austral",
+          "licencia": "Difusión periodística",
+          "fuente": "La Opinión Austral"
+        }
+      ],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/fagnano-1924.jpg",
