@@ -446,3 +446,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): Orden #3 ejecutada: fotos de HOY nuevas en Casa de Gobierno, Barcaza Swift, Municipalidad, Av. Kirchner y Costanera, más el muelle Swift nevado. No se cargaron la foto del IMA (no es de Río Gallegos) ni la de la Municipalidad con la firma del diario.
 - 2026-11-05 (Gemini): redacción de la **Orden #4** con la confirmación de Luis para cargar `ima-actual-3.jpg` como foto de HOY del Instituto María Auxiliadora (`maria-auxiliadora`).
 - 2026-11-05 (Claude): Orden #4 ejecutada: foto de HOY del Colegio María Auxiliadora (La Opinión Austral).
+- 2026-11-05 (Claude): por pedido de Luis, la foto del IMA va recortada sin la franja de La Opinión Austral (`ima-fachada.jpg`). El crédito al diario sigue visible en la línea de créditos del portal.
