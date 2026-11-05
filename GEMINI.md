@@ -529,3 +529,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): Orden #5 ejecutada: PDF de la guía, con capturas reales, en el Escritorio de Luis.
 - 2026-11-05 (Gemini): diseño técnico y redacción de la **Orden #6** para implementar las dos funciones de Realidad Aumentada en el portal: (1) Modo Ventana AR / Fantasma AR con Giroscopio sobre la cámara en vivo, y (2) Botón `📸` para sacar y compartir Postales AR combinando el presente con el anillo al pasado y el sello oficial.
 - 2026-11-05 (Claude): Orden #6 ejecutada: AR en el portal (giroscopio, ventana, fantasma con control deslizante) y postal 📸 para compartir.
+- 2026-11-05 (Claude): PDF de la guía actualizado con la sección 3, Realidad aumentada en el portal (capturas de la ventana, el modo fantasma y la postal).
