@@ -194,6 +194,11 @@ export function frases(texto) {
   return texto.match(/[^.!?]+[.!?]*/g)?.map(f => f.trim()).filter(Boolean) || [texto];
 }
 
+// Imagen que representa a un lugar: su primera foto antigua o, si no tiene, la actual.
+export function portada(poi) {
+  return poi.fotosHistoricas[0]?.archivo || poi.fotosActuales[0]?.archivo || '';
+}
+
 // ---------- Fichas ----------
 // "lugar" = la foto es de este sitio; "epoca" = misma historia, otro lugar.
 export function etiquetaRelacion(f) {

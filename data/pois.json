@@ -340,20 +340,36 @@
       ],
       "fotosHistoricas": [
         {
-          "archivo": "assets/fotos/roil/iglesia-y-calle.jpg",
-          "titulo": "La calle y el campanario de la iglesia",
-          "anio": "c. 1940",
+          "archivo": "assets/fotos/historicas/catedral-weston.jpg",
+          "titulo": "La iglesia en sus primeros años, con cerco de madera",
+          "anio": "c. 1905",
           "relacion": "lugar",
-          "autor": "Foto Roil",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (foto102.jpg)",
-          "nota": "Año aproximado.",
+          "autor": "Frank Weston (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
           "tomada": {
             "lat": null,
             "lon": null,
             "rumbo": null
           },
           "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/historicas/catedral-zuvic.jpg",
+          "titulo": "Fachada y campanario de la primera iglesia",
+          "anio": "c. 1910",
+          "relacion": "lugar",
+          "autor": "Jerónimo Zuvić (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0.5
         },
         {
           "archivo": "assets/fotos/roil/iglesia-25-mayo-1920.jpg",
@@ -388,6 +404,22 @@
           "desdeFrase": 2
         },
         {
+          "archivo": "assets/fotos/roil/iglesia-y-calle.jpg",
+          "titulo": "La calle y el campanario de la iglesia",
+          "anio": "c. 1940",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (foto102.jpg)",
+          "nota": "Año aproximado.",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2.5
+        },
+        {
           "archivo": "assets/fotos/roil/plaza-nevada-campanario.jpg",
           "titulo": "La plaza nevada y el campanario",
           "anio": "c. 1945",
@@ -402,6 +434,22 @@
             "rumbo": null
           },
           "desdeFrase": 3
+        },
+        {
+          "archivo": "assets/fotos/historicas/catedral-murgia.jpg",
+          "titulo": "La Catedral vista entre los árboles de la plaza",
+          "anio": "c. 1930",
+          "relacion": "lugar",
+          "autor": "Fotografía Murgia (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3.5
         }
       ],
       "verificado": false
@@ -494,24 +542,7 @@
           "fuente": "https://commons.wikimedia.org/wiki/File:Escuela_Provincial_N%C2%BA_1_Hernando_de_Magallanes.jpg"
         }
       ],
-      "fotosHistoricas": [
-        {
-          "archivo": "assets/fotos/roil/alumnas-guardapolvo.jpg",
-          "titulo": "Alumnas de guardapolvo blanco frente a la escuela",
-          "anio": "c. 1935",
-          "relacion": "epoca",
-          "autor": "Autor desconocido (colección particular)",
-          "licencia": "Postal antigua – derechos a confirmar",
-          "fuente": "Colección particular (FOTO3.JPG)",
-          "nota": "Escuela a identificar. Año aproximado.",
-          "tomada": {
-            "lat": null,
-            "lon": null,
-            "rumbo": null
-          },
-          "desdeFrase": 0
-        }
-      ],
+      "fotosHistoricas": [],
       "verificado": false
     },
     {
@@ -782,6 +813,22 @@
       ],
       "fotosHistoricas": [
         {
+          "archivo": "assets/fotos/historicas/primera-gobernacion-1889.jpg",
+          "titulo": "Primer edificio de la Gobernación del Territorio, con el balcón",
+          "anio": 1889,
+          "relacion": "lugar",
+          "autor": "Archivo General de la Nación (vía Mi Río Gallegos)",
+          "licencia": "Dominio público",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0
+        },
+        {
           "archivo": "assets/fotos/historicas/abrazo-del-estrecho-1899.jpg",
           "titulo": "El Abrazo del Estrecho, en Punta Arenas",
           "autor": "Autor desconocido",
@@ -795,7 +842,39 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 0
+          "desdeFrase": 0.5
+        },
+        {
+          "archivo": "assets/fotos/historicas/gobernacion-balcon-roca.jpg",
+          "titulo": "La antigua Gobernación de madera y chapa",
+          "anio": "c. 1930",
+          "relacion": "lugar",
+          "autor": "Archivo Jorge Martin (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/roil/alumnas-guardapolvo.jpg",
+          "titulo": "Escolares desfilando frente a la primera Gobernación",
+          "anio": "c. 1935",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – derechos a confirmar",
+          "fuente": "Colección particular (FOTO3.JPG)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1.5
         },
         {
           "archivo": "assets/fotos/roil/jefatura-policia.jpg",
@@ -862,13 +941,29 @@
             "rumbo": null
           },
           "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/historicas/casa-gobierno-antigua-1890.jpg",
+          "titulo": "La primera sede de la Gobernación, de madera y chapa",
+          "anio": 1889,
+          "relacion": "lugar",
+          "autor": "Archivo General de la Nación",
+          "licencia": "Dominio público",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
         }
       ],
       "verificado": false
     },
     {
       "id": "maria-auxiliadora",
-      "nombre": "María Auxiliadora y la obra salesiana",
+      "nombre": "Instituto María Auxiliadora y la obra salesiana",
       "categoria": "historia",
       "lat": -51.623624,
       "lon": -69.209841,
@@ -904,6 +999,38 @@
             "rumbo": null
           },
           "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/historicas/ima-edificio-historico.jpg",
+          "titulo": "Antiguo edificio de madera del Colegio María Auxiliadora",
+          "anio": "c. 1920",
+          "relacion": "lugar",
+          "autor": "Archivo AMA (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/historicas/ima-alumnas-acto.jpg",
+          "titulo": "Las hermanas y alumnas del Instituto María Auxiliadora en un acto patrio",
+          "anio": "c. 1915",
+          "relacion": "lugar",
+          "autor": "Fot. Iris – Francisco L. Ramos / Col. Javier Gil",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1.5
         }
       ],
       "verificado": false
@@ -940,6 +1067,22 @@
       ],
       "fotosHistoricas": [
         {
+          "archivo": "assets/fotos/historicas/casa-parisi-antigua.jpg",
+          "titulo": "La Casa Parisi en sus primeros años",
+          "anio": "c. 1910",
+          "relacion": "lugar",
+          "autor": "Archivo histórico (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0
+        },
+        {
           "archivo": "assets/fotos/roil/casa-madera-nieve.jpg",
           "titulo": "Casa de madera con galería después de una nevada",
           "anio": "c. 1940",
@@ -953,7 +1096,7 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 0
+          "desdeFrase": 0.5
         },
         {
           "archivo": "assets/fotos/roil/casas-chapa-nieve.jpg",
@@ -969,7 +1112,7 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 0.5
+          "desdeFrase": 1
         },
         {
           "archivo": "assets/fotos/roil/casona-galeria.jpg",
@@ -985,7 +1128,7 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 1
+          "desdeFrase": 1.3
         },
         {
           "archivo": "assets/fotos/historicas/killik-aike-decauville-1900.jpg",
@@ -1001,7 +1144,7 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 1.5
+          "desdeFrase": 1.6
         }
       ],
       "verificado": false
@@ -1027,8 +1170,85 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-megafauna.jpg",
+          "titulo": "Sala de paleontología del Museo Padre Molina",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina"
+        },
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-plateosaurio.jpg",
+          "titulo": "Reconstrucción de un Plateosaurio en el museo",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina"
+        },
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-aniksosaurus.jpg",
+          "titulo": "Fósiles de Aniksosaurus darwini exhibidos en el museo",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina"
+        },
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-sala.jpg",
+          "titulo": "Sala del Museo Padre Molina",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina"
+        }
+      ],
       "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-sala.jpg",
+          "titulo": "Sala de paleontología del Museo Padre Molina",
+          "anio": "Hoy",
+          "relacion": "lugar",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-plateosaurio.jpg",
+          "titulo": "Reconstrucción de un Plateosaurio en el museo",
+          "anio": "Hoy",
+          "relacion": "lugar",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/actuales/museo-molina-aniksosaurus.jpg",
+          "titulo": "Fósiles de Aniksosaurus darwini exhibidos en el museo",
+          "anio": "Hoy",
+          "relacion": "lugar",
+          "autor": "Museo Regional Padre Molina",
+          "licencia": "Difusión cultural",
+          "fuente": "Museo Regional Padre Molina",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1.3
+        },
         {
           "archivo": "assets/fotos/historicas/tehuelches-tres-lagunas-1917.jpg",
           "titulo": "Dos hombres tehuelches en la estepa",
@@ -1043,7 +1263,7 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 0
+          "desdeFrase": 1.6
         }
       ],
       "verificado": false
@@ -1100,6 +1320,22 @@
           "desdeFrase": 0
         },
         {
+          "archivo": "assets/fotos/historicas/locomotora-vapor-campbell.jpg",
+          "titulo": "Pequeña locomotora a vapor en la estepa",
+          "anio": "c. 1950",
+          "relacion": "epoca",
+          "autor": "Richard Campbell (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0.5
+        },
+        {
           "archivo": "assets/fotos/historicas/porta-locomotora-1959.jpg",
           "titulo": "Livio Dante Porta y su equipo con la locomotora \"Santa Cruz\"",
           "autor": "Autor desconocido",
@@ -1114,6 +1350,88 @@
             "rumbo": null
           },
           "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/historicas/locomotora-rfirt-117.jpg",
+          "titulo": "Locomotora N° 117 del ramal de Río Turbio en los talleres",
+          "anio": "c. 1975",
+          "relacion": "epoca",
+          "autor": "Col. Mauricio Pipi Pinto (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1.5
+        }
+      ],
+      "verificado": false
+    },
+    {
+      "id": "barraca-amberense",
+      "nombre": "Barraca Amberense",
+      "categoria": "historia",
+      "lat": -51.61675,
+      "lon": -69.21055,
+      "radio": 35,
+      "resumen": "Un edificio que llegó desarmado en barco desde Europa hacia 1900.",
+      "texto": "En la calle Gobernador Lista 60 se levanta la histórica Barraca Amberense, de los hermanos Kreglinger, construida hacia el año 1900. El edificio de madera y chapa llegó en barco desde Europa, probablemente desde Bélgica, desarmado en piezas numeradas, y se armó frente a la ría. Allí se acopiaban lanas, cueros y mercaderías para las estancias, y más tarde funcionó la Aduana. Desde 1992 es la Casa de la Cultura de Fundacruz, y en 2018 fue declarada Monumento Histórico Nacional.",
+      "audio": "assets/audio/barraca-amberense.mp3",
+      "panorama360": null,
+      "streetView": {
+        "heading": 180,
+        "pitch": 5
+      },
+      "camara3d": {
+        "rango": 220,
+        "heading": 180,
+        "pitch": -28
+      },
+      "portal": true,
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/fundacruz-barraca.jpg",
+          "titulo": "Fundacruz, Casa de la Cultura",
+          "autor": "Fundacruz",
+          "licencia": "CC0",
+          "fuente": "https://commons.wikimedia.org/wiki/File:Fundacruz-Casa-de-la-Cultura.jpg"
+        }
+      ],
+      "fotosHistoricas": [
+        {
+          "archivo": "assets/fotos/historicas/barraca-amberense-1900.jpg",
+          "titulo": "La Barraca Amberense en sus primeros años",
+          "anio": "c. 1905",
+          "relacion": "lugar",
+          "autor": "Autor desconocido",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 0
+        },
+        {
+          "archivo": "assets/fotos/roil/barraca-amberense-nieve.jpg",
+          "titulo": "La calle nevada frente a la Barraca Amberense",
+          "anio": "c. 1935",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – Mi Río Gallegos",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 2
         }
       ],
       "verificado": false
@@ -1256,7 +1574,39 @@
             "lon": null,
             "rumbo": null
           },
-          "desdeFrase": 3.5
+          "desdeFrase": 3.3
+        },
+        {
+          "archivo": "assets/fotos/historicas/muelle-ycf-carbonero.jpg",
+          "titulo": "Buque carbonero cargando en el muelle de YCF",
+          "anio": "c. 1975",
+          "relacion": "lugar",
+          "autor": "Col. Nicolás Echeñique (vía Mi Río Gallegos)",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3.55
+        },
+        {
+          "archivo": "assets/fotos/historicas/remolcador-ycf-ria.jpg",
+          "titulo": "Remolcador de YCF y buque en la ría",
+          "anio": "c. 1975",
+          "relacion": "lugar",
+          "autor": "Archivo Mi Río Gallegos",
+          "licencia": "Archivo histórico",
+          "fuente": "Mi Río Gallegos (Facebook)",
+          "nota": "",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 3.8
         }
       ],
       "verificado": false

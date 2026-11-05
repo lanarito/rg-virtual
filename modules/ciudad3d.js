@@ -1,5 +1,5 @@
 // Vuelo 3D automático: la cámara va de lugar en lugar y en cada uno se abre el portal al pasado.
-import { cargarDatos, googleKey, frase, callar, esc, distancia, rumbo } from './core.js';
+import { cargarDatos, googleKey, frase, callar, esc, distancia, rumbo, portada } from './core.js';
 import { iniciarSonido, alternarMusica, musicaEncendida } from './sonido.js';
 import { t, traducirPagina } from './i18n.js';
 
@@ -129,7 +129,7 @@ function ordenarRecorrido(pois) {
 // ---------- Tarjeta ----------
 function mostrarTarjeta(poi, arriba, abajo) {
   $('tarjeta').hidden = false;
-  $('tarjetaFoto').style.backgroundImage = `url('${esc(poi.fotosHistoricas[0].archivo)}')`;
+  $('tarjetaFoto').style.backgroundImage = `url('${esc(portada(poi))}')`;
   $('tarjetaArriba').textContent = arriba;
   $('tarjetaNombre').textContent = poi.nombre;
   $('tarjetaAbajo').textContent = abajo;

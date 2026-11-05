@@ -48,7 +48,7 @@
         "texto": "The Government House of Santa Cruz stands at 231 Alcorta Street. It was built in the time of governor Juan Manuel Gregores, on the lot next to the first wooden Government House, when the old building had become too small for a territory that was growing thanks to wool. Today it is the seat of the provincial government. A few steps away are the Governor's Residence, the Legislature, and the Gregores House and Naval museums."
       },
       "maria-auxiliadora": {
-        "nombre": "Mary Help of Christians and the Salesian mission",
+        "nombre": "Mary Help of Christians Institute and the Salesian mission",
         "resumen": "The Salesians and education in southern Patagonia.",
         "texto": "Salesian missionaries reached southern Patagonia at the end of the nineteenth century, led by Monsignor José Fagnano. In Río Gallegos they built the first church, the Salesian School and, together with the sisters of Mary Help of Christians, schools where generations of the city's boys and girls studied."
       },
@@ -101,6 +101,11 @@
         "nombre": "Cape Vírgenes: lighthouse and penguin colony",
         "resumen": "Magellanic penguins and kilometer 0 of Route 40.",
         "texto": "About 134 kilometers to the southeast, Cape Vírgenes marks the entrance to the Strait of Magellan. Ferdinand Magellan arrived here on October 21, 1520. Nearby, in 1584, Pedro Sarmiento de Gamboa founded the City of the Name of Jesus. The lighthouse has been working since 1904, and National Route 40 begins here, at kilometer zero. In season you can walk among thousands of Magellanic penguins."
+      },
+      "barraca-amberense": {
+        "nombre": "Barraca Amberense",
+        "resumen": "A building shipped in pieces from Europe around 1900.",
+        "texto": "At 60 Gobernador Lista Street stands the historic Barraca Amberense, belonging to the Kreglinger brothers and built around 1900. The wood and tin building arrived by ship from Europe, probably from Belgium, dismantled into numbered pieces, and was assembled facing the estuary. Wool, hides and supplies for the ranches were stored here, and later it housed the Customs office. Since 1992 it has been the Fundacruz Cultural Center, and in 2018 it was declared a National Historic Monument."
       }
     },
     "fotos": {
@@ -190,7 +195,28 @@
       "Pingüinos de Magallanes en Cabo Vírgenes": "Magellanic penguins at Cape Vírgenes",
       "Faro Cabo Vírgenes": "Cape Vírgenes lighthouse",
       "Pingüino de Magallanes": "Magellanic penguin",
-      "Baño de ovejas en la estancia Felton": "Sheep dipping at the Felton ranch"
+      "Baño de ovejas en la estancia Felton": "Sheep dipping at the Felton ranch",
+      "Primer edificio de la Gobernación del Territorio, con el balcón": "The Territory's first Government House, with the balcony",
+      "La antigua Gobernación de madera y chapa": "The old wood and tin Government House",
+      "Escolares desfilando frente a la primera Gobernación": "Schoolchildren parading in front of the first Government House",
+      "La primera sede de la Gobernación, de madera y chapa": "The first Government House, made of wood and tin",
+      "La Casa Parisi en sus primeros años": "Casa Parisi in its early years",
+      "La iglesia en sus primeros años, con cerco de madera": "The church in its early years, with a wooden fence",
+      "Fachada y campanario de la primera iglesia": "Facade and bell tower of the first church",
+      "La Catedral vista entre los árboles de la plaza": "The Cathedral seen through the trees of the square",
+      "Antiguo edificio de madera del Colegio María Auxiliadora": "Old wooden building of the Mary Help of Christians School",
+      "Las hermanas y alumnas del Instituto María Auxiliadora en un acto patrio": "The sisters and students of the Mary Help of Christians Institute at a national celebration",
+      "Buque carbonero cargando en el muelle de YCF": "Coal ship loading at the YCF pier",
+      "Remolcador de YCF y buque en la ría": "YCF tugboat and ship in the estuary",
+      "Pequeña locomotora a vapor en la estepa": "Small steam locomotive on the steppe",
+      "Locomotora N° 117 del ramal de Río Turbio en los talleres": "Locomotive No. 117 of the Río Turbio line in the workshops",
+      "Sala de paleontología del Museo Padre Molina": "Paleontology hall of the Father Molina Museum",
+      "Reconstrucción de un Plateosaurio en el museo": "Reconstruction of a Plateosaurus at the museum",
+      "Fósiles de Aniksosaurus darwini exhibidos en el museo": "Fossils of Aniksosaurus darwini on display at the museum",
+      "Sala del Museo Padre Molina": "A hall of the Father Molina Museum",
+      "La Barraca Amberense en sus primeros años": "The Barraca Amberense in its early years",
+      "La calle nevada frente a la Barraca Amberense": "The snowy street in front of the Barraca Amberense",
+      "Fundacruz, Casa de la Cultura": "Fundacruz Cultural Center"
     }
   },
   "pt": {
@@ -241,7 +267,7 @@
         "texto": "A Casa de Governo de Santa Cruz fica na rua Alcorta, 231. Foi construída na época do governador Juan Manuel Gregores, no terreno vizinho à primeira sede de madeira, quando o prédio antigo já era pequeno para um território que crescia graças à lã. Hoje é a sede do governo da província. A poucos metros ficam a Residência do Governador, a Assembleia Legislativa e os museus Casa de Gregores e Naval."
       },
       "maria-auxiliadora": {
-        "nombre": "Maria Auxiliadora e a obra salesiana",
+        "nombre": "Instituto Maria Auxiliadora e a obra salesiana",
         "resumen": "Os salesianos e a educação na Patagônia austral.",
         "texto": "Os missionários salesianos chegaram à Patagônia austral no fim do século dezenove, guiados por dom José Fagnano. Em Río Gallegos ergueram a primeira igreja, o Colégio Salesiano e, junto com as irmãs de Maria Auxiliadora, escolas onde estudaram gerações de meninos e meninas da cidade."
       },
@@ -294,6 +320,11 @@
         "nombre": "Cabo Vírgenes: farol e pinguineira",
         "resumen": "Pinguins-de-magalhães e o km 0 da Rota 40.",
         "texto": "A cerca de 134 quilômetros a sudeste, o Cabo Vírgenes marca a entrada do Estreito de Magalhães. Fernão de Magalhães chegou aqui em 21 de outubro de 1520. Perto dali, em 1584, Pedro Sarmiento de Gamboa fundou a Cidade do Nome de Jesus. O farol funciona desde 1904, e aqui começa a Rota Nacional 40, no seu quilômetro zero. Na temporada é possível caminhar entre milhares de pinguins-de-magalhães."
+      },
+      "barraca-amberense": {
+        "nombre": "Barraca Amberense",
+        "resumen": "Um prédio que chegou desmontado de navio da Europa por volta de 1900.",
+        "texto": "Na rua Gobernador Lista, 60 fica a histórica Barraca Amberense, dos irmãos Kreglinger, construída por volta de 1900. O prédio de madeira e zinco chegou de navio da Europa, provavelmente da Bélgica, desmontado em peças numeradas, e foi montado em frente ao estuário. Ali eram armazenadas lãs, couros e mercadorias para as fazendas, e mais tarde funcionou a Alfândega. Desde 1992 é a Casa da Cultura da Fundacruz, e em 2018 foi declarada Monumento Histórico Nacional."
       }
     },
     "fotos": {
@@ -383,7 +414,28 @@
       "Pingüinos de Magallanes en Cabo Vírgenes": "Pinguins-de-magalhães no Cabo Vírgenes",
       "Faro Cabo Vírgenes": "Farol do Cabo Vírgenes",
       "Pingüino de Magallanes": "Pinguim-de-magalhães",
-      "Baño de ovejas en la estancia Felton": "Banho de ovelhas na fazenda Felton"
+      "Baño de ovejas en la estancia Felton": "Banho de ovelhas na fazenda Felton",
+      "Primer edificio de la Gobernación del Territorio, con el balcón": "O primeiro prédio do governo do Território, com a sacada",
+      "La antigua Gobernación de madera y chapa": "A antiga sede do governo, de madeira e zinco",
+      "Escolares desfilando frente a la primera Gobernación": "Escolares desfilando diante da primeira sede do governo",
+      "La primera sede de la Gobernación, de madera y chapa": "A primeira sede do governo, de madeira e zinco",
+      "La Casa Parisi en sus primeros años": "A Casa Parisi nos seus primeiros anos",
+      "La iglesia en sus primeros años, con cerco de madera": "A igreja nos primeiros anos, com cerca de madeira",
+      "Fachada y campanario de la primera iglesia": "Fachada e campanário da primeira igreja",
+      "La Catedral vista entre los árboles de la plaza": "A Catedral vista entre as árvores da praça",
+      "Antiguo edificio de madera del Colegio María Auxiliadora": "Antigo prédio de madeira do Colégio Maria Auxiliadora",
+      "Las hermanas y alumnas del Instituto María Auxiliadora en un acto patrio": "As irmãs e alunas do Instituto Maria Auxiliadora num ato cívico",
+      "Buque carbonero cargando en el muelle de YCF": "Navio carvoeiro carregando no cais da YCF",
+      "Remolcador de YCF y buque en la ría": "Rebocador da YCF e navio no estuário",
+      "Pequeña locomotora a vapor en la estepa": "Pequena locomotiva a vapor na estepe",
+      "Locomotora N° 117 del ramal de Río Turbio en los talleres": "Locomotiva nº 117 do ramal de Río Turbio nas oficinas",
+      "Sala de paleontología del Museo Padre Molina": "Sala de paleontologia do Museu Padre Molina",
+      "Reconstrucción de un Plateosaurio en el museo": "Reconstrução de um Plateossauro no museu",
+      "Fósiles de Aniksosaurus darwini exhibidos en el museo": "Fósseis de Aniksosaurus darwini expostos no museu",
+      "Sala del Museo Padre Molina": "Sala do Museu Padre Molina",
+      "La Barraca Amberense en sus primeros años": "A Barraca Amberense nos seus primeiros anos",
+      "La calle nevada frente a la Barraca Amberense": "A rua com neve em frente à Barraca Amberense",
+      "Fundacruz, Casa de la Cultura": "Fundacruz, Casa da Cultura"
     }
   }
 }

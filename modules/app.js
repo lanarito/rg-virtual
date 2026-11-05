@@ -1,5 +1,5 @@
 // Pantalla principal: mapa con los portales, GPS, y apertura automática del portal al llegar.
-import { cargarDatos, seguirPosicion, distancia, rumbo, textoDistancia, frase, leerAjuste, guardarAjuste, esc, parametro } from './core.js';
+import { cargarDatos, seguirPosicion, distancia, rumbo, textoDistancia, frase, leerAjuste, guardarAjuste, esc, parametro, portada } from './core.js';
 import { t, idioma, IDIOMAS, cambiarIdioma, traducirPagina } from './i18n.js';
 
 traducirPagina();
@@ -27,7 +27,7 @@ const visitados = new Set(leerAjuste('visitados', []));
 const marcas = new Map();
 
 function iconoPortal(poi) {
-  const foto = poi.fotosHistoricas[0]?.archivo || '';
+  const foto = portada(poi);
   return L.divIcon({
     className: '',
     html: `<div class="pin-portal ${visitados.has(poi.id) ? 'visto' : ''}" style="background-image:url('${esc(foto)}')"></div>`,
@@ -72,7 +72,7 @@ function actualizarTarjeta() {
   tarjeta.hidden = false;
   if (modo === 'lejos' || !ultimaPos) {
     objetivo = null;
-    $('tarjetaFoto').style.backgroundImage = `url('${datos.pois[0].fotosHistoricas[0].archivo}')`;
+    $('tarjetaFoto').style.backgroundImage = `url('${portada(datos.pois[0])}')`;
     $('tarjetaArriba').textContent = t(modo === 'lejos' ? 'tarjeta.lejos' : 'tarjeta.buscando');
     $('tarjetaNombre').textContent = t('tarjeta.todos');
     $('tarjetaAbajo').textContent = t('tarjeta.todosSub', { n: datos.pois.length });
@@ -82,7 +82,7 @@ function actualizarTarjeta() {
   const ordenados = [...datos.pois].sort((a, b) => dist(a) - dist(b));
   objetivo = ordenados.find(p => !visitados.has(p.id)) || ordenados[0];
   const d = dist(objetivo);
-  $('tarjetaFoto').style.backgroundImage = `url('${objetivo.fotosHistoricas[0].archivo}')`;
+  $('tarjetaFoto').style.backgroundImage = `url('${portada(objetivo)}')`;
   $('tarjetaArriba').textContent = t(visitados.has(objetivo.id) ? 'tarjeta.cercano' : 'tarjeta.proximo');
   $('tarjetaNombre').textContent = objetivo.nombre;
   $('tarjetaAbajo').textContent = d < (objetivo.radio || 50)

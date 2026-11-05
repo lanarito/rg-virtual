@@ -6,7 +6,7 @@
 import { narrar, callar, frases, etiquetaRelacion, vibrar, googleKey } from './core.js';
 import { t } from './i18n.js';
 
-const anio = a => (a === 's/f' ? t('anio.sf') : a);
+const anio = a => (a === 's/f' ? t('anio.sf') : a === 'Hoy' ? t('portal.hoy') : a);
 import { whoosh } from './sonido.js';
 
 const SEGUNDOS_HOY = 4.5;
@@ -68,7 +68,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
   if (!capa) crearCapa();
   const gen = ++generacion;
   const fotos = poi.fotosHistoricas;
-  if (!fotos.length) return Promise.resolve();
+  // Sin fotos antiguas: el portal muestra solo el HOY mientras narra (no se abre el anillo).
 
   const $ = sel => capa.querySelector(sel);
   const video = $('video');
@@ -118,7 +118,7 @@ export function abrirPortal(poi, { camara = true } = {}) {
     const inicios = fotos.map((f, k) => f.desdeFrase ?? (k * lineas.length) / fotos.length);
     let ultimoAvance = 0;
     subt.textContent = '';
-    prepararFoto(0);
+    if (fotos.length) prepararFoto(0);
 
     capa.className = 'portal visible hoy';
     vibrar([60, 40, 60]);
@@ -153,8 +153,9 @@ export function abrirPortal(poi, { camara = true } = {}) {
     });
 
     // ---------- 2. Se abre el anillo ----------
-    despues(SEGUNDOS_HOY, abrirAnillo);
+    if (fotos.length) despues(SEGUNDOS_HOY, abrirAnillo);
     function abrirAnillo() {
+      if (!fotos.length) return;
       if (cerrado || capa.classList.contains('abriendo')) return;
       capa.classList.add('abriendo');
       $('.portal-anio').textContent = anio(fotos[0].anio);
