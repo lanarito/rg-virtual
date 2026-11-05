@@ -141,6 +141,21 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
+- [ ] **Orden #5 (2026-11-05): Generar en el Escritorio de Luis el archivo PDF `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf` con el resumen completo del funcionamiento, modalidades de visita, GPS/Street View, VR y fotos/capturas explicativas.**
+
+  **Pedido de Luis:** Luis pidió un resumen completo de cómo funciona el seguimiento al caminar (GPS, distancia al próximo punto, Street View), todas las modalidades de visita que tiene la app y cómo funciona con VR, dejado también en formato **PDF en su Escritorio (`C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`)** con fotos explicativas del funcionamiento.
+
+  ### Qué tenés que hacer:
+  1. Gemini ya armó la maqueta base ilustrada en `fotos-para-revisar/guia-rio-gallegos-inmersivo.html`.
+  2. Con **Puppeteer** (que ya tenés instalado y funcionando):
+     - Tomá capturas reales de la app en vista de celular (390×844):
+       1. La pantalla de inicio (`index.html` con el escudo 3D y el botón "Empezar").
+       2. El mapa con el punto azul de GPS (`index.html?simular=1`) mostrando la tarjeta inferior con el próximo portal y la distancia en metros (`"a ... m al ..."`).
+       3. Las 3 etapas de un portal (`HOY`, `El anillo dorado` abriéndose y `Adentro` con foto histórica y subtítulo).
+       4. El vuelo 3D (`ciudad3d.html`) y el Paseo 360 (`paseo360.html`).
+     - Incorporá esas capturas reales en `fotos-para-revisar/guia-rio-gallegos-inmersivo.html` (o enriquecé el HTML que dejó Gemini) y exportalo con `page.pdf({ path: 'C:/Users/luis/Desktop/Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf', format: 'A4', printBackground: true })`.
+  3. Verificá que `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf` exista y tenga todas las imágenes cargadas, marcá `[x]` esta Orden #5 y avisá en `Respuestas y dudas`.
+
 - [x] **Orden #4 (2026-11-05): Cargar la foto actual del Instituto María Auxiliadora (`ima-actual-3.jpg`) en `maria-auxiliadora.fotosActuales` con el OK expreso de Luis.**
 
   **Confirmación de Luis:** Le mostré a Luis la foto `fotos-para-revisar/nuevas-escritorio/candidatas/ima-actual-3.jpg` (el ingreso real del Colegio María Auxiliadora en Río Gallegos, altura 521) y confirmó expresamente: *"si metamos esa"*.
@@ -454,3 +469,4 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): Orden #4 ejecutada: foto de HOY del Colegio María Auxiliadora (La Opinión Austral).
 - 2026-11-05 (Claude): por pedido de Luis, la foto del IMA va recortada sin la franja de La Opinión Austral (`ima-fachada.jpg`). El crédito al diario sigue visible en la línea de créditos del portal.
 - 2026-11-05 (Claude): narraciones ampliadas en los 21 puntos (3 idiomas, frases al final), 63 audios regenerados, 4 fotos de Commons (3 para el Ferroviario y 1 para el IMA); se confirmó la esquina como Palacio Municipal.
+- 2026-11-05 (Gemini): armado de la guía visual (`fotos-para-revisar/guia-rio-gallegos-inmersivo.html`) y redacción de la **Orden #5** para que Claude tome las capturas en vivo con Puppeteer y exporte el PDF final en `C:\Users\luis\Desktop\Rio-Gallegos-Inmersivo-Guia-y-Modalidades.pdf`.
