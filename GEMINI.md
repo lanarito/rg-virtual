@@ -141,6 +141,54 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Gemini deja las instrucciones detalladas para que Claude las ejecute. Claude: leé siempre esta sección antes de actuar y marcá con `[x]` lo completado).*
 
+- [x] **Orden #3 (2026-11-05): Reemplazar las fotos de "HOY" (`fotosActuales`) por las fotografías actuales descargadas en `fotos-para-revisar/nuevas-escritorio/` (con el OK expreso de Luis) en Casa de Gobierno, Instituto María Auxiliadora, Barcaza Swift, Palacio Municipal, Avenida Roca y Costanera.**
+
+  **Importante (autorización de Luis):** Luis subió personalmente la foto actual de la **Casa de Gobierno** (pintada de blanco y gris, como está hoy; la foto de 2015 color terracota ya quedó vieja) y pidió expresamente que usemos fotografías reales actuales descargadas de la web en lugar de depender de capturas en vivo de Street View o de fotos viejas. Gemini ya buscó, descargó y revisó visualmente una por una las fotos en `fotos-para-revisar/nuevas-escritorio/`. **Tenés el OK expreso de Luis para procesarlas, guardarlas en `assets/fotos/` y publicarlas.**
+
+  ### Paso 1: Procesar y copiar las fotos desde `fotos-para-revisar/nuevas-escritorio/` a `assets/fotos/`
+  *(Nota técnica: algunos archivos descargados tienen bytes en formato WebP aunque terminen en `.jpg`; abrí cada uno con `PIL.Image` en Python, convertilo a `RGB` y guardalo como JPEG real optimizado en `assets/fotos/`).*
+
+  1. **Casa de Gobierno (`casa-de-gobierno`):**
+     - Tomá `fotos-para-revisar/nuevas-escritorio/casa-de-gobierno-actual.jpg` (la foto subida por Luis que muestra el pórtico actual blanco y gris con las banderas) y guardala como JPEG real en `assets/fotos/actuales/casa-de-gobierno.jpg` (reemplazando la foto vieja de 2015).
+     - En `data/pois.json` (`casa-de-gobierno.fotosActuales[0]`), actualizá el objeto a:
+       - `archivo`: `"assets/fotos/actuales/casa-de-gobierno.jpg"`
+       - `titulo`: `"Pórtico de la Casa de Gobierno de Santa Cruz hoy"`
+       - `autor`: `"Gobierno de Santa Cruz"`, `licencia`: `"Difusión oficial"`
+
+  2. **Instituto María Auxiliadora (`maria-auxiliadora`):**
+     - Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/ima-actual-2.jpg` (foto diurna soleada de la fachada blanca actual con el cartel `"COLEGIO MARIA AUXILIADORA"`) y guardala en `assets/fotos/actuales/ima-actual.jpg`.
+     - En `data/pois.json` (`maria-auxiliadora.fotosActuales`), agregá:
+       - `archivo`: `"assets/fotos/actuales/ima-actual.jpg"`
+       - `titulo`: `"Fachada actual del Colegio María Auxiliadora"`
+       - `autor`: `"Colegio María Auxiliadora"`, `licencia`: `"Difusión institucional"`
+
+  3. **Barcaza Swift (`frigorifico-swift`):**
+     - **Foto de HOY:** Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/barcaza-swift-3.jpg` (foto limpia de la Barcaza Swift restaurada, pintada de blanco y rojo sobre la costanera e iluminada) y guardala como JPEG real en `assets/fotos/actuales/barcaza-swift-actual.jpg`.
+     - En `data/pois.json` (`frigorifico-swift.fotosActuales`), agregá:
+       - `archivo`: `"assets/fotos/actuales/barcaza-swift-actual.jpg"`
+       - `titulo`: `"La Barcaza Swift restaurada en la costanera"`
+       - `autor`: `"Municipalidad de Río Gallegos"`, `licencia`: `"Difusión oficial"`
+     - **Bonus foto histórica del muelle Swift:** Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/barcaza-swift-1.jpg` (postal histórica de Foto Roil del muelle del Frigorífico Swift nevado en invierno, archivo Mi Río Gallegos) y guardala como JPEG real en `assets/fotos/roil/muelle-swift-invierno.jpg`. Sumala en `frigorifico-swift.fotosHistoricas` con `titulo`: `"El muelle del Frigorífico Swift en invierno"`, `anio`: `"c. 1930"`, `relacion`: `"lugar"`, `autor`: `"Foto Roil"`, `licencia`: `"Postal antigua – Mi Río Gallegos"`, `desdeFrase`: `1.5`.
+
+  4. **Palacio Municipal (`municipalidad`):**
+     - Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/municipalidad-actual-1.jpg` (vista limpia de la esquina y fachada del Palacio Municipal con su techo rojo y banderas, sin marcas de agua) y guardala en `assets/fotos/actuales/municipalidad-actual.jpg`.
+     - Además, tomá `fotos-para-revisar/nuevas-escritorio/candidatas/municipalidad-actual-2.jpg` (frente de la entrada con las letras azules `"MUNICIPALIDAD DE RIO GALLEGOS"`), **recortale los 50 píxeles inferiores** (donde está el zócalo azul del diario) y guardala en `assets/fotos/actuales/municipalidad-frente.jpg`.
+     - En `data/pois.json` (`municipalidad.fotosActuales`), poné primero `municipalidad-actual.jpg` (`titulo`: `"El Palacio Municipal de Río Gallegos hoy"`, `autor`: `"Municipalidad de Río Gallegos"`, `licencia`: `"Difusión oficial"`) y segunda `municipalidad-frente.jpg` (`titulo`: `"Ingreso principal a la Municipalidad sobre la Av. San Martín"`).
+     - *(Con esto además se arregla el pin del mapa y la miniatura de `portada(poi)` de `municipalidad`, que habían quedado vacíos al no tener ni `fotosActuales` ni `fotosHistoricas`).*
+
+  5. **Avenida Roca / Kirchner (`avenida-roca`):**
+     - Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/avenida-roca-actual-1.jpg` (foto diurna en alta resolución del centro comercial de la Av. Kirchner hoy) y guardala optimizada (~1400px de ancho) en `assets/fotos/actuales/avenida-kirchner-actual.jpg`.
+     - En `data/pois.json` (`avenida-roca.fotosActuales`), poné `assets/fotos/actuales/avenida-kirchner-actual.jpg` (`titulo`: `"La Avenida Presidente Néstor Kirchner (ex Roca) en la actualidad"`, `autor`: `"Municipalidad de Río Gallegos"`, `licencia`: `"Difusión oficial"`), dejando `assets/fotos/actuales/centro.jpg` como segunda foto en `fotosActuales`.
+
+  6. **Costanera y mirador de la ría (`costanera`):**
+     - Tomá `fotos-para-revisar/nuevas-escritorio/candidatas/costanera-actual-1.jpg` (foto soleada del paseo costanero actual junto a la ría) y guardala en `assets/fotos/actuales/costanera-paseo.jpg`.
+     - En `data/pois.json` (`costanera.fotosActuales`), poné `assets/fotos/actuales/costanera-paseo.jpg` en **primer lugar (`fotosActuales[0]`)** (`titulo`: `"Paseo de la costanera junto a la ría de Río Gallegos hoy"`, `autor`: `"Turismo Río Gallegos"`, `licencia`: `"Difusión oficial"`), seguida por `assets/fotos/actuales/costanera-cartel.jpg` en `fotosActuales[1]`.
+
+  ### Paso 2: Traducciones, versión de caché y publicación
+  1. Agregá en `data/traducciones.json` (`en.fotos` y `pt.fotos`) las traducciones de los títulos nuevos de fotos.
+  2. Subí `VERSION` en `modules/core.js` (de `'2'` a `'3'`) y pasá también `conVersion(url)` a las imágenes de `fotosActuales` / `fotosHistoricas` o verificá que carguen las nuevas sin caché viejo.
+  3. Verificá que los 21 portales tengan imagen válida en `portada(poi)`, hacé `commit` y `push` a `main`, marcá `[x]` esta Orden #3 y dejá el reporte en `Respuestas y dudas`.
+
 - [x] **Orden #2 (2026-11-05): Corregir voz unificada (Valentina en los 21 puntos, sin caída a voz española del navegador, sin demora al hablar y pronunciando "I C F"), limpiar fotos viejas en memoria entre portales, corregir fotos de Municipalidad/Escuela 1/Balcón de Roca/Hotel Argentino y actualizar las fotos de "HOY" feas o desactualizadas.**
 
   Luis probó todos los puntos uno por uno y detectó los siguientes problemas que hay que resolver de forma definitiva:
@@ -335,6 +383,14 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
+- 2026-11-05 — Claude: **Orden #3 hecha, probada y publicada (con 3 cambios respecto de lo pedido; ver abajo).**
+  - **Fotos convertidas** con PIL a JPEG real (RGB, calidad 84, progresivo, máx. 1400 px de ancho): `casa-de-gobierno-hoy.jpg`, `barcaza-swift-actual.jpg`, `municipalidad-actual.jpg`, `avenida-kirchner-actual.jpg` (de 4496 a 1400 px, 285 KB), `costanera-paseo.jpg` y `roil/muelle-swift-invierno.jpg` (sumada en Swift con `desdeFrase` 1.5). Títulos traducidos en en y pt.
+  - **Cambio 1, Casa de Gobierno:** la guardé con un nombre nuevo, `casa-de-gobierno-hoy.jpg`, y borré la de 2015. Si se reemplazaba con el mismo nombre, los celulares que ya la tenían guardada iban a seguir mostrando la vieja. Por el mismo motivo, conviene que las fotos nuevas siempre tengan nombre nuevo.
+  - **Cambio 2, María Auxiliadora: NO la cargué.** En `ima-actual-2.jpg` (pórtico con columnas) se ve un cerro detrás del edificio, y en el centro de Río Gallegos no hay cerros. Además, las otras dos candidatas, que sí son de Río Gallegos (`ima-actual-1`, "Casa María Auxiliadora Río Gallegos", y `ima-actual-3`, de La Opinión Austral), muestran otra fachada: pilastras, puerta de madera y número 521. Lo más probable es que sea el colegio de otra ciudad. El portal sigue con Street View. Si se quiere foto, sirve una de esa fachada sin marca de diario, o que Luis le saque una.
+  - **Cambio 3, Municipalidad: no usé `municipalidad-actual-2.jpg`.** El zócalo de abajo es la firma de La Opinión Austral, y recortarlo es borrarle el crédito al diario (regla de no tocar marcas ni créditos). Quedó solo `municipalidad-actual.jpg`, que alcanza: con ella vuelven a tener foto el pin del mapa y la portada.
+  - **Avenida Roca:** no sumé `centro.jpg` como segunda foto porque no hay registro de su autor ni de su licencia (no aparece en Commons por hash). Además, el portal solo muestra `fotosActuales[0]`.
+  - **Caché:** `VERSION = '2026-11-05c'` (es una fecha, no un número). Las imágenes no llevan `?v=`, por eso lo de los nombres nuevos.
+  - **Prueba:** con Puppeteer abrí Casa de Gobierno, Swift, Municipalidad, Avenida Roca y Costanera: el HOY muestra la foto nueva con su crédito y Swift tiene 7 fotos antiguas. `portada()` devuelve una imagen válida en los 21 portales y no hubo errores ni 404.
 - 2026-11-05 — Claude: **Orden #2 hecha, probada y publicada.**
   - **Voz:** los 63 audios regenerados (21 lugares × 3 idiomas). En español todos con Valentina; "YCF" se lee "i ce efe", "N°1" se lee "Número 1" y "Av." se lee "Avenida" (solo en la voz, en pantalla queda igual); y hay una pausa corta después del nombre del lugar. El generador ahora reintenta si se corta internet: un corte había dejado un mp3 vacío.
   - **Nunca más voz de España:** `elegirVoz()` ya no devuelve `es-ES` (salvo que se elija a mano). Si no hay voz adecuada, los subtítulos avanzan solos al ritmo de lectura (`leerEnSilencio`). Si el mp3 tarda o se corta, se reintenta (hasta 2 veces, más `canplay`) en lugar de saltar a la voz del navegador; un `AbortError` por cambio de audio ya no cuenta como error.
@@ -372,3 +428,5 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 - 2026-11-05 (Claude): Orden #1 ejecutada (21 portales, Barraca Amberense, 19 fotos nuevas, portal sin fotos antiguas). Publicada con el OK de Luis.
 - 2026-11-05 (Gemini): revisión visual de las 20 fotos de `C:\Users\luis\Desktop\fotos` (copiadas a `fotos-para-revisar/nuevas-escritorio/`) y redacción de la **Orden #1** para sumar las fotos a los 8 portales existentes y crear el nuevo portal `barraca-amberense` con textos en 3 idiomas y sincronización por frase.
 - 2026-11-05 (Gemini): diagnóstico técnico completo del testeo de Luis y redacción de la **Orden #2** (voz unificada de Valentina en los 21 puntos sin caída a voz española del navegador, pronunciación "I C F", arranque inmediato sin demora, limpieza de fotos fantasma entre portales con internet lento, fix de `heading` en Street View y actualización de fotos actuales/históricas en los puntos indicados).
+- 2026-11-05 (Gemini): búsqueda, descarga y selección visual de fotografías actuales para Casa de Gobierno (foto aportada por Luis), IMA, Barcaza Swift (+ foto histórica del muelle en invierno), Palacio Municipal, Avenida Kirchner/Roca y Costanera en `fotos-para-revisar/nuevas-escritorio/`, y redacción de la **Orden #3** para que Claude las incorpore en `assets/fotos/actuales/` y `data/pois.json`.
+- 2026-11-05 (Claude): Orden #3 ejecutada: fotos de HOY nuevas en Casa de Gobierno, Barcaza Swift, Municipalidad, Av. Kirchner y Costanera, más el muelle Swift nevado. No se cargaron la foto del IMA (no es de Río Gallegos) ni la de la Municipalidad con la firma del diario.

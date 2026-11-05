@@ -477,7 +477,16 @@
         "pitch": -25
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/municipalidad-actual.jpg",
+          "titulo": "El Palacio Municipal de Río Gallegos hoy",
+          "anio": "Hoy",
+          "autor": "Municipalidad de Río Gallegos",
+          "licencia": "Difusión oficial",
+          "fuente": "Sitio web"
+        }
+      ],
       "fotosHistoricas": [],
       "verificado": false
     },
@@ -554,7 +563,16 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/avenida-kirchner-actual.jpg",
+          "titulo": "La Avenida Presidente Néstor Kirchner (ex Roca) en la actualidad",
+          "anio": "Hoy",
+          "autor": "Municipalidad de Río Gallegos",
+          "licencia": "Difusión oficial",
+          "fuente": "Sitio web"
+        }
+      ],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/roil/calle-roca-1955.jpg",
@@ -900,11 +918,12 @@
       "portal": true,
       "fotosActuales": [
         {
-          "archivo": "assets/fotos/actuales/casa-de-gobierno.jpg",
-          "titulo": "Casa de Gobierno, Alcorta 231",
-          "autor": "Gonce",
-          "licencia": "CC BY-SA 3.0",
-          "fuente": "https://commons.wikimedia.org/wiki/File:Casa_GOB_santa_cruz.jpg"
+          "archivo": "assets/fotos/actuales/casa-de-gobierno-hoy.jpg",
+          "titulo": "Pórtico de la Casa de Gobierno de Santa Cruz hoy",
+          "anio": "Hoy",
+          "autor": "Gobierno de Santa Cruz",
+          "licencia": "Difusión oficial",
+          "fuente": "Foto aportada por Luis"
         }
       ],
       "fotosHistoricas": [
@@ -1618,7 +1637,16 @@
         "pitch": -30
       },
       "portal": true,
-      "fotosActuales": [],
+      "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/barcaza-swift-actual.jpg",
+          "titulo": "La Barcaza Swift restaurada en la costanera",
+          "anio": "Hoy",
+          "autor": "Municipalidad de Río Gallegos",
+          "licencia": "Difusión oficial",
+          "fuente": "Sitio web"
+        }
+      ],
       "fotosHistoricas": [
         {
           "archivo": "assets/fotos/historicas/bano-ovejas-felton-1923.jpg",
@@ -1651,6 +1679,21 @@
             "rumbo": null
           },
           "desdeFrase": 1
+        },
+        {
+          "archivo": "assets/fotos/roil/muelle-swift-invierno.jpg",
+          "titulo": "El muelle del Frigorífico Swift en invierno",
+          "anio": "c. 1930",
+          "relacion": "lugar",
+          "autor": "Foto Roil",
+          "licencia": "Postal antigua – Mi Río Gallegos",
+          "fuente": "Mi Río Gallegos",
+          "tomada": {
+            "lat": null,
+            "lon": null,
+            "rumbo": null
+          },
+          "desdeFrase": 1.5
         },
         {
           "archivo": "assets/fotos/roil/frigorifico.jpg",
@@ -1741,6 +1784,14 @@
       },
       "portal": true,
       "fotosActuales": [
+        {
+          "archivo": "assets/fotos/actuales/costanera-paseo.jpg",
+          "titulo": "Paseo de la costanera junto a la ría de Río Gallegos hoy",
+          "anio": "Hoy",
+          "autor": "Turismo Río Gallegos",
+          "licencia": "Difusión oficial",
+          "fuente": "Sitio web"
+        },
         {
           "archivo": "assets/fotos/actuales/costanera-cartel.jpg",
           "titulo": "Cartel de la costanera",
