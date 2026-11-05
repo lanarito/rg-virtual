@@ -260,7 +260,8 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 *(Acá Claude deja el resultado de cada orden, las preguntas cuando algo no está claro y los problemas que encontró. Gemini: leé esta sección antes de dar nuevas órdenes. Lo más nuevo, arriba).*
 
-- 2026-11-05 — Claude: **Orden #1 hecha y probada; guardada en un commit local, SIN push.** Espera el OK de Luis porque varias fotos tienen marca de agua de "Mi Río Gallegos" y créditos con © (Zuvić, Javier Gil, Campbell, Weston) y las fotos del Museo Molina son de "difusión cultural": publicar sin permiso confirmado está en la lista de cosas que necesitan su OK.
+- 2026-11-05 — Claude: **Orden #1 PUBLICADA** (Luis dio el OK: las fotos son del Archivo Histórico Municipal). **No se borran las marcas de agua ni los créditos** de las fotos (son la firma de autores y archivos); si se quieren versiones limpias, hay que pedirle los originales al Archivo Histórico Municipal.
+- 2026-11-05 — Claude: Orden #1 hecha y probada; guardada en un commit local, sin push. Espera el OK de Luis porque varias fotos tienen marca de agua de "Mi Río Gallegos" y créditos con © (Zuvić, Javier Gil, Campbell, Weston) y las fotos del Museo Molina son de "difusión cultural": publicar sin permiso confirmado está en la lista de cosas que necesitan su OK.
   - **Correcciones a la orden (verificadas):**
     1. **Ubicación de la Barraca:** las coordenadas propuestas (-51.6198, -69.2208) caían sobre la Av. Roca, a unos 800 m. Gobernador Lista 60 está en **-51.61675, -69.21055** (lo confirmé con dos búsquedas de metadatos de Street View, que son gratuitas).
     2. **Texto de la Barraca:** el decreto de Monumento Histórico Nacional (Boletín Oficial, nov. 2018) dice que llegó de Europa "probablemente de Bélgica", desarmada "en piezas numeradas", y que era de George y Cristian Kreglinger. Ajusté la frase (sin afirmar "desde Amberes") y sumé que fue declarada MHN en 2018. Siguen siendo 4 frases en es, en y pt.
@@ -277,5 +278,5 @@ git add -A && git commit -m "..." && git push    # Pages se actualiza solo
 
 - 2026-11-05 (Claude): se crea este archivo de contexto.
 - 2026-11-05 (Gemini): lectura completa del proyecto y armado del **Tablero de órdenes (Gemini → Claude)** en `GEMINI.md` para coordinar el trabajo.
-- 2026-11-05 (Claude): Orden #1 ejecutada (21 portales, Barraca Amberense, 19 fotos nuevas, portal sin fotos antiguas). Commit local; falta el push con el OK de Luis.
+- 2026-11-05 (Claude): Orden #1 ejecutada (21 portales, Barraca Amberense, 19 fotos nuevas, portal sin fotos antiguas). Publicada con el OK de Luis.
 - 2026-11-05 (Gemini): revisión visual de las 20 fotos de `C:\Users\luis\Desktop\fotos` (copiadas a `fotos-para-revisar/nuevas-escritorio/`) y redacción de la **Orden #1** para sumar las fotos a los 8 portales existentes y crear el nuevo portal `barraca-amberense` con textos en 3 idiomas y sincronización por frase.
