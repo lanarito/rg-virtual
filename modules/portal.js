@@ -5,7 +5,7 @@
 // Al terminar la narración se cierra solo (salvo que la persona use la realidad aumentada o saque una postal).
 // Realidad aumentada: el anillo sigue el movimiento del celular, y con el botón ◐ se puede ver el pasado
 // en una ventana sobre la calle actual o superpuesto como un fantasma. Con 📸 se arma una postal para compartir.
-import { narrar, callar, frases, etiquetaRelacion, vibrar, googleKey, conVersion, toast } from './core.js';
+import { narrar, callar, frases, seguirVoz, etiquetaRelacion, vibrar, googleKey, conVersion, toast } from './core.js';
 import { t } from './i18n.js';
 
 const anio = a => (a === 's/f' ? t('anio.sf') : a === 'Hoy' ? t('portal.hoy') : a);
@@ -301,7 +301,8 @@ export function abrirPortal(poi, { camara = true } = {}) {
     // En qué frase aparece cada foto: la marcada en los datos, o repartidas parejo.
     const inicios = fotos.map((f, k) => f.desdeFrase ?? (k * lineas.length) / fotos.length);
     let ultimoAvance = 0;
-    subt.textContent = lineas[0] || poi.texto;
+    const seguir = seguirVoz(poi.texto, poi.id, poi.nombre);
+    subt.textContent = poi.nombre; // lo primero que dice la voz es el nombre del lugar
     if (fotos.length) prepararFoto(0);
 
     capa.className = 'portal visible hoy';
@@ -313,23 +314,11 @@ export function abrirPortal(poi, { camara = true } = {}) {
 
     // La voz arranca en el segundo 0 y sigue durante todo el portal.
     {
-      narrar(poi, avance => {
+      narrar(poi, (avance, segundos) => {
         ultimoAvance = Date.now();
-        // Posición en la narración medida en frases (por ejemplo 2.5 = mitad de la tercera frase)
-        const total = poi.texto.length;
-        const inicio = poi.nombre.length / (poi.nombre.length + total);
-        const ajustado = Math.max(0, (avance - inicio) / (1 - inicio));
-        let suma = 0, posicion = 0;
-        for (let k = 0; k < lineas.length; k++) {
-          const parte = lineas[k].length / total;
-          if (ajustado <= suma + parte) {
-            if (subt.textContent !== lineas[k]) subt.textContent = lineas[k];
-            posicion = k + (ajustado - suma) / parte;
-            break;
-          }
-          suma += parte;
-          posicion = k + 1;
-        }
+        // Subtítulo que va con la voz, y posición medida en frases (por ejemplo 2.5 = mitad de la tercera)
+        const { texto, posicion } = seguir(avance, segundos);
+        if (texto && subt.textContent !== texto) subt.textContent = texto;
         // Foto: la última cuyo momento ya llegó (cada foto dice en qué frase aparece)
         if (adentro) {
           let i = 0;

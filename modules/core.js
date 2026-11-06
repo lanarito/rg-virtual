@@ -4,7 +4,7 @@ import { idioma, t, VOZ_LANG } from './i18n.js';
 let datosCache = null;
 
 // Cambiala cuando se actualicen datos o audios: así el celular no usa versiones viejas guardadas.
-export const VERSION = '2026-11-05g';
+export const VERSION = '2026-11-06a';
 export const conVersion = url => `${url}${url.includes('?') ? '&' : '?'}v=${VERSION}`;
 
 export async function cargarDatos() {
@@ -103,9 +103,90 @@ export function seguirPosicion(onPos, onError) {
   return () => navigator.geolocation.clearWatch(id);
 }
 
+// ---------- Subtítulos ----------
+// Todo lo que se dice en voz alta se muestra escrito, para que la app sirva también a personas sordas.
+// tiempos.json dice en qué segundo del audio empieza cada palabra; sin ese dato (voz del navegador
+// o sin sonido) se estima por la cantidad de letras.
+const MAX_LETRAS = 72; // unos dos renglones en un celular
+const CONECTORES = /^(y|e|o|u|a|de|del|la|el|los|las|en|con|por|para|que|un|una|su|sus|al|and|or|of|the|in|on|to|at|with|for|da|do|das|dos|na|no|nas|nos|em|com|um|uma|os|as)$/i;
+let tiemposVoz = {};
+fetch(conVersion(`assets/audio/${idioma() === 'es' ? '' : `${idioma()}/`}tiempos.json`))
+  .then(r => (r.ok ? r.json() : {})).then(x => { tiemposVoz = x; }).catch(() => { /* quedan los estimados */ });
+
+// Parte una frase en pedazos cortos, cortando después de una coma si se puede.
+function partirFrase(palabras) {
+  const pedazos = [];
+  let desde = 0;
+  while (desde < palabras.length) {
+    let hasta = desde, largo = 0;
+    while (hasta < palabras.length && (hasta === desde || largo + palabras[hasta].length + 1 <= MAX_LETRAS)) largo += palabras[hasta++].length + 1;
+    const resto = palabras.slice(hasta).join(' ').length;
+    if (hasta < palabras.length && resto > 14) {
+      // Si una coma queda apenas más adelante, se corta ahí; si no, en la última coma; si no, antes de un conector.
+      const coma = k => /[,;:]$/.test(palabras[k]);
+      const cerca = [hasta, hasta + 1].find(k => k < palabras.length - 1 && coma(k) && palabras.slice(desde, k + 1).join(' ').length <= MAX_LETRAS + 12);
+      if (cerca != null) hasta = cerca + 1;
+      else {
+        let k = hasta - 1;
+        while (k > desde + 2 && !coma(k)) k--;
+        if (k > desde + 2) hasta = k + 1;
+        else while (hasta > desde + 2 && CONECTORES.test(palabras[hasta - 1])) hasta--;
+      }
+    } else if (hasta < palabras.length) hasta = palabras.length; // no dejar una o dos palabras sueltas
+    pedazos.push({ desde, hasta });
+    desde = hasta;
+  }
+  return pedazos;
+}
+
+// Devuelve una función que, según por dónde va la voz, dice qué subtítulo mostrar y en qué frase está.
+export function seguirVoz(texto, clave, titulo = '') {
+  const todas = texto.trim().split(/\s+/);
+  const frasesTexto = frases(texto);
+  const inicioFrase = [], trozos = [];
+  let base = 0;
+  frasesTexto.forEach((f, k) => {
+    const palabras = f.split(/\s+/);
+    inicioFrase.push(base);
+    for (const { desde, hasta } of partirFrase(palabras)) trozos.push({ texto: palabras.slice(desde, hasta).join(' '), palabra: base + desde });
+    base += palabras.length;
+  });
+  // Estimado por letras (de 0 a 1), contando el título que se dice antes del texto
+  const arranque = titulo ? titulo.length / (titulo.length + texto.length) : 0;
+  let letras = 0;
+  const estimados = todas.map(w => { const v = arranque + (letras / texto.length) * (1 - arranque); letras += w.length + 1; return v; });
+
+  return (avance, segundos) => {
+    const reales = tiemposVoz[clave];
+    const usarReales = segundos != null && reales?.length === todas.length;
+    const marcas = usarReales ? reales : estimados;
+    const ahora = usarReales ? segundos + 0.12 : avance;
+    const ultimo = (lista, palabra) => { let i = -1; lista.forEach((x, k) => { if (marcas[palabra(x)] <= ahora) i = k; }); return i; };
+    const iTrozo = ultimo(trozos, x => x.palabra);
+    const k = Math.max(0, ultimo(inicioFrase, x => x));
+    const inicio = marcas[inicioFrase[k]];
+    const fin = k + 1 < inicioFrase.length ? marcas[inicioFrase[k + 1]] : (usarReales ? marcas.at(-1) + 0.5 : 1);
+    return { texto: iTrozo < 0 ? null : trozos[iTrozo].texto, posicion: k + Math.min(1, Math.max(0, (ahora - inicio) / (fin - inicio || 1))) };
+  };
+}
+
+// Barra de subtítulos para lo que se dice fuera del portal (bienvenida, vuelo, Paseo 360…).
+let barraVoz = null;
+function mostrarBarra(texto) {
+  if (!barraVoz) {
+    barraVoz = document.createElement('div');
+    barraVoz.className = 'subtitulos-voz';
+    barraVoz.setAttribute('aria-live', 'polite');
+    document.body.append(barraVoz);
+  }
+  if (barraVoz.textContent !== texto) barraVoz.textContent = texto;
+  barraVoz.classList.add('show');
+}
+const ocultarBarra = () => barraVoz?.classList.remove('show');
+
 // ---------- Narración ----------
-// Avisa con eventos 'narracion:inicio' / 'narracion:fin' (la música baja sola) y, si se pide,
-// informa el avance (0 a 1) para mostrar subtítulos.
+// Avisa con eventos 'narracion:inicio' / 'narracion:fin' (la música baja sola) e informa el avance
+// (de 0 a 1, y en segundos si es la voz grabada) para mostrar subtítulos.
 let idNarracion = 0;
 
 // Un único reproductor para toda la narración. En iPhone, un audio solo puede sonar sin que
@@ -132,7 +213,18 @@ function elegirVoz() {
 const usarGrabada = () => leerAjuste('vozGrabada', true);
 const avisar = nombre => window.dispatchEvent(new Event(nombre));
 
-function reproducir(src, texto, onProgreso) {
+// Sin un onProgreso propio (el portal tiene el suyo), los subtítulos van en la barra.
+function reproducir(src, texto, onProgreso, { clave = '', cuerpo = texto, titulo = '' } = {}) {
+  if (onProgreso) return reproducirVoz(src, texto, onProgreso);
+  const seguir = seguirVoz(cuerpo, clave, titulo);
+  const pintar = (avance, segundos) => mostrarBarra(seguir(avance, segundos).texto ?? titulo ?? '');
+  const voz = reproducirVoz(src, texto, pintar);
+  const id = idNarracion;
+  pintar(0, 0);
+  return voz.then(() => { setTimeout(() => { if (id === idNarracion) ocultarBarra(); }, 1200); });
+}
+
+function reproducirVoz(src, texto, onProgreso) {
   callar();
   const id = ++idNarracion;
   avisar('narracion:inicio');
@@ -155,7 +247,7 @@ function reproducir(src, texto, onProgreso) {
       a.playbackRate = leerAjuste('velocidad', 1);
       sonar();
     };
-    a.ontimeupdate = onProgreso ? () => vigente() && a.duration && onProgreso(a.currentTime / a.duration) : null;
+    a.ontimeupdate = () => vigente() && a.duration && onProgreso(a.currentTime / a.duration, a.currentTime);
     a.onended = () => vigente() && fin();
     // Internet lento o corte: reintenta el mismo mp3 antes de rendirse.
     a.onerror = () => {
@@ -170,12 +262,12 @@ function reproducir(src, texto, onProgreso) {
 // Frases cortas de la app, grabadas en assets/audio/[idioma/]frase-<clave>.mp3
 export function frase(clave) {
   const carpeta = idioma() === 'es' ? '' : `${idioma()}/`;
-  return reproducir(`assets/audio/${carpeta}frase-${clave}.mp3`, t(`frase.${clave}`));
+  return reproducir(`assets/audio/${carpeta}frase-${clave}.mp3`, t(`frase.${clave}`), null, { clave: `frase-${clave}` });
 }
 
 // Usa el mp3 del POI si existe; si no, lee el texto con la voz del navegador.
 export function narrar(poi, onProgreso) {
-  return reproducir(poi.audio, `${poi.nombre}. ${poi.texto}`, onProgreso);
+  return reproducir(poi.audio, `${poi.nombre}. ${poi.texto}`, onProgreso, { clave: poi.id, cuerpo: poi.texto, titulo: poi.nombre });
 }
 
 export function vocesEspanol() {
@@ -187,6 +279,7 @@ export function callar() {
   idNarracion++;
   try { speechSynthesis.cancel(); } catch { /* nada */ }
   reproductor.pause();
+  ocultarBarra();
   avisar('narracion:fin');
 }
 

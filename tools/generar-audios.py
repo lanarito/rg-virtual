@@ -8,7 +8,8 @@
 #   python tools/generar-audios.py . catedral plaza-san-martin -> solo esos lugares (3 idiomas)
 #   python tools/generar-audios.py . --frases               -> solo las frases de la app
 #   python tools/generar-audios.py . --idioma en            -> solo un idioma
-import asyncio, json, sys, os, re
+# Además guarda en tiempos.json en qué segundo se dice cada palabra: con eso los subtítulos siguen a la voz.
+import asyncio, difflib, json, sys, os, re
 import edge_tts
 
 VOCES = {'es': 'es-UY-ValentinaNeural', 'en': 'en-US-AvaNeural', 'pt': 'pt-BR-FranciscaNeural'}
@@ -57,6 +58,30 @@ def texto_frase(lang, clave):
     return valor[1:-1].replace("\\'", "'")
 
 
+def normal(palabra):
+    return re.sub(r'[\W_]', '', palabra.lower())
+
+
+def alinear(texto, dichas):
+    # Segundo en que empieza cada palabra del texto en pantalla. La voz puede decirlas distinto
+    # ("YCF" -> "i ce efe"): esas se ubican entre sus vecinas.
+    pantalla = texto.split()
+    a, b = [normal(p) for p in pantalla], [normal(w) for _, w in dichas]
+    tiempos = [None] * len(pantalla)
+    for m in difflib.SequenceMatcher(None, a, b, autojunk=False).get_matching_blocks():
+        for k in range(m.size):
+            tiempos[m.a + k] = dichas[m.b + k][0]
+    conocidos = [i for i, x in enumerate(tiempos) if x is not None]
+    for i, x in enumerate(tiempos):
+        if x is not None: continue
+        antes = max((k for k in conocidos if k < i), default=None)
+        despues = min((k for k in conocidos if k > i), default=None)
+        if antes is None: tiempos[i] = tiempos[despues]
+        elif despues is None: tiempos[i] = tiempos[antes] + 0.35 * (i - antes)
+        else: tiempos[i] = tiempos[antes] + (tiempos[despues] - tiempos[antes]) * (i - antes) / (despues - antes)
+    return [round(x, 2) for x in tiempos], len(conocidos) / len(pantalla)
+
+
 async def gen(texto, destino, voz, lang, titulo=None):
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     rate, pitch, pausas = AJUSTES[lang]
@@ -68,20 +93,33 @@ async def gen(texto, destino, voz, lang, titulo=None):
     # Reintenta si se corta internet (un archivo a medio generar no sirve)
     for intento in range(4):
         try:
-            await edge_tts.Communicate(final, voz, rate=rate, pitch=pitch).save(destino)
-            if os.path.getsize(destino) > 5000:
+            audio, dichas = bytearray(), []
+            async for parte in edge_tts.Communicate(final, voz, rate=rate, pitch=pitch, boundary='WordBoundary').stream():
+                if parte['type'] == 'audio': audio += parte['data']
+                elif parte['type'] == 'WordBoundary':
+                    # A veces una marca trae varias palabras juntas ("noviembre de 1930")
+                    dichas += [(parte['offset'] / 1e7, w) for w in parte['text'].split()]
+            if len(audio) > 5000 and dichas:
                 break
         except Exception as e:
             print('reintento', intento + 1, os.path.basename(destino), type(e).__name__)
         await asyncio.sleep(3 * (intento + 1))
     else:
         raise SystemExit(f'No se pudo generar {destino}')
-    print(os.path.relpath(destino, base), os.path.getsize(destino) // 1024, 'KB')
+    with open(destino, 'wb') as f:
+        f.write(audio)
+    # Se alinea con el título incluido, y después se sacan sus palabras: los tiempos son solo del texto
+    tiempos, acierto = alinear(f'{titulo} {texto}' if titulo else texto, dichas)
+    tiempos = tiempos[len(titulo.split()):] if titulo else tiempos
+    print(os.path.relpath(destino, base), len(audio) // 1024, 'KB', f'palabras alineadas {acierto:.0%}')
+    return tiempos
 
 
 async def main():
     for lang in idiomas:
         carpeta = 'assets/audio/' + ('' if lang == 'es' else f'{lang}/')
+        ruta = os.path.join(base, carpeta, 'tiempos.json')
+        tiempos = json.load(open(ruta, encoding='utf-8')) if os.path.exists(ruta) else {}
         if not solo_frases:
             for p in datos['pois']:
                 if solo and p['id'] not in solo:
@@ -89,9 +127,10 @@ async def main():
                 x = p if lang == 'es' else trad[lang]['pois'].get(p['id'])
                 if not x:
                     print('sin traducción:', lang, p['id']); continue
-                await gen(x['texto'], os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang], lang, titulo=x['nombre'])
+                tiempos[p['id']] = await gen(x['texto'], os.path.join(base, carpeta, f"{p['id']}.mp3"), VOCES[lang], lang, titulo=x['nombre'])
         if not solo or solo_frases:
             for clave in FRASES:
-                await gen(texto_frase(lang, clave), os.path.join(base, carpeta, f'frase-{clave}.mp3'), VOCES[lang], lang)
+                tiempos[f'frase-{clave}'] = await gen(texto_frase(lang, clave), os.path.join(base, carpeta, f'frase-{clave}.mp3'), VOCES[lang], lang)
+        json.dump(tiempos, open(ruta, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
 
 asyncio.run(main())
